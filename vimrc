@@ -19,7 +19,7 @@ endfunction
 " Get ready for life w/o walls
 if GetPlatform() == "win"
     let s:localFile = "~/local.vim"
-    source $VIMRUNTIME/mswin.vim
+    let g:skip_loading_mswin = 1    " don't need the shortcuts
     behave mswin
 endif
 
@@ -154,6 +154,9 @@ au BufRead,BufNewFile *.mkd set ft=mkd ai formatoptions=tcroqn2 comments=n:>
 "au BufRead,BufNewFile *.txt set filetype=txt
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
+" XML {{{2
+au FileType xml setlocal et sw=2 sts=2 ts=2 ai
+
 " Misc {{{2
 " Change the working directory to the directory containing the current file
 if has("autocmd")
@@ -178,6 +181,7 @@ let g:netrw_browse_split=3  " all edits in new tab
 " Settings for taglist.vim
 let Tlist_Auto_Open=0
 let Tlist_Compact_Format=1
+let Tlist_Display_Tag_Scope=0
 let Tlist_Enable_Fold_Column=0
 let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
@@ -189,7 +193,7 @@ nmap <Leader>tt :TlistToggle<cr>
 if GetPlatform() == "win"
     let timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified):\s+)@<=.*$'
 endif
-let g:timestamp_modelines = 20
+let g:timestamp_modelines = 50
 
 " Viki {{{2
 au BufNewFile *.idea set ft=idea
