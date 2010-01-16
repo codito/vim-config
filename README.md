@@ -30,6 +30,11 @@ Displays a calendar, also provides support for keeping a journal.
 Vim script [52](www.vim.org/scripts/script.php?script_id=52)  
 On github [mattn/calendar-vim](http://www.vim.org/scripts/script.php?script_id=52)  
 
+## Markdown
+Provides syntax and snippets for Markdown.
+Vim script [2882](http://www.vim.org/scripts/script.php?script_id=2882)  
+On github [hallison/vim-markdown](http://github.com/hallison/vim-markdown)  
+
 ## NERD Commenter
 Provides nifty ways to comment/uncomment source code.  
 Vim script [1218](http://www.vim.org/scripts/script.php?script_id=1218)  

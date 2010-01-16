@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Wed 06 Jan 2010 07:13:35 AM IST Standard Time
+" Last Modified: Sat 16 Jan 2010 03:11:27 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -148,7 +148,7 @@ au FileType python setlocal et sw=4 sts=4 ts=4 ai
 au BufRead,BufNewFile $HOME/docs/thuts/* set ft=viki
 
 " Markdown {{{2
-au BufRead,BufNewFile *.md set ft=mkd ai formatoptions=tcroqn2 comments=n:>
+au FileType markdown setlocal ai formatoptions=tcroqn2 comments=n:>
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
