@@ -1,6 +1,6 @@
 " GVim config
 " Created: Aug 2005
-" Last Modified: Fri 01 Jan 2010 11:19:29 PM IST
+" Last Modified: Sun 28 Feb 2010 09:35:38 AM IST
 "
 
 " Window Appearance {{{1
@@ -17,10 +17,6 @@ set guioptions-=T           " get rid of toolbars
 set guioptions-=m           " get rid of menus
 set guioptions-=r           " get rid of scrollbars
 set mousehide		    " hide the mouse when typing text
-
-" Editor Appearance {{{1
-"
-colorscheme twilight
 
 " Pure gvim {{{1
 "

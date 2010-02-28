@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Sat 16 Jan 2010 03:11:27 PM IST Standard Time
+" Last Modified: Sun 28 Feb 2010 09:36:44 AM IST Standard Time
 
 " Platform related {{{1
 "
@@ -49,6 +49,7 @@ endif
 set browsedir=current       " use current directory for file browser
 
 " Editor appearance {{{2
+colorscheme desert
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
 set nocp                    " don't be vi compatible
