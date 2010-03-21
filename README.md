@@ -25,6 +25,10 @@ Provides a nice interface to browse tags in a file.
 Vim script [273](http://www.vim.org/scripts/script.php?script_id=273)  
 My github fork [vim-taglist](http://github.com/codito/vim-taglist)  
 
+## Blogit
+Wordpress integration w/ vim. Supports posts in Markdown.
+Vim script [2582](http://www.vim.org/scripts/script.php?script_id=2582)
+
 ## Calender
 Displays a calendar, also provides support for keeping a journal.  
 Vim script [52](www.vim.org/scripts/script.php?script_id=52)  
