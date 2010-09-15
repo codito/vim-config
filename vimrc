@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Sun 28 Feb 2010 09:36:44 AM IST Standard Time
+" Last Modified: Thu 16 Sep 2010 01:27:29 AM India Standard Time
 
 " Platform related {{{1
 "
@@ -178,6 +178,19 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 
+" OmniCppComplete {{{2
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest
+
 " TagList {{{2
 " Settings for taglist.vim
 let Tlist_Auto_Open=0
@@ -196,8 +209,9 @@ if GetPlatform() == "win"
 endif
 let g:timestamp_modelines = 50
 
-" Viki {{{2
-au BufNewFile *.idea set ft=idea
+" Vimwiki {{{2
+let g:vimwiki_list = [{'path' : '~/docs/notes'}]
+let g:vimwiki_dir_link = 'index'
 
 " Extensions and utils {{{1
 "

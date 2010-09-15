@@ -49,6 +49,10 @@ Awesome file browser for vim.
 Vim script [1658](http://www.vim.org/scripts/script.php?script_id=1658)  
 On github [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)  
 
+## OmniCppComplete
+Auto completion for C++ methods
+Vim script [1520](http://www.vim.org/scripts/script.php?script_id=1520)
+
 ## Templates
 Template support for new files. Pretty simple. I use it for journal/calendar.  
 Vim script [1172](www.vim.org/scripts/script.php?script_id=1172)  
@@ -56,3 +60,7 @@ Vim script [1172](www.vim.org/scripts/script.php?script_id=1172)
 ## Timestamp
 Allows user to update timestamps on files. Can be configured by a regex.  
 Vim script [923](http://www.vim.org/scripts/script.php?script_id=923)  
+
+## Vimwiki
+A wiki to manage notes in vim. Also comes with a diary.
+Vim script [2226](http://www.vim.org/scripts/script.php?script_id=2226)
