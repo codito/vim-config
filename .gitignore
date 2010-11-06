@@ -1,6 +1,8 @@
 .VimballRecord
 .netrwhist
 passwords.vim
-tmp/.*
-spell/.*
-**/tags
+templates/*
+tmp/*
+spell/*.*
+tags
+bundle/**/*tags*

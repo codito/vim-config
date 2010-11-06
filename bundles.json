@@ -9,6 +9,11 @@
     "desc": "Supper comment script"
 },
 {
+    "name": "lusty",
+    "repo": "https://github.com/sjbach/lusty.git",
+    "desc": "Lusty file/buffer explorer and juggler"
+},
+{
     "name": "snipmate",
     "repo": "https://github.com/codito/snipmate.vim.git",
     "desc": "Snippets"

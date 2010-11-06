@@ -34,3 +34,6 @@
 [submodule "bundle/json"]
 	path = bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
+[submodule "bundle/lusty"]
+	path = bundle/lusty
+	url = https://github.com/sjbach/lusty.git
