@@ -31,7 +31,7 @@ class VimScript:
         print("----")
 
     def sync(self):
-        dotvim = self._get_dotvim()
+        dotvim = get_dotvim()
         bundle_name = os.path.join("bundle", self.name)
         pwd = os.getcwd()
         os.chdir(dotvim)
@@ -47,23 +47,28 @@ class VimScript:
 
         os.chdir(pwd)
 
-    def _get_dotvim(self):
-        vimfiles = ".vim"
-        if os.sys.platform == "win32":
-            vimfiles = "vimfiles"
-        return os.path.expanduser(os.path.join("~", vimfiles))
-
 def create_script_object(d):
     """
     Deserialize the JSON string into a VimScript object
     """
     scripts.append(VimScript(d))
 
+def get_dotvim():
+    vimfiles = ".vim"
+    if os.sys.platform == 'win32':
+        vimfiles = "vimfiles"
+    return os.path.expanduser(os.path.join("~", vimfiles))
+
 if __name__ == "__main__":
-    config_file = open(os.path.expanduser("~/.vim/bundles.json"), 'r')
+    config_file = open(os.path.join(get_dotvim(), "bundles.json"), 'r')
     json.load(config_file, object_hook=create_script_object)
 
     # sync 'em
+    print("-- Init all submodules")
+    p = subprocess.Popen("git submodule init", stdout=subprocess.PIPE, shell=True)
+    p.wait()
+    print("Complete.")
+
     for script in scripts:
         print("-- Script: '" + script.name + "'")
         script.sync()
