@@ -47,4 +47,15 @@
     "name": "vimwiki",
     "repo": "https://github.com/vim-scripts/vimwiki.git",
     "desc": "A wiki to manage notes in vim. Also comes with a diary."
-}]
+},
+{
+    "name": "pydoc",
+    "repo": "https://github.com/vim-scripts/pydoc.vim.git",
+    "desc": "PyDoc inside vim."
+},
+{
+    "name": "json",
+    "repo": "https://github.com/vim-scripts/JSON.vim.git",
+    "desc": "Syntax. For JSON files."
+}
+]
