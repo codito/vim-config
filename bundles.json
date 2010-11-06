@@ -1,0 +1,50 @@
+[{
+    "name": "nerdtree",
+    "repo": "https://github.com/scrooloose/nerdtree.git",
+    "desc": "File explorer extraordinaire!"
+},
+{
+    "name": "nerdcommenter",
+    "repo": "https://github.com/scrooloose/nerdcommenter.git",
+    "desc": "Supper comment script"
+},
+{
+    "name": "snipmate",
+    "repo": "https://github.com/codito/snipmate.vim.git",
+    "desc": "Snippets"
+},
+{
+    "name": "taglist",
+    "repo": "https://github.com/codito/vim-taglist.git",
+    "desc": "Provides a nice interface to browse tags in a file"
+},
+{
+    "name": "blogit",
+    "repo": "git://git.symlink.me/pub/romain/blogit.git",
+    "desc": "Wordpress integration w/ vim. Supports posts in Markdown."
+},
+{
+    "name": "calendar",
+    "repo": "https://github.com/mattn/calendar-vim.git",
+    "desc": "Displays a calendar, also provides support for keeping a journal."
+},
+{
+    "name": "markdown",
+    "repo": "https://github.com/hallison/vim-markdown.git",
+    "desc": "Provides syntax and snippets for Markdown."
+},
+{
+    "name": "omnicppcomplete",
+    "repo": "https://github.com/vim-scripts/OmniCppComplete.git",
+    "desc": "OmniCompletion for C++."
+},
+{
+    "name": "timestamp",
+    "repo": "https://github.com/vim-scripts/timestamp.git",
+    "desc": "Shortcuts to put timestamps in a buffer."
+},
+{
+    "name": "vimwiki",
+    "repo": "https://github.com/vim-scripts/vimwiki.git",
+    "desc": "A wiki to manage notes in vim. Also comes with a diary."
+}]

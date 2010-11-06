@@ -1,0 +1,6 @@
+.VimballRecord
+.netrwhist
+passwords.vim
+tmp/.*
+spell/.*
+tags

@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Thu 16 Sep 2010 01:27:29 AM India Standard Time
+" Last Modified: Mon 04 Oct 2010 10:22:08 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -80,7 +80,7 @@ set tabstop=8               " defacto tab standard
 
 " Tags {{{2
 set sft                     " show full tags while autocompleting
-set tags=tags,../..
+set tags=tags,./tags,../,../..
 
 " Misc {{{2
 filetype plugin on          " enable plugin support
@@ -106,7 +106,7 @@ endif
 
 " C# {{{2
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen
-au FileType cs set omnifunc=syntaxcomplete#Complete
+"au FileType cs set omnifunc=syntaxcomplete#Complete
 au FileType cs set foldmethod=indent
 au FileType cs set foldmarker={,} 
 au FileType cs set foldtext=substitute(getline(v:foldstart+1),'{.*','{...}',)
@@ -210,7 +210,7 @@ endif
 let g:timestamp_modelines = 50
 
 " Vimwiki {{{2
-let g:vimwiki_list = [{'path' : '~/docs/notes'}]
+let g:vimwiki_list = [{'path' : '~/docs'}]
 let g:vimwiki_dir_link = 'index'
 
 " Extensions and utils {{{1
@@ -225,6 +225,8 @@ nnoremap <silent><C-Left> :<C-u>cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']
 nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
 inoremap <silent><C-Left> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
+" Expand current date time stamp {{{2
+:iab <expr> dts strftime("%b %d, %H:%M")
 
 " Local machine dependent mods {{{1
 "
