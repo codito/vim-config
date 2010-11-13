@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Sat 06 Nov 2010 11:30:11 AM IST Standard Time
+" Last Modified: Sat 13 Nov 2010 08:25:10 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -12,7 +12,7 @@ call pathogen#helptags()
 let s:localFile = "~/.local.vim" 
 
 " Know the platform we're running on
-function GetPlatform()
+function! GetPlatform()
     if has("win32") || has("win64")
         return "win"
     else
@@ -167,6 +167,9 @@ au FileType markdown setlocal ai formatoptions=tcroqn2 comments=n:>
 "au BufRead,BufNewFile *.txt set filetype=txt
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
+" VimWiki {{{2
+au FileType vimwiki set foldlevel=2 foldlevelstart=2
+
 " XML {{{2
 au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
@@ -178,6 +181,51 @@ endif " has("autocmd")
 
 " Plugins {{{1
 "
+" FuzzyFinder {{{2
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+nnoremap <silent> sj     :FufBuffer<CR>
+nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
+nnoremap <silent> sK     :FufFileWithFullCwd<CR>
+nnoremap <silent> s<C-k> :FufFile<CR>
+nnoremap <silent> sl     :FufCoverageFileChange<CR>
+nnoremap <silent> sL     :FufCoverageFileChange<CR>
+nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
+nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
+nnoremap <silent> sD     :FufDirWithFullCwd<CR>
+nnoremap <silent> s<C-d> :FufDir<CR>
+nnoremap <silent> sn     :FufMruFile<CR>
+nnoremap <silent> sN     :FufMruFileInCwd<CR>
+nnoremap <silent> sm     :FufMruCmd<CR>
+nnoremap <silent> su     :FufBookmarkFile<CR>
+nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
+vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
+nnoremap <silent> si     :FufBookmarkDir<CR>
+nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
+nnoremap <silent> st     :FufTag<CR>
+nnoremap <silent> sT     :FufTag!<CR>
+nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
+nnoremap <silent> s,     :FufBufferTag<CR>
+nnoremap <silent> s<     :FufBufferTag!<CR>
+vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
+vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
+nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
+nnoremap <silent> s.     :FufBufferTagAll<CR>
+nnoremap <silent> s>     :FufBufferTagAll!<CR>
+vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
+vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
+nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
+nnoremap <silent> sg     :FufTaggedFile<CR>
+nnoremap <silent> sG     :FufTaggedFile!<CR>
+nnoremap <silent> so     :FufJumpList<CR>
+nnoremap <silent> sp     :FufChangeList<CR>
+nnoremap <silent> sq     :FufQuickfix<CR>
+nnoremap <silent> sy     :FufLine<CR>
+nnoremap <silent> sh     :FufHelp<CR>
+nnoremap <silent> se     :FufEditDataFile<CR>
+nnoremap <silent> sr     :FufRenewCache<CR>
+
 " NERD Commenter {{{2
 let g:NERDShutUp = 1
 nmap <silent><F7> :NERDTreeToggle<cr>
@@ -217,6 +265,7 @@ endif
 let g:timestamp_modelines = 50
 
 " Vimwiki {{{2
+let g:vimwiki_folding = 1
 let g:vimwiki_list = [{'path' : '~/docs'}]
 let g:vimwiki_dir_link = 'index'
 
@@ -233,7 +282,7 @@ nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.'
 inoremap <silent><C-Left> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
 " Expand current date time stamp {{{2
-:iab <expr> dts strftime("%b %d, %H:%M")
+:iab <expr> dts strftime("%Y %b %d, %H:%M")
 
 " Local machine dependent mods {{{1
 "

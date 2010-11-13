@@ -9,7 +9,7 @@ if GetPlatform() == "win"
     set guifont=consolas:h9:cANSI
     au GUIEnter * simalt ~x " maximize window on start
 else
-    set guifont=inconsolata
+    set guifont=Inconsolata\ Medium\ 16
 endif
 
 set guiheadroom=0	    " use up all space allocated to vim
