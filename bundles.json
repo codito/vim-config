@@ -9,9 +9,14 @@
     "desc": "Supper comment script"
 },
 {
-    "name": "lusty",
-    "repo": "https://github.com/sjbach/lusty.git",
-    "desc": "Lusty file/buffer explorer and juggler"
+    "name": "L9",
+    "repo": "https://github.com/vim-scripts/L9.git",
+    "desc": "Utilities for vim scripts, required by fuzzyfinder"
+},
+{
+    "name": "fuzzyfinder",
+    "repo": "https://github.com/vim-scripts/FuzzyFinder.git",
+    "desc": "Fuzzy search for files/buffers etc."
 },
 {
     "name": "snipmate",
@@ -45,7 +50,7 @@
 },
 {
     "name": "timestamp",
-    "repo": "https://github.com/vim-scripts/timestamp.git",
+    "repo": "https://github.com/vim-scripts/timestamp.vim.git",
     "desc": "Shortcuts to put timestamps in a buffer."
 },
 {

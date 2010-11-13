@@ -21,7 +21,7 @@
 	url = https://github.com/hallison/vim-markdown.git
 [submodule "bundle/timestamp"]
 	path = bundle/timestamp
-	url = https://github.com/vim-scripts/timestamp.git
+	url = https://github.com/vim-scripts/timestamp.vim.git
 [submodule "bundle/vimwiki"]
 	path = bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki.git
@@ -34,9 +34,9 @@
 [submodule "bundle/json"]
 	path = bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
-[submodule "bundle/lusty"]
-	path = bundle/lusty
-	url = https://github.com/sjbach/lusty.git
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "bundle/L9"]
+	path = bundle/L9
+	url = https://github.com/vim-scripts/L9.git
