@@ -19,6 +19,11 @@
     "desc": "Fuzzy search for files/buffers etc."
 },
 {
+    "name": "command-t",
+    "repo": "https://github.com/vim-scripts/Command-T.git",
+    "desc": "Textmate style filename completion for vim"
+},
+{
     "name": "snipmate",
     "repo": "https://github.com/codito/snipmate.vim.git",
     "desc": "Snippets"
