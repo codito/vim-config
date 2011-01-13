@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Sat 13 Nov 2010 08:25:10 PM IST Standard Time
+" Last Modified: Fri 14 Jan 2011 12:47:24 AM IST Standard Time
 
 " Platform related {{{1
 "
@@ -169,6 +169,8 @@ au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
 " VimWiki {{{2
 au FileType vimwiki set foldlevel=2 foldlevelstart=2
+au FileType vimwiki map <F8> :!ctags -R .<CR>
+au FileType vimwiki let tlist_vimwiki_settings = 'wiki;h:Headers'
 
 " XML {{{2
 au FileType xml setlocal et sw=2 sts=2 ts=2 ai

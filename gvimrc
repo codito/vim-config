@@ -1,6 +1,6 @@
 " GVim config
 " Created: Aug 2005
-" Last Modified: Sun 28 Feb 2010 09:35:38 AM IST
+" Last Modified: Sat 08 Jan 2011 10:37:57 AM IST
 "
 
 " Window Appearance {{{1
@@ -9,7 +9,7 @@ if GetPlatform() == "win"
     set guifont=consolas:h9:cANSI
     au GUIEnter * simalt ~x " maximize window on start
 else
-    set guifont=Inconsolata\ Medium\ 16
+    set guifont=Inconsolata\ Medium\ 12
 endif
 
 set guiheadroom=0	    " use up all space allocated to vim
