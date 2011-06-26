@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Fri 14 Jan 2011 12:47:24 AM IST Standard Time
+" Last Modified: Sun 26 Jun 2011 03:57:25 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -146,8 +146,8 @@ au FileType php setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType python setlocal et sw=4 sts=4 ts=4 ai
+au FileType python set omnifunc=python3complete#Complete
+au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
@@ -161,7 +161,8 @@ EOL
 map <C-h> :py EvaluateCurrentRange()
 
 " Markdown {{{2
-au FileType markdown setlocal ai formatoptions=tcroqn2 comments=n:>
+" Don't insert linebreaks in documents, it screws up conversions
+au FileType markdown setlocal tw=0 wrap linebreak nolist wrapmargin=0 ai formatoptions=tcroqn2 comments=n:>
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
