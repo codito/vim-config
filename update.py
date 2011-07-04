@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     # sync 'em
     print("-- Init all submodules")
-    p = subprocess.Popen("git submodule init", stdout=subprocess.PIPE, shell=True)
+    p = subprocess.Popen("git submodule update --init", stdout=subprocess.PIPE, shell=True)
     p.wait()
     print("Complete.")
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         print("Complete.")
 
     print("-- Update all submodules")
-    p = subprocess.Popen("git submodule update", stdout=subprocess.PIPE, shell=True)
+    p = subprocess.Popen("git submodule foreach git pull origin master", stdout=subprocess.PIPE, shell=True)
     p.wait()
     print("Complete.")
 
