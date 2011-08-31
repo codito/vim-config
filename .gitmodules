@@ -7,12 +7,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/codito/snipmate.vim.git
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/codito/vim-taglist.git
-[submodule "bundle/blogit"]
-	path = bundle/blogit
-	url = git://git.symlink.me/pub/romain/blogit.git
 [submodule "bundle/calendar"]
 	path = bundle/calendar
 	url = https://github.com/mattn/calendar-vim.git
@@ -43,3 +37,14 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/vim-scripts/Command-T.git
+        ignore = untracked
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/ultrablog"]
+	path = bundle/ultrablog
+	url = https://github.com/vim-scripts/UltraBlog.git
+        ignore = untracked
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

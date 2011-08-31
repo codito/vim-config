@@ -29,14 +29,14 @@
     "desc": "Snippets"
 },
 {
-    "name": "taglist",
-    "repo": "https://github.com/codito/vim-taglist.git",
+    "name": "tagbar",
+    "repo": "https://github.com/majutsushi/tagbar.git",
     "desc": "Provides a nice interface to browse tags in a file"
 },
 {
-    "name": "blogit",
-    "repo": "git://git.symlink.me/pub/romain/blogit.git",
-    "desc": "Wordpress integration w/ vim. Supports posts in Markdown."
+    "name": "ultrablog",
+    "repo": "https://github.com/vim-scripts/UltraBlog.git",
+    "desc": "Ultimate Vim blogging plugin. Supports posts in Markdown."
 },
 {
     "name": "calendar",
@@ -72,5 +72,10 @@
     "name": "json",
     "repo": "https://github.com/vim-scripts/JSON.vim.git",
     "desc": "Syntax. For JSON files."
+},
+{
+    "name": "vim-colors-solarized",
+    "repo": "https://github.com/altercation/vim-colors-solarized.git",
+    "desc": "Solarized color scheme"
 }
 ]

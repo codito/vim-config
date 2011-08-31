@@ -4,5 +4,3 @@ passwords.vim
 templates/*
 tmp/*
 spell/*.*
-tags
-bundle/**/*tags*
