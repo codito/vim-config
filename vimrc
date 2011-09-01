@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Wed 31 Aug 2011 04:55:27 PM IST Standard Time
+" Last Modified: Thu 01 Sep 2011 01:35:09 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -42,7 +42,7 @@ set bufhidden=delete        " delete hidden buffers, changes will be lost!
 set switchbuf=split,usetab  " split/open new tab while switching buffers, for quickfix
 
 " Directories {{{2
-set autochdir               " automatically chdir to the current directory
+set noautochdir                 " don't switch directory to current file
 if GetPlatform() == "win"
     set backupdir=d:\backups
     set directory=d:\backups
@@ -50,7 +50,6 @@ else
     set backupdir=~/.vim/tmp    " isolate the swap files to some corner
     set directory=~/.vim/tmp    " directories for swap files
 endif
-set browsedir=current       " use current directory for file browser
 
 " Editor appearance {{{2
 colorscheme desert
@@ -184,50 +183,10 @@ endif " has("autocmd")
 
 " Plugins {{{1
 "
-" FuzzyFinder {{{2
-let g:fuf_modesDisable = []
-let g:fuf_mrufile_maxItem = 400
-let g:fuf_mrucmd_maxItem = 400
-nnoremap <silent> sj     :FufBuffer<CR>
-nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> sK     :FufFileWithFullCwd<CR>
-nnoremap <silent> s<C-k> :FufFile<CR>
-nnoremap <silent> sl     :FufCoverageFileChange<CR>
-nnoremap <silent> sL     :FufCoverageFileChange<CR>
-nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
-nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
-nnoremap <silent> sD     :FufDirWithFullCwd<CR>
-nnoremap <silent> s<C-d> :FufDir<CR>
-nnoremap <silent> sn     :FufMruFile<CR>
-nnoremap <silent> sN     :FufMruFileInCwd<CR>
-nnoremap <silent> sm     :FufMruCmd<CR>
-nnoremap <silent> su     :FufBookmarkFile<CR>
-nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
-vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
-nnoremap <silent> si     :FufBookmarkDir<CR>
-nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
-nnoremap <silent> st     :FufTag<CR>
-nnoremap <silent> sT     :FufTag!<CR>
-nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
-nnoremap <silent> s,     :FufBufferTag<CR>
-nnoremap <silent> s<     :FufBufferTag!<CR>
-vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
-vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
-nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
-nnoremap <silent> s.     :FufBufferTagAll<CR>
-nnoremap <silent> s>     :FufBufferTagAll!<CR>
-vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
-vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
-nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
-nnoremap <silent> sg     :FufTaggedFile<CR>
-nnoremap <silent> sG     :FufTaggedFile!<CR>
-nnoremap <silent> so     :FufJumpList<CR>
-nnoremap <silent> sp     :FufChangeList<CR>
-nnoremap <silent> sq     :FufQuickfix<CR>
-nnoremap <silent> sy     :FufLine<CR>
-nnoremap <silent> sh     :FufHelp<CR>
-nnoremap <silent> se     :FufEditDataFile<CR>
-nnoremap <silent> sr     :FufRenewCache<CR>
+" Command T {{{2
+let g:CommandTMatchWindowAtTop = 1
+nnoremap <silent> sj     :CommandTBuffer<CR>
+nnoremap <silent> sk     :CommandT<CR>
 
 " NERD Commenter {{{2
 let g:NERDShutUp = 1
@@ -249,7 +208,7 @@ let OmniCpp_DefaultNamespaces = ["std"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
 
-" TagList {{{2
+" Tagbar {{{2
 " Settings for tagbar.vim
 let g:tagbar_singleclick = 1
 let g:tagbar_autofocus = 1

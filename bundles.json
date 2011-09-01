@@ -9,16 +9,6 @@
     "desc": "Supper comment script"
 },
 {
-    "name": "L9",
-    "repo": "https://github.com/vim-scripts/L9.git",
-    "desc": "Utilities for vim scripts, required by fuzzyfinder"
-},
-{
-    "name": "fuzzyfinder",
-    "repo": "https://github.com/vim-scripts/FuzzyFinder.git",
-    "desc": "Fuzzy search for files/buffers etc."
-},
-{
     "name": "command-t",
     "repo": "https://github.com/vim-scripts/Command-T.git",
     "desc": "Textmate style filename completion for vim"
