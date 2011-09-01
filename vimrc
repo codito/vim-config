@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Sun 26 Jun 2011 03:57:25 PM IST Standard Time
+" Last Modified: Wed 31 Aug 2011 04:55:27 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -146,7 +146,7 @@ au FileType php setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
-au FileType python set omnifunc=python3complete#Complete
+au FileType python set omnifunc=pythoncomplete#Complete
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
@@ -250,16 +250,10 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
 
 " TagList {{{2
-" Settings for taglist.vim
-let Tlist_Auto_Open=0
-let Tlist_Compact_Format=1
-let Tlist_Display_Tag_Scope=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Exit_OnlyWindow=1
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Show_One_File = 1   " show tags only for the current file
-let Tlist_WinWidth=30
-nmap <Leader>tt :TlistToggle<cr>
+" Settings for tagbar.vim
+let g:tagbar_singleclick = 1
+let g:tagbar_autofocus = 1
+nmap <Leader>tt :TagbarToggle<cr>
 
 " Timestamp {{{2
 if GetPlatform() == "win"

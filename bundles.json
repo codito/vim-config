@@ -24,19 +24,29 @@
     "desc": "Textmate style filename completion for vim"
 },
 {
+    "name": "vim-addon-mw-utils",
+    "repo": "https://github.com/MarcWeber/vim-addon-mw-utils.git",
+    "desc": "Interpret a file by function and cache file automatically. Snipmate dependency."
+},
+{
+    "name": "tlib",
+    "repo": "https://github.com/tomtom/tlib_vim.git",
+    "desc": "Some utility functions for VIM. Snipmate dependency."
+},
+{
     "name": "snipmate",
     "repo": "https://github.com/codito/snipmate.vim.git",
-    "desc": "Snippets"
+    "desc": "Snipmate core"
+},
+{
+    "name": "snipmate-snippets",
+    "repo": "https://github.com/codito/snipmate-snippets.git",
+    "desc": "Snipmate snippets"
 },
 {
     "name": "tagbar",
     "repo": "https://github.com/majutsushi/tagbar.git",
     "desc": "Provides a nice interface to browse tags in a file"
-},
-{
-    "name": "ultrablog",
-    "repo": "https://github.com/vim-scripts/UltraBlog.git",
-    "desc": "Ultimate Vim blogging plugin. Supports posts in Markdown."
 },
 {
     "name": "calendar",
