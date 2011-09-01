@@ -69,6 +69,11 @@
     "desc": "PyDoc inside vim."
 },
 {
+    "name": "pyflakes",
+    "repo": "https://github.com/kevinw/pyflakes-vim.git",
+    "desc": "On the fly Python checking in Vim with PyFlakes."
+},
+{
     "name": "json",
     "repo": "https://github.com/vim-scripts/JSON.vim.git",
     "desc": "Syntax. For JSON files."

@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Thu 01 Sep 2011 01:35:09 PM IST Standard Time
+" Last Modified: Thu 01 Sep 2011 01:56:22 PM IST Standard Time
 
 " Platform related {{{1
 "
@@ -177,9 +177,9 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Misc {{{2
 " Change the working directory to the directory containing the current file
-if has("autocmd")
-  autocmd BufEnter,BufRead,BufNewFile,BufFilePost * :lcd %:p:h
-endif " has("autocmd")
+"if has("autocmd")
+  "autocmd BufEnter,BufRead,BufNewFile,BufFilePost * :lcd %:p:h
+"endif " has("autocmd")
 
 " Plugins {{{1
 "
@@ -188,8 +188,9 @@ let g:CommandTMatchWindowAtTop = 1
 nnoremap <silent> sj     :CommandTBuffer<CR>
 nnoremap <silent> sk     :CommandT<CR>
 
-" NERD Commenter {{{2
+" NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
+let NERDTreeChDirMode=0     " please don't chdir for me
 nmap <silent><F7> :NERDTreeToggle<cr>
 
 " Netrw plugin {{{2
