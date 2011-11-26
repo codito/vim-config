@@ -44,9 +44,9 @@
     "desc": "Displays a calendar, also provides support for keeping a journal."
 },
 {
-    "name": "markdown",
+    "name": "vim-markdown",
     "repo": "https://github.com/hallison/vim-markdown.git",
-    "desc": "Provides syntax and snippets for Markdown."
+    "desc": "Markdown support for vim"
 },
 {
     "name": "omnicppcomplete",
@@ -64,14 +64,14 @@
     "desc": "A wiki to manage notes in vim. Also comes with a diary."
 },
 {
-    "name": "pydoc",
-    "repo": "https://github.com/vim-scripts/pydoc.vim.git",
-    "desc": "PyDoc inside vim."
+    "name": "voom",
+    "repo": "https://github.com/vim-scripts/VOoM.git",
+    "desc": "Vim Outliner of Markers -- two-pane outliner and related utilities."
 },
 {
-    "name": "pyflakes",
-    "repo": "https://github.com/kevinw/pyflakes-vim.git",
-    "desc": "On the fly Python checking in Vim with PyFlakes."
+    "name": "python-mode",
+    "repo": "https://github.com/klen/python-mode.git",
+    "desc": "Python env for vim: PyLint, Rope, Pydoc, breakpoints from box."
 },
 {
     "name": "json",

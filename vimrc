@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: Thu 01 Sep 2011 01:56:22 PM IST Standard Time
+" Last Modified: 20/09/2011, 21:06:27 IST
 
 " Platform related {{{1
 "
@@ -152,16 +152,25 @@ au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
 au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 " Compile/check selected blocks in .py
-python << EOL 
+python << endpython
 import vim 
+import os.path, sys
+
 def EvaluateCurrentRange(): 
     eval(compile('\n'.join(vim.current.range),'','exec'),globals()) 
-EOL 
+
+# Add the virtualenv's site-packages to vim path
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+endpython
 map <C-h> :py EvaluateCurrentRange()
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
-au FileType markdown setlocal tw=0 wrap linebreak nolist wrapmargin=0 ai formatoptions=tcroqn2 comments=n:>
+"au FileType markdown setlocal tw=0 wrap linebreak nolist wrapmargin=0 ai formatoptions=tcroqn2 comments=n:>
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
@@ -209,6 +218,15 @@ let OmniCpp_DefaultNamespaces = ["std"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
 
+" Pandoc {{{2
+let g:pandoc_auto_format = 1    " auto format the text, can be slow!
+
+" PyUnit {{{2
+let g:PyUnitCmd = "nosetests -q --with-machineout --with-doctest"
+nnoremap <silent> <F5> :call PyUnitRunTests()<CR>
+nnoremap <silent> <S-F5> :call PyUnitRunAllTests()<CR>
+nnoremap <silent> <F6> :call PyUnitSwitchToCounterpart()<CR>
+
 " Tagbar {{{2
 " Settings for tagbar.vim
 let g:tagbar_singleclick = 1
@@ -220,11 +238,13 @@ if GetPlatform() == "win"
     let timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified):\s+)@<=.*$'
 endif
 let g:timestamp_modelines = 50
+let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
 " Vimwiki {{{2
 let g:vimwiki_folding = 1
-let g:vimwiki_list = [{'path' : '~/docs'}]
 let g:vimwiki_dir_link = 'index'
+map <S-Down> <Plug>VimwikiNextLink
+map <S-Up> <Plug>VimwikiPrevLink
 
 " Extensions and utils {{{1
 "

@@ -10,9 +10,6 @@
 [submodule "bundle/calendar"]
 	path = bundle/calendar
 	url = https://github.com/mattn/calendar-vim.git
-[submodule "bundle/markdown"]
-	path = bundle/markdown
-	url = https://github.com/hallison/vim-markdown.git
 [submodule "bundle/timestamp"]
 	path = bundle/timestamp
 	url = https://github.com/vim-scripts/timestamp.vim.git
@@ -22,9 +19,6 @@
 [submodule "bundle/omnicppcomplete"]
 	path = bundle/omnicppcomplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule "bundle/pydoc"]
-	path = bundle/pydoc
-	url = https://github.com/vim-scripts/pydoc.vim.git
 [submodule "bundle/json"]
 	path = bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
@@ -47,6 +41,12 @@
 [submodule "bundle/snipmate-snippets"]
 	path = bundle/snipmate-snippets
 	url = https://github.com/codito/snipmate-snippets.git
-[submodule "bundle/pyflakes"]
-	path = bundle/pyflakes
-	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/voom"]
+	path = bundle/voom
+	url = https://github.com/vim-scripts/VOoM.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/hallison/vim-markdown.git
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = https://github.com/klen/python-mode.git
