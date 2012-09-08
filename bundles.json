@@ -82,5 +82,10 @@
     "name": "vim-colors-solarized",
     "repo": "https://github.com/altercation/vim-colors-solarized.git",
     "desc": "Solarized color scheme"
+},
+{
+    "name": "powershell",
+    "repo": "https://github.com/PProvost/vim-ps1.git",
+    "desc": "A Vim plugin for Windows PowerShell support"
 }
 ]

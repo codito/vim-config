@@ -50,3 +50,6 @@
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+[submodule "bundle\\powershell"]
+	path = bundle\\powershell
+	url = https://github.com/PProvost/vim-ps1.git
