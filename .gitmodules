@@ -65,3 +65,9 @@
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
+[submodule "bundle\\powershell"]
+	path = bundle\\powershell
+	url = https://github.com/PProvost/vim-ps1.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git

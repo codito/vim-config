@@ -107,5 +107,15 @@
     "name": "vim-less",
     "repo": "https://github.com/groenewege/vim-less.git",
     "desc": "Less goodness in vim"
+},
+{
+    "name": "powershell",
+    "repo": "https://github.com/PProvost/vim-ps1.git",
+    "desc": "A Vim plugin for Windows PowerShell support"
+},
+{
+    "name": "typescript-vim",
+    "repo": "https://github.com/leafgarland/typescript-vim.git",
+    "desc": "Typescript syntax files for Vim"
 }
 ]
