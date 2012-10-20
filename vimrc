@@ -5,8 +5,7 @@
 " Platform related {{{1
 "
 " Unleash the pathogen!
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 " Local settings file, default to linux
 let s:localFile = "~/.local.vim" 
@@ -65,9 +64,11 @@ set textwidth=100           " break a line after 100 characters
 set noequalalways           " for :split don't split space equally
 set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
+set cursorline              " highlight the line our cursor is in
 
 " Key mappings in general {{{2
 nmap <silent><S-Tab> :tabnext<CR>
+nnoremap <silent><C-F4> :bdelete<CR>
 
 " Search {{{2
 set incsearch               " use incremental search
@@ -121,6 +122,9 @@ endif
 " C# tags
 au FileType cs map <F8> :!ctags --recurse --extra=+fq --fields=+ianmzS --c\#-kinds=cimnp .<CR>
 
+" HTML {{{2
+au FileType html setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=4
+
 " Mail {{{2
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
 au FileType mail setlocal spell spelllang=en_us
@@ -145,12 +149,14 @@ au FileType php setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
-au FileType python set omnifunc=pythoncomplete#Complete
+au FileType python set omnifunc=RopeOmni
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+" Python ctags
+au FileType python map <F8> :!ctags --recurse --python-kinds=cfmv .<CR>
 " Compile/check selected blocks in .py
 python << endpython
 import vim 
@@ -158,19 +164,12 @@ import os.path, sys
 
 def EvaluateCurrentRange(): 
     eval(compile('\n'.join(vim.current.range),'','exec'),globals()) 
-
-# Add the virtualenv's site-packages to vim path
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
 endpython
 map <C-h> :py EvaluateCurrentRange()
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
-"au FileType markdown setlocal tw=0 wrap linebreak nolist wrapmargin=0 ai formatoptions=tcroqn2 comments=n:>
+au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:>
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
@@ -218,8 +217,12 @@ let OmniCpp_DefaultNamespaces = ["std"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
 
-" Pandoc {{{2
-let g:pandoc_auto_format = 1    " auto format the text, can be slow!
+" Python-mode {{{2
+let g:pymode_syntax = 1 " use the pymode syntax highlight
+let g:pymode_lint_checker = 'pyflakes'
+let g:pymode_lint_write = 0 " don't run lint on write
+let g:pymode_lint_cwindow = 0 " don't auto-open quickfix window
+let g:pymode_lint_signs = 0 " don't place error signs on left margin
 
 " PyUnit {{{2
 let g:PyUnitCmd = "nosetests -q --with-machineout --with-doctest"
@@ -240,11 +243,19 @@ endif
 let g:timestamp_modelines = 50
 let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
+" Vimroom {{{2
+"let g:vimroom_guibackground = "white"
+"let g:vimroom_ctermbackground = "white"
+
 " Vimwiki {{{2
 let g:vimwiki_folding = 1
 let g:vimwiki_dir_link = 'index'
 map <S-Down> <Plug>VimwikiNextLink
 map <S-Up> <Plug>VimwikiPrevLink
+
+" Voom {{{2
+nnoremap <Leader>vv :VoomToggle<CR>
+nnoremap <Leader>vw :Voom vimwiki<CR>
 
 " Extensions and utils {{{1
 "

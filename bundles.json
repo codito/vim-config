@@ -82,5 +82,30 @@
     "name": "vim-colors-solarized",
     "repo": "https://github.com/altercation/vim-colors-solarized.git",
     "desc": "Solarized color scheme"
+},
+{
+    "name": "vimroom",
+    "repo": "https://github.com/mikewest/vimroom.git",
+    "desc": "Simulating a vaguely WriteRoom-like environment in Vim."
+},
+{
+    "name": "jinja",
+    "repo": "https://github.com/vim-scripts/Jinja.git",
+    "desc": "Syntax highlighting for Jinja templates"
+},
+{
+    "name": "vim-css3-syntax",
+    "repo": "https://github.com/hail2u/vim-css3-syntax.git",
+    "desc": "Syntax highlighting for CSS3"
+},
+{
+    "name": "vim-css-color",
+    "repo": "https://github.com/skammer/vim-css-color.git",
+    "desc": "Highlight colors in css file"
+},
+{
+    "name": "vim-less",
+    "repo": "https://github.com/groenewege/vim-less.git",
+    "desc": "Less goodness in vim"
 }
 ]
