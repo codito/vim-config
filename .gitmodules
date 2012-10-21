@@ -71,3 +71,9 @@
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/jscomplete-vim"]
+	path = bundle/jscomplete-vim
+	url = https://github.com/teramako/jscomplete-vim.git
+[submodule "bundle/vim-nodejs-complete"]
+	path = bundle/vim-nodejs-complete
+	url = https://github.com/myhere/vim-nodejs-complete.git

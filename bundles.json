@@ -117,5 +117,15 @@
     "name": "typescript-vim",
     "repo": "https://github.com/leafgarland/typescript-vim.git",
     "desc": "Typescript syntax files for Vim"
+},
+{
+    "name": "jscomplete-vim",
+    "repo": "https://github.com/teramako/jscomplete-vim.git",
+    "desc": "Completion for javascript"
+},
+{
+    "name": "vim-nodejs-complete",
+    "repo": "https://github.com/myhere/vim-nodejs-complete.git",
+    "desc": "Nodejs omnicomplete for vim"
 }
 ]
