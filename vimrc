@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 20/09/2011, 21:06:27 IST
+" Last Modified: 21/10/2012, 12:14:05 IST
 
 " Platform related {{{1
 "
@@ -62,13 +62,18 @@ set showmode                " show the mode INSERT/REPLACE/...
 syntax enable               " enable syntax highlighting
 set textwidth=100           " break a line after 100 characters
 set noequalalways           " for :split don't split space equally
-set winheight=99999 winminheight=0  " rolodex look for vim
+"set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
 
 " Key mappings in general {{{2
 nmap <silent><S-Tab> :tabnext<CR>
 nnoremap <silent><C-F4> :bdelete<CR>
+
+" Omnicomplete {{{2
+" Automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 
 " Search {{{2
 set incsearch               " use incremental search
@@ -204,6 +209,9 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 
+" NodeJS complete {{{2
+let g:node_usejscomplete = 1
+
 " OmniCppComplete {{{2
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
@@ -213,9 +221,6 @@ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest
 
 " Python-mode {{{2
 let g:pymode_syntax = 1 " use the pymode syntax highlight
