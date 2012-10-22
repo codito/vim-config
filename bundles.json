@@ -9,11 +9,6 @@
     "desc": "Supper comment script"
 },
 {
-    "name": "command-t",
-    "repo": "https://github.com/vim-scripts/Command-T.git",
-    "desc": "Textmate style filename completion for vim"
-},
-{
     "name": "vim-addon-mw-utils",
     "repo": "https://github.com/MarcWeber/vim-addon-mw-utils.git",
     "desc": "Interpret a file by function and cache file automatically. Snipmate dependency."
@@ -127,5 +122,10 @@
     "name": "vim-nodejs-complete",
     "repo": "https://github.com/myhere/vim-nodejs-complete.git",
     "desc": "Nodejs omnicomplete for vim"
+},
+{
+    "name": "ctrlp.vim",
+    "repo": "https://github.com/kien/ctrlp.vim.git",
+    "desc": "https://github.com/kien/ctrlp.vim.git"
 }
 ]
