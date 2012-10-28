@@ -180,6 +180,9 @@ au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn 
 "au BufRead,BufNewFile *.txt set filetype=txt
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
+" Typescript {{{2
+au FileType typescript set filetype=typescript.javascript
+
 " VimWiki {{{2
 au FileType vimwiki set foldlevel=2 foldlevelstart=2
 au FileType vimwiki map <F8> :!ctags -R .<CR>
@@ -239,7 +242,7 @@ nnoremap <silent> <F6> :call PyUnitSwitchToCounterpart()<CR>
 " Settings for tagbar.vim
 let g:tagbar_singleclick = 1
 let g:tagbar_autofocus = 1
-nmap <Leader>tt :TagbarToggle<cr>
+nmap <Leader>tt :TagbarToggle<CR>
 
 " Timestamp {{{2
 if GetPlatform() == "win"
@@ -259,8 +262,7 @@ map <S-Down> <Plug>VimwikiNextLink
 map <S-Up> <Plug>VimwikiPrevLink
 
 " Voom {{{2
-nnoremap <Leader>vv :VoomToggle<CR>
-nnoremap <Leader>vw :Voom vimwiki<CR>
+nnoremap <Leader>vv :execute "VoomToggle ".&ft<CR>
 
 " Extensions and utils {{{1
 "
