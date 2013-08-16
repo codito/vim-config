@@ -127,5 +127,10 @@
     "name": "vim-fugitive",
     "repo": "https://github.com/tpope/vim-fugitive.git",
     "desc": "a git wrapper so awesome, it should be illegal"
+},
+{
+        "name": "python-mode",
+        "repo": "https://github.com/codito/python-mode.git",
+        "desc": "Python env for vim: PyLint, Rope, Pydoc, breakpoints from box."
 }
 ]

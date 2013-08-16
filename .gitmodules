@@ -76,3 +76,7 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle\\python-mode"]
+	path = bundle/python-mode
+	url = https://github.com/codito/python-mode.git
+	branch = origin/python3
