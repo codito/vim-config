@@ -64,11 +64,6 @@
     "desc": "Vim Outliner of Markers -- two-pane outliner and related utilities."
 },
 {
-    "name": "python-mode",
-    "repo": "https://github.com/klen/python-mode.git",
-    "desc": "Python env for vim: PyLint, Rope, Pydoc, breakpoints from box."
-},
-{
     "name": "json",
     "repo": "https://github.com/vim-scripts/JSON.vim.git",
     "desc": "Syntax. For JSON files."
