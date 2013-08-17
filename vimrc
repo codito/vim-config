@@ -155,7 +155,7 @@ au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
 au FileType python set omnifunc=RopeOmni
-au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
+au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99 colorcolumn=80 textwidth=80
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
