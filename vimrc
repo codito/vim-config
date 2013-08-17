@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 21/10/2012, 12:14:05 IST
+" Last Modified: 
 
 " Platform related {{{1
 "
@@ -158,19 +158,10 @@ au FileType python set omnifunc=RopeOmni
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
-au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
+"au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 " Python ctags
 au FileType python map <F8> :!ctags --recurse --python-kinds=cfmv .<CR>
-" Compile/check selected blocks in .py
-python << endpython
-import vim 
-import os.path, sys
-
-def EvaluateCurrentRange(): 
-    eval(compile('\n'.join(vim.current.range),'','exec'),globals()) 
-endpython
-map <C-h> :py EvaluateCurrentRange()
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
