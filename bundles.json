@@ -132,5 +132,15 @@
         "name": "python-mode",
         "repo": "https://github.com/codito/python-mode.git",
         "desc": "Python env for vim: PyLint, Rope, Pydoc, breakpoints from box."
+},
+{
+        "name": "vim-dispatch",
+        "repo": "https://github.com/tpope/vim-dispatch.git",
+        "desc": "dispatch.vim: asynchronous build and test dispatcher"
+},
+{
+        "name": "omnisharp",
+        "repo": "https://github.com/nosami/Omnisharp.git",
+        "desc": "vim omnicompletion (intellisense) and more for c#"
 }
 ]

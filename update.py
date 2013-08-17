@@ -21,12 +21,14 @@ class VimScript:
             self.name = script_dict['name']
             self.repo = script_dict['repo']
             self.desc = script_dict['desc']
+            self.branch = script_dict.get('branch', 'master')
         except:
             print("VimScript: Failed to create object!")
 
     def __str__(self):
         print("name = " + self.name)
         print("repository = " + self.repo)
+        print("branch = " + self.branch)
         print("description = " + self.desc)
         print("----")
 
@@ -40,7 +42,7 @@ class VimScript:
         if os.path.exists(bundle_name):
             print("Script already exists as submodule.")
         else:
-            command = "git submodule add " + self.repo + " " + bundle_name
+            command = "git submodule add -b " + self.branch + " " + self.repo + " " + bundle_name
             print("Adding submodule: " + command)
             p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
             p.wait()
@@ -75,7 +77,7 @@ if __name__ == "__main__":
         print("Complete.")
 
     print("-- Update all submodules")
-    p = subprocess.Popen("git submodule foreach git pull origin master", stdout=subprocess.PIPE, shell=True)
+    p = subprocess.Popen("git submodule update --remote", stdout=subprocess.PIPE, shell=True)
     p.wait()
     print("Complete.")
 
