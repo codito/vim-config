@@ -80,3 +80,11 @@
 	path = bundle/python-mode
 	url = https://github.com/codito/python-mode.git
 	branch = python3
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+	branch = master
+[submodule "bundle/omnisharp"]
+	path = bundle/omnisharp
+	url = https://github.com/nosami/Omnisharp.git
+	branch = master
