@@ -31,7 +31,7 @@ endif
 " Autocomplete {{{2
 set complete+=k             " scan the files given with the 'dictionary' option
 set wildmenu		    " command-line completion operates in an enhanced mode
-set wildignore=*.bak,*.o,*.e,*~	" ignore these
+set wildignore=*.bak,*.o,*.e,*~,*.pyc	" ignore these
 
 " Buffers {{{2
 set autoread                " read open files again when changed outside Vim
@@ -190,10 +190,15 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
-" Command T {{{2
-let g:CommandTMatchWindowAtTop = 1
-nnoremap <silent> sj     :CommandTBuffer<CR>
-nnoremap <silent> sk     :CommandT<CR>
+" Fu-git-ive-ness {{{2
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>g2 :diffget //2<cr>
+nmap <leader>g3 :diffget //3<cr>
+nmap <leader>g0 :Gwrite!<cr>
 
 " NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
