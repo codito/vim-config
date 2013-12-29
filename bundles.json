@@ -110,7 +110,7 @@
 },
 {
     "name": "jscomplete-vim",
-    "repo": "https://github.com/teramako/jscomplete-vim.git",
+    "repo": "https://bitbucket.org/teramako/jscomplete-vim.git",
     "desc": "Completion for javascript"
 },
 {

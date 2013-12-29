@@ -42,7 +42,7 @@ class VimScript:
         if os.path.exists(bundle_name):
             print("Script already exists as submodule.")
         else:
-            command = "git submodule add -b " + self.branch + " " + self.repo + " " + bundle_name
+            command = "git submodule add --force -b " + self.branch + " " + self.repo + " " + bundle_name
             print("Adding submodule: " + command)
             p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
             p.wait()
