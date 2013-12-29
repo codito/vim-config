@@ -64,9 +64,6 @@
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "bundle/jscomplete-vim"]
-	path = bundle/jscomplete-vim
-	url = https://github.com/teramako/jscomplete-vim.git
 [submodule "bundle/vim-nodejs-complete"]
 	path = bundle/vim-nodejs-complete
 	url = https://github.com/myhere/vim-nodejs-complete.git
@@ -83,4 +80,8 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+	branch = master
+[submodule "bundle/jscomplete-vim"]
+	path = bundle/jscomplete-vim
+	url = https://bitbucket.org/teramako/jscomplete-vim.git
 	branch = master
