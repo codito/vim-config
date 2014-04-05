@@ -119,13 +119,28 @@
     "desc": "a git wrapper so awesome, it should be illegal"
 },
 {
-        "name": "python-mode",
-        "repo": "https://github.com/codito/python-mode.git",
-        "desc": "Python env for vim: PyLint, Rope, Pydoc, breakpoints from box."
+        "name": "jedi-vim",
+        "repo": "https://github.com/davidhalter/jedi-vim.git",
+        "desc": "Using the jedi autocompletion library for VIM."
+},
+{
+        "name": "neocomplete",
+        "repo": "https://github.com/Shougo/neocomplete.vim",
+        "desc": "Next generation completion framework after neocomplcache"
+},
+{
+        "name": "tern_for_vim",
+        "repo": "https://github.com/marijnh/tern_for_vim.git",
+        "desc": "Tern plugin for Vim"
 },
 {
         "name": "vim-dispatch",
         "repo": "https://github.com/tpope/vim-dispatch.git",
         "desc": "dispatch.vim: asynchronous build and test dispatcher"
+},
+{
+        "name": "syntastic",
+        "repo": "https://github.com/scrooloose/syntastic.git",
+        "desc": "Syntax checking hacks for vim"
 }
 ]
