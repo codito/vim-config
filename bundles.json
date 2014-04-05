@@ -9,24 +9,14 @@
     "desc": "Supper comment script"
 },
 {
-    "name": "vim-addon-mw-utils",
-    "repo": "https://github.com/MarcWeber/vim-addon-mw-utils.git",
-    "desc": "Interpret a file by function and cache file automatically. Snipmate dependency."
+    "name": "ultisnips",
+    "repo": "https://github.com/SirVer/ultisnips.git",
+    "desc": "UltiSnips - The ultimate snippet solution for Vim."
 },
 {
-    "name": "tlib",
-    "repo": "https://github.com/tomtom/tlib_vim.git",
-    "desc": "Some utility functions for VIM. Snipmate dependency."
-},
-{
-    "name": "snipmate",
-    "repo": "https://github.com/codito/snipmate.vim.git",
-    "desc": "Snipmate core"
-},
-{
-    "name": "snipmate-snippets",
-    "repo": "https://github.com/codito/snipmate-snippets.git",
-    "desc": "Snipmate snippets"
+    "name": "vim-snippets",
+    "repo": "https://github.com/honza/vim-snippets.git",
+    "desc": "Vim snippets"
 },
 {
     "name": "tagbar",
