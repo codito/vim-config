@@ -154,14 +154,11 @@ au FileType php setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
-au FileType python set omnifunc=RopeOmni
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99 colorcolumn=80 textwidth=80
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-" Python ctags
-au FileType python map <F8> :!ctags --recurse --python-kinds=cfmv .<CR>
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
@@ -210,29 +207,6 @@ let g:netrw_browse_split=3  " all edits in new tab
 
 " NodeJS complete {{{2
 let g:node_usejscomplete = 1
-
-" OmniCppComplete {{{2
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std"]
-
-" Python-mode {{{2
-let g:pymode_syntax = 1 " use the pymode syntax highlight
-let g:pymode_lint_checker = 'pyflakes'
-let g:pymode_lint_write = 0 " don't run lint on write
-let g:pymode_lint_cwindow = 0 " don't auto-open quickfix window
-let g:pymode_lint_signs = 0 " don't place error signs on left margin
-
-" PyUnit {{{2
-let g:PyUnitCmd = "nosetests -q --with-machineout --with-doctest"
-nnoremap <silent> <F5> :call PyUnitRunTests()<CR>
-nnoremap <silent> <S-F5> :call PyUnitRunAllTests()<CR>
-nnoremap <silent> <F6> :call PyUnitSwitchToCounterpart()<CR>
 
 " Tagbar {{{2
 " Settings for tagbar.vim
