@@ -73,3 +73,11 @@
 	path = bundle/jscomplete-vim
 	url = https://bitbucket.org/teramako/jscomplete-vim.git
 	branch = master
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+	branch = master
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+	branch = master
