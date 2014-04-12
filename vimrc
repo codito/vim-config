@@ -187,6 +187,10 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
+" Ctrl-p {{{2
+" Ignore node_modules and bower_components
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components)$'
+
 " Fu-git-ive-ness {{{2
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
