@@ -155,6 +155,7 @@ au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99 colorcolumn=80 textwidth=80
+au FileType python NeoCompleteLock
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
@@ -200,6 +201,9 @@ nmap <leader>gd :Gdiff<cr>
 nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
+
+" Neocomplete {{{2
+let g:neocomplete#enable_at_startup = 1
 
 " NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
