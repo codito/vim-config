@@ -259,7 +259,9 @@ inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.'
 
 " Local machine dependent mods {{{1
 "
-exe "source " . s:localFile
+if filereadable(expand(s:localFile))
+    exe "source " . s:localFile
+endif
 
 " vim: foldmethod=marker
 " EOF
