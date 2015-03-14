@@ -190,7 +190,7 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 "
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components)$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components|bin|obj|dll|exe|lib)$'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Fu-git-ive-ness {{{2
