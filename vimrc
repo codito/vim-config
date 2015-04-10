@@ -160,6 +160,7 @@ au FileType python NeoCompleteLock
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd BufWritePost *.py call Flake8()
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
