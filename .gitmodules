@@ -99,3 +99,11 @@
 	path = bundle/vim-table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode.git
 	branch = master
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+	branch = master
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+	branch = master

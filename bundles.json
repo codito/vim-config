@@ -30,7 +30,7 @@
 },
 {
     "name": "vim-markdown",
-    "repo": "https://github.com/hallison/vim-markdown.git",
+    "repo": "https://github.com/plasticboy/vim-markdown.git",
     "desc": "Markdown support for vim"
 },
 {
@@ -110,8 +110,8 @@
 },
 {
     "name": "ctrlp.vim",
-    "repo": "https://github.com/kien/ctrlp.vim.git",
-    "desc": "https://github.com/kien/ctrlp.vim.git"
+    "repo": "https://github.com/ctrlpvim/ctrlp.vim.git",
+    "desc": "Fuzzy file search and navigation."
 },
 {
     "name": "vim-fugitive",
@@ -152,5 +152,10 @@
     "name": "vim-flake8",
     "repo": "https://github.com/nvie/vim-flake8.git",
     "desc": "Flake8 plugin for Vim"
+},
+{
+    "name": "vim-table-mode",
+    "repo": "https://github.com/dhruvasagar/vim-table-mode.git",
+    "desc": "Table plugin for Vim"
 }
 ]
