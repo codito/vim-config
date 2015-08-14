@@ -218,6 +218,11 @@ let g:netrw_browse_split=3  " all edits in new tab
 " NodeJS complete {{{2
 let g:node_usejscomplete = 1
 
+" Table mode {{{2
+" Settings for vim-table-mode
+let g:table_mode_corner="|" " markdown compatible tables by default
+let g:table_mode_tableize_map = "a"
+
 " Tagbar {{{2
 " Settings for tagbar.vim
 let g:tagbar_singleclick = 1
