@@ -236,6 +236,9 @@ endif
 let g:timestamp_modelines = 50
 let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
+" Ultisnips {{{2
+let g:ultisnips_python_style = "google"
+
 " Vimroom {{{2
 "let g:vimroom_guibackground = "white"
 "let g:vimroom_ctermbackground = "white"
