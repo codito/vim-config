@@ -204,6 +204,10 @@ nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
 
+" Limelight {{{2
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 " Neocomplete {{{2
 let g:neocomplete#enable_at_startup = 1
 
@@ -238,10 +242,6 @@ let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
 " Ultisnips {{{2
 let g:ultisnips_python_style = "google"
-
-" Vimroom {{{2
-"let g:vimroom_guibackground = "white"
-"let g:vimroom_ctermbackground = "white"
 
 " Vimwiki {{{2
 let g:vimwiki_folding = 1

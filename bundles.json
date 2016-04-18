@@ -64,11 +64,6 @@
     "desc": "Solarized color scheme"
 },
 {
-    "name": "vimroom",
-    "repo": "https://github.com/mikewest/vimroom.git",
-    "desc": "Simulating a vaguely WriteRoom-like environment in Vim."
-},
-{
     "name": "jinja",
     "repo": "https://github.com/vim-scripts/Jinja.git",
     "desc": "Syntax highlighting for Jinja templates"
@@ -157,5 +152,15 @@
     "name": "vim-table-mode",
     "repo": "https://github.com/dhruvasagar/vim-table-mode.git",
     "desc": "Table plugin for Vim"
+},
+{
+    "name": "goyo",
+    "repo": "https://github.com/junegunn/goyo.vim",
+    "desc": "Distraction-free writing in Vim"
+},
+{
+    "name": "limelight",
+    "repo": "https://github.com/junegunn/limelight.vim",
+    "desc": "Hyperfocus-writing in Vim"
 }
 ]
