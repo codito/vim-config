@@ -146,21 +146,26 @@
 {
     "name": "vim-flake8",
     "repo": "https://github.com/nvie/vim-flake8.git",
-    "desc": "Flake8 plugin for Vim"
+    "desc": "Flake8 plugin for Vim."
 },
 {
     "name": "vim-table-mode",
     "repo": "https://github.com/dhruvasagar/vim-table-mode.git",
-    "desc": "Table plugin for Vim"
+    "desc": "Table plugin for Vim."
 },
 {
     "name": "goyo",
     "repo": "https://github.com/junegunn/goyo.vim",
-    "desc": "Distraction-free writing in Vim"
+    "desc": "Distraction-free writing in Vim."
 },
 {
     "name": "limelight",
     "repo": "https://github.com/junegunn/limelight.vim",
-    "desc": "Hyperfocus-writing in Vim"
+    "desc": "Hyperfocus-writing in Vim."
+},
+{
+    "name": "fastfold",
+    "repo": "https://github.com/konfekt/FastFold.git",
+    "desc": "Speed up Vim by updating folds only when called-for."
 }
 ]

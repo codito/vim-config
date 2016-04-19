@@ -115,3 +115,7 @@
 	path = bundle/limelight
 	url = https://github.com/junegunn/limelight.vim
 	branch = master
+[submodule "bundle/fastfold"]
+	path = bundle/fastfold
+	url = https://github.com/konfekt/FastFold.git
+	branch = master
