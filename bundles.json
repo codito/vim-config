@@ -70,13 +70,8 @@
 },
 {
     "name": "vim-css-color",
-    "repo": "https://github.com/skammer/vim-css-color.git",
+    "repo": "https://github.com/ap/vim-css-color.git",
     "desc": "Highlight colors in css file"
-},
-{
-    "name": "vim-less",
-    "repo": "https://github.com/groenewege/vim-less.git",
-    "desc": "Less goodness in vim"
 },
 {
     "name": "powershell",

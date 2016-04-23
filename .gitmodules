@@ -39,10 +39,7 @@
 	url = https://github.com/hail2u/vim-css3-syntax.git
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
-	url = https://github.com/skammer/vim-css-color.git
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
+	url = https://github.com/ap/vim-css-color.git
 [submodule "bundle/powershell"]
 	path = bundle/powershell
 	url = https://github.com/PProvost/vim-ps1.git
