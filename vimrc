@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 
+" Last Modified: 23/04/2016, 12:41:16 IST
 
 " Platform related {{{1
 "
@@ -51,7 +51,9 @@ else
 endif
 
 " Editor appearance {{{2
-colorscheme desert
+set t_Co=256
+colorscheme hybrid
+set background=dark
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
 set nocp                    " don't be vi compatible
