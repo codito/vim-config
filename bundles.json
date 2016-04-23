@@ -59,11 +59,6 @@
     "desc": "Syntax. For JSON files."
 },
 {
-    "name": "vim-colors-solarized",
-    "repo": "https://github.com/altercation/vim-colors-solarized.git",
-    "desc": "Solarized color scheme"
-},
-{
     "name": "jinja",
     "repo": "https://github.com/vim-scripts/Jinja.git",
     "desc": "Syntax highlighting for Jinja templates"
@@ -167,5 +162,17 @@
     "name": "fastfold",
     "repo": "https://github.com/konfekt/FastFold.git",
     "desc": "Speed up Vim by updating folds only when called-for."
+},
+
+
+{
+    "name": "vim-colors-solarized",
+    "repo": "https://github.com/altercation/vim-colors-solarized.git",
+    "desc": "Solarized color scheme"
+},
+{
+    "name": "vim-hybrid",
+    "repo": "https://github.com/w0ng/vim-hybrid.git",
+    "desc": "Hybrid color scheme"
 }
 ]
