@@ -158,6 +158,11 @@
     "repo": "https://github.com/konfekt/FastFold.git",
     "desc": "Speed up Vim by updating folds only when called-for."
 },
+{
+    "name": "vim-pencil",
+    "repo": "https://github.com/reedes/vim-pencil.git",
+    "desc": "Rethinking vim as a tool for writing."
+},
 
 
 {

@@ -120,3 +120,7 @@
 	path = bundle/vim-hybrid
 	url = https://github.com/w0ng/vim-hybrid.git
 	branch = master
+[submodule "bundle/vim-pencil"]
+	path = bundle/vim-pencil
+	url = https://github.com/reedes/vim-pencil.git
+	branch = master
