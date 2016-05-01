@@ -236,9 +236,7 @@ let g:tagbar_autofocus = 1
 nmap <Leader>tt :TagbarToggle<CR>
 
 " Timestamp {{{2
-if GetPlatform() == "win"
-    let timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified):\s+)@<=.*$'
-endif
+let g:timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
 let g:timestamp_modelines = 50
 let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
