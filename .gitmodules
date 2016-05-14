@@ -124,3 +124,7 @@
 	path = bundle/vim-pencil
 	url = https://github.com/reedes/vim-pencil.git
 	branch = master
+[submodule "bundle/vim-editorconfig"]
+	path = bundle/vim-editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
+	branch = master

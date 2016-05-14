@@ -115,7 +115,7 @@
 },
 {
     "name": "tern_for_vim",
-    "repo": "https://github.com/marijnh/tern_for_vim.git",
+    "repo": "https://github.com/ternjs/tern_for_vim.git",
     "desc": "Tern plugin for Vim"
 },
 {
@@ -162,6 +162,11 @@
     "name": "vim-pencil",
     "repo": "https://github.com/reedes/vim-pencil.git",
     "desc": "Rethinking vim as a tool for writing."
+},
+{
+    "name": "vim-editorconfig",
+    "repo": "https://github.com/editorconfig/editorconfig-vim.git",
+    "desc": "Editorconfig plugin for vim."
 },
 
 

@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/04/2016, 12:41:16 IST
+" Last Modified: 07/05/2016, 13:35:07 IST
 
 " Platform related {{{1
 "
@@ -132,6 +132,9 @@ au FileType cs map <F8> :!ctags --recurse --extra=+fq --fields=+ianmzS --c\#-kin
 " HTML {{{2
 au FileType html setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=4
 
+" Javascript {{{2
+au FileType javascript setlocal omnifunc=tern#Complete
+
 " Mail {{{2
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
 au FileType mail setlocal spell spelllang=en_us
@@ -221,8 +224,9 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 
-" NodeJS complete {{{2
-let g:node_usejscomplete = 1
+" Syntastic! {{{2
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " Table mode {{{2
 " Settings for vim-table-mode
