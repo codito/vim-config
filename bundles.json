@@ -168,6 +168,11 @@
     "repo": "https://github.com/editorconfig/editorconfig-vim.git",
     "desc": "Editorconfig plugin for vim."
 },
+{
+    "name": "tsuquyomi",
+    "repo": "https://github.com/Quramy/tsuquyomi.git",
+    "desc": "A Vim plugin for TypeScript."
+},
 
 
 {
