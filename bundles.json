@@ -134,11 +134,6 @@
     "desc": "A nicer Python indentation style for vim."
 },
 {
-    "name": "vim-flake8",
-    "repo": "https://github.com/nvie/vim-flake8.git",
-    "desc": "Flake8 plugin for Vim."
-},
-{
     "name": "vim-table-mode",
     "repo": "https://github.com/dhruvasagar/vim-table-mode.git",
     "desc": "Table plugin for Vim."

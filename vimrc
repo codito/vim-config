@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 07/05/2016, 13:35:07 IST
+" Last Modified: 03/06/2016, 20:27:56 IST
 
 " Platform related {{{1
 "
@@ -165,7 +165,6 @@ au FileType python NeoCompleteLock
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufWritePost *.py call Flake8()
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
@@ -225,6 +224,7 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 let g:netrw_browse_split=3  " all edits in new tab
 
 " Syntastic! {{{2
+let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
