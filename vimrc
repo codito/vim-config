@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 03/06/2016, 20:27:56 IST
+" Last Modified: 
 
 " Platform related {{{1
 "
@@ -175,7 +175,7 @@ au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn 
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
 " Typescript {{{2
-au FileType typescript set filetype=typescript.javascript
+au FileType typescript setlocal filetype=typescript.javascript omnifunc=tsuquyomi#complete
 
 " VimWiki {{{2
 au FileType vimwiki set foldlevel=2 foldlevelstart=2

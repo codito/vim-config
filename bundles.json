@@ -168,6 +168,11 @@
     "repo": "https://github.com/Quramy/tsuquyomi.git",
     "desc": "A Vim plugin for TypeScript."
 },
+{
+    "name": "omnisharp-vim",
+    "repo": "https://github.com/OmniSharp/omnisharp-vim.git",
+    "desc": "Vim omnicompletion (intellisense) and more for c#."
+},
 
 
 {
