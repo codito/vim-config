@@ -117,8 +117,7 @@ endif
 
 " C# {{{2
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen
-"au FileType cs set omnifunc=syntaxcomplete#Complete
-au FileType cs set foldmethod=indent foldmarker={,} foldtext=substitute(getline(v:foldstart+1),'{.*','{...}',) foldlevelstart=3
+au FileType cs set foldmethod=indent foldmarker={,} foldtext=substitute(getline(v:foldstart+1),'{.*','{...}',) foldlevel=3
 
 " HTML {{{2
 au FileType html setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=4
