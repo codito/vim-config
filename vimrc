@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 
+" Last Modified: 18/01/2017, 11:13:56 IST
 
 " Platform related {{{1
 "
@@ -217,6 +217,8 @@ let g:netrw_browse_split=3  " all edits in new tab
 let g:OmniSharp_server_type = 'roslyn'
 if GetPlatform() == "win"
     let g:OmniSharp_server_path = join([expand('~'), 'vimfiles', 'bundle', 'omnisharp-vim', 'omnisharp-roslyn', 'artifacts', 'scripts', 'Omnisharp'], '/')
+else
+    let g:OmniSharp_server_path = join([expand('~'), '.vim', 'bundle', 'omnisharp-vim', 'omnisharp-roslyn', 'artifacts', 'scripts', 'OmniSharp'], '/')
 endif
 
 " Contextual code actions (requires CtrlP or unite.vim)
