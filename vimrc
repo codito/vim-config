@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 25/03/2017, 07:56:15 IST
+" Last Modified: 25/03/2017, 08:31:52 IST
 
 " Platform related {{{1
 "
@@ -52,6 +52,7 @@ endif
 
 " Editor appearance {{{2
 set t_Co=256
+set t_ut=                   " disable BCE, makes vim colors play nice in tmux
 colorscheme apprentice
 set background=dark
 set foldmethod=syntax       " default fold by syntax
