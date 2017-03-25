@@ -132,3 +132,7 @@
 	path = bundle/omnisharp-vim
 	url = https://github.com/OmniSharp/omnisharp-vim.git
 	branch = master
+[submodule "bundle/vim-apprentice"]
+	path = bundle/vim-apprentice
+	url = https://github.com/romainl/Apprentice.git
+	branch = master

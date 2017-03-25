@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 18/01/2017, 11:13:56 IST
+" Last Modified: 25/03/2017, 07:56:15 IST
 
 " Platform related {{{1
 "
@@ -52,7 +52,7 @@ endif
 
 " Editor appearance {{{2
 set t_Co=256
-colorscheme hybrid
+colorscheme apprentice
 set background=dark
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number

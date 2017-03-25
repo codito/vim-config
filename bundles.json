@@ -184,5 +184,10 @@
     "name": "vim-hybrid",
     "repo": "https://github.com/w0ng/vim-hybrid.git",
     "desc": "Hybrid color scheme"
+},
+{
+    "name": "vim-apprentice",
+    "repo": "https://github.com/romainl/Apprentice.git",
+    "desc": "Apprentice color scheme"
 }
 ]
