@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 25/03/2017, 08:31:52 IST
+" Last Modified: 16/07/2017, 12:45:03 UTC
 
 " Platform related {{{1
 "
@@ -294,6 +294,9 @@ let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_cpp_checkers=['clang_tidy']
+let g:syntastic_cpp_clang_check_post_args = ""
+let g:syntastic_cpp_clang_tidy_post_args = ""
 
 " Table mode {{{2
 " Settings for vim-table-mode
@@ -313,6 +316,19 @@ let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
 " Ultisnips {{{2
 let g:ultisnips_python_style = "google"
+
+" Vim-clang {{{2
+" Setup using a compilation database from build directory
+let g:clang_compilation_database = './build'
+let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/libclang-3.5.so.1"
+" Use neocomplete input patterns for c, c++
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.c =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+let g:neocomplete#force_omni_input_patterns.cpp =
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
 " Vimwiki {{{2
 let g:vimwiki_folding = 1

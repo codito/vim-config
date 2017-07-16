@@ -34,8 +34,8 @@
     "desc": "Markdown support for vim"
 },
 {
-    "name": "vim-clang",
-    "repo": "https://github.com/justmao945/vim-clang.git",
+    "name": "clang-complete",
+    "repo": "https://github.com/Rip-Rip/clang_complete.git",
     "desc": "Clang completion for C++."
 },
 {
