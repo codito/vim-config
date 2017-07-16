@@ -133,3 +133,7 @@
 	path = bundle/vim-apprentice
 	url = https://github.com/romainl/Apprentice.git
 	branch = master
+[submodule "bundle/vim-clang"]
+	path = bundle/vim-clang
+	url = https://github.com/justmao945/vim-clang.git
+	branch = master
