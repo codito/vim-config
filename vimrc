@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 16/07/2017, 12:45:03 UTC
+" Last Modified: 18/09/2017, 19:31:17 IST
 
 " Platform related {{{1
 "
@@ -219,7 +219,7 @@ let g:OmniSharp_server_type = 'roslyn'
 if GetPlatform() == "win"
     let g:OmniSharp_server_path = join([expand('~'), 'vimfiles', 'bundle', 'omnisharp-vim', 'omnisharp-roslyn', 'artifacts', 'scripts', 'Omnisharp'], '/')
 else
-    let g:OmniSharp_server_path = join([expand('~'), '.vim', 'bundle', 'omnisharp-vim', 'omnisharp-roslyn', 'artifacts', 'scripts', 'OmniSharp'], '/')
+    let g:OmniSharp_server_path = join([expand('~'), 'bin', 'OmniSharp'], '/')
 endif
 
 " Contextual code actions (requires CtrlP or unite.vim)
@@ -250,6 +250,9 @@ nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 
 " Enable snippet completion, requires completeopt-=preview
 let g:OmniSharp_want_snippet=1
+
+" Enable code actions via ctrlp
+let g:OmniSharp_selector_ui = 'ctrlp'
 
 augroup omnisharp_commands
     autocmd!
@@ -331,10 +334,9 @@ let g:neocomplete#force_omni_input_patterns.cpp =
       \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
 " Vimwiki {{{2
+let g:vimwiki_list = [{'path': '~/docs/', 'path_html': '~/docs/html/'}]
 let g:vimwiki_folding = 1
 let g:vimwiki_dir_link = 'index'
-map <S-Down> <Plug>VimwikiNextLink
-map <S-Up> <Plug>VimwikiPrevLink
 
 " Voom {{{2
 nnoremap <Leader>vv :execute "VoomToggle ".&ft<CR>
