@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 18/09/2017, 19:31:17 IST
+" Last Modified: 05/11/2017, 21:59:12 IST
 
 " Platform related {{{1
 "
@@ -304,7 +304,7 @@ let g:syntastic_cpp_clang_tidy_post_args = ""
 " Table mode {{{2
 " Settings for vim-table-mode
 let g:table_mode_corner="|" " markdown compatible tables by default
-let g:table_mode_tableize_map = "a"
+let g:table_mode_tableize_map = '<Leader>tb'
 
 " Tagbar {{{2
 " Settings for tagbar.vim
