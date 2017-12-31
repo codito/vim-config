@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 05/11/2017, 21:59:12 IST
+" Last Modified: 31/12/2017, 19:06:12 IST
 
 " Platform related {{{1
 "
@@ -49,6 +49,9 @@ else
     set backupdir=~/.vim/tmp    " isolate the swap files to some corner
     set directory=~/.vim/tmp    " directories for swap files
 endif
+
+" Diff {{{2
+set diffopt+=vertical       " vertical diffs are natural
 
 " Editor appearance {{{2
 set t_Co=256
