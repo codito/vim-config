@@ -173,6 +173,11 @@
     "repo": "https://github.com/OmniSharp/omnisharp-vim.git",
     "desc": "Vim omnicompletion (intellisense) and more for c#."
 },
+{
+    "name": "vim-unimpaired",
+    "repo": "https://github.com/tpope/vim-unimpaired.git",
+    "desc": "Unimpaired.vim: pairs of handy bracket mappings"
+},
 
 
 {

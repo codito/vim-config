@@ -137,3 +137,7 @@
 	path = bundle/clang-complete
 	url = https://github.com/Rip-Rip/clang_complete.git
 	branch = master
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+	branch = master
