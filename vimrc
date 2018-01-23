@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 31/12/2017, 19:06:12 IST
+" Last Modified: 23/01/2018, 07:18:13 IST
 
 " Platform related {{{1
 "
@@ -296,7 +296,9 @@ augroup omnisharp_commands
 augroup END
 
 " Syntastic! {{{2
-let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
+" Automatically populate loc list, enables navigation ]l, [l (vim-unimpaired)
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_cs_checkers = ['code_checker']
