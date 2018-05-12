@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/01/2018, 07:18:13 IST
+" Last Modified: 12/05/2018, 08:25:46 IST
 
 " Platform related {{{1
 "
