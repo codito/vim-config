@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/06/2018, 17:08:54 IST
+" Last Modified: 14/08/2018, 07:47:52 IST
 
 " Platform related {{{1
 "
@@ -187,6 +187,15 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
+" Ale - language checks {{{2
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'cpp': ['clangtidy']
+\}
+let g:ale_fixers = {
+\   'cpp': ['clang-format']
+\}
+
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components|bin|obj|dll|exe|lib)$'
@@ -219,14 +228,14 @@ let g:netrw_browse_split=3  " all edits in new tab
 
 " Syntastic! {{{2
 " Automatically populate loc list, enables navigation ]l, [l (vim-unimpaired)
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_cs_checkers = ['code_checker']
-let g:syntastic_cpp_checkers=['clang_tidy']
-let g:syntastic_cpp_clang_check_post_args = ""
-let g:syntastic_cpp_clang_tidy_post_args = ""
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"let g:syntastic_cs_checkers = ['code_checker']
+"let g:syntastic_cpp_checkers=['clang_tidy']
+"let g:syntastic_cpp_clang_check_post_args = ""
+"let g:syntastic_cpp_clang_tidy_post_args = ""
 
 " Table mode {{{2
 " Settings for vim-table-mode
@@ -250,7 +259,6 @@ let g:ultisnips_python_style = "google"
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
 let g:clang_compilation_database = './build'
-let g:clang_library_path = "/usr/lib/x86_64-linux-gnu/libclang-3.5.so.1"
 " Use neocomplete input patterns for c, c++
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}

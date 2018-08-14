@@ -124,9 +124,9 @@
     "desc": "dispatch.vim: asynchronous build and test dispatcher"
 },
 {
-    "name": "syntastic",
-    "repo": "https://github.com/scrooloose/syntastic.git",
-    "desc": "Syntax checking hacks for vim"
+    "name": "ale",
+    "repo": "https://github.com/w0rp/ale.git",
+    "desc": "Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration"
 },
 {
     "name": "vim-python-pep8-indent",
