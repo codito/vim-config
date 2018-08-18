@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 14/08/2018, 07:47:52 IST
+" Last Modified: 18/08/2018, 10:39:38 IST
 
 " Platform related {{{1
 "
@@ -113,11 +113,11 @@ nmap <silent><F11> :cp<cr>
 nmap <silent><F12> :cn<cr>
 
 " C/C++ {{{2
-au FileType cc,cpp map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " Quickfix mode: command line msbuild error format
 if GetPlatform() == "win"
     au FileType c,cpp set errorformat=%f(%l)\ :\ error\ C%n:\ %m
 endif
+au FileType c,cpp setlocal softtabstop=2 shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
 
 " C# {{{2
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen
@@ -195,6 +195,9 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'cpp': ['clang-format']
 \}
+
+" Bind F8 to fixing problems with ALE
+nmap <F8> <Plug>(ale_fix)
 
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components
