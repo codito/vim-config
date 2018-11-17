@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 18/08/2018, 10:39:38 IST
+" Last Modified: 17/11/2018, 15:33:33 IST
 
 " Platform related {{{1
 "
@@ -218,9 +218,6 @@ nmap <leader>g0 :Gwrite!<cr>
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" Neocomplete {{{2
-let g:neocomplete#enable_at_startup = 1
-
 " NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
 let NERDTreeChDirMode=0     " please don't chdir for me
@@ -228,17 +225,6 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
-
-" Syntastic! {{{2
-" Automatically populate loc list, enables navigation ]l, [l (vim-unimpaired)
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_python_checkers = ['flake8']
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_eslint_exec = 'eslint_d'
-"let g:syntastic_cs_checkers = ['code_checker']
-"let g:syntastic_cpp_checkers=['clang_tidy']
-"let g:syntastic_cpp_clang_check_post_args = ""
-"let g:syntastic_cpp_clang_tidy_post_args = ""
 
 " Table mode {{{2
 " Settings for vim-table-mode
@@ -262,22 +248,6 @@ let g:ultisnips_python_style = "google"
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
 let g:clang_compilation_database = './build'
-" Use neocomplete input patterns for c, c++
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-
-" Vimwiki {{{2
-let g:vimwiki_list = [{'path': '~/docs/', 'path_html': '~/docs/html/'}]
-let g:vimwiki_folding = 1
-let g:vimwiki_dir_link = 'index'
-
-" Voom {{{2
-nnoremap <Leader>vv :execute "VoomToggle ".&ft<CR>
 
 " Extensions and utils {{{1
 "
