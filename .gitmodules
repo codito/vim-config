@@ -10,9 +10,6 @@
 [submodule "bundle/timestamp"]
 	path = bundle/timestamp
 	url = https://github.com/vim-scripts/timestamp.vim.git
-[submodule "bundle/vimwiki"]
-	path = bundle/vimwiki
-	url = https://github.com/vim-scripts/vimwiki.git
 [submodule "bundle/json"]
 	path = bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
@@ -22,9 +19,6 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/voom"]
-	path = bundle/voom
-	url = https://github.com/vim-scripts/VOoM.git
 [submodule "bundle/vimroom"]
 	path = bundle/vimroom
 	url = https://github.com/mikewest/vimroom.git
@@ -68,10 +62,6 @@
 [submodule "bundle/jedi-vim"]
 	path = bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
-	branch = master
-[submodule "bundle/neocomplete"]
-	path = bundle/neocomplete
-	url = https://github.com/Shougo/neocomplete.vim
 	branch = master
 [submodule "bundle/tern_for_vim"]
 	path = bundle/tern_for_vim
@@ -136,4 +126,8 @@
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = https://github.com/w0rp/ale.git
+	branch = master
+[submodule "bundle/completor"]
+	path = bundle/completor
+	url = https://github.com/maralla/completor.vim.git
 	branch = master

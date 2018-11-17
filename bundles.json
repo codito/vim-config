@@ -44,16 +44,6 @@
     "desc": "Shortcuts to put timestamps in a buffer."
 },
 {
-    "name": "vimwiki",
-    "repo": "https://github.com/vim-scripts/vimwiki.git",
-    "desc": "A wiki to manage notes in vim. Also comes with a diary."
-},
-{
-    "name": "voom",
-    "repo": "https://github.com/vim-scripts/VOoM.git",
-    "desc": "Vim Outliner of Markers -- two-pane outliner and related utilities."
-},
-{
     "name": "json",
     "repo": "https://github.com/vim-scripts/JSON.vim.git",
     "desc": "Syntax. For JSON files."
@@ -109,9 +99,9 @@
     "desc": "Using the jedi autocompletion library for VIM."
 },
 {
-    "name": "neocomplete",
-    "repo": "https://github.com/Shougo/neocomplete.vim",
-    "desc": "Next generation completion framework after neocomplcache"
+    "name": "completor",
+    "repo": "https://github.com/maralla/completor.vim.git",
+    "desc": "Async completion framework made ease."
 },
 {
     "name": "tern_for_vim",
