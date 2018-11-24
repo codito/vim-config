@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 17/11/2018, 15:33:33 IST
+" Last Modified: 24/11/2018, 08:19:10 IST
 
 " Platform related {{{1
 "
@@ -154,7 +154,6 @@ au BufRead,BufNewFile *.ps1 set ft=ps1
 
 " Python {{{2
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99 colorcolumn=80 textwidth=80
-au FileType python NeoCompleteLock
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 "au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
