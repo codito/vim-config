@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 03/03/2019, 15:29:37 IST
+" Last Modified: 03/03/2019, 16:52:54 IST
 
 " Platform related {{{1
 "
@@ -225,6 +225,9 @@ colorscheme gruvbox
 " Limelight {{{2
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Markdown {{{2
+let g:vim_markdown_frontmatter = 1
 
 " NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
