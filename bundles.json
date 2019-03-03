@@ -174,5 +174,10 @@
     "name": "vim-apprentice",
     "repo": "https://github.com/romainl/Apprentice.git",
     "desc": "Apprentice color scheme"
+},
+{
+    "name": "vim-gruvbox",
+    "repo": "https://github.com/morhetz/gruvbox.git",
+    "desc": "Gruvbox color scheme"
 }
 ]

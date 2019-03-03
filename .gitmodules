@@ -127,3 +127,7 @@
 	path = bundle/completor
 	url = https://github.com/maralla/completor.vim.git
 	branch = master
+[submodule "bundle/vim-gruvbox"]
+	path = bundle/vim-gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+	branch = master

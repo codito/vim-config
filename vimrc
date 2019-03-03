@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 24/11/2018, 19:03:26 IST
+" Last Modified: 03/03/2019, 15:29:37 IST
 
 " Platform related {{{1
 "
@@ -56,7 +56,11 @@ set diffopt+=vertical       " vertical diffs are natural
 " Editor appearance {{{2
 set t_Co=256
 set t_ut=                   " disable BCE, makes vim colors play nice in tmux
-colorscheme apprentice
+if exists('+termguicolors')
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
 set background=dark
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
@@ -161,7 +165,7 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
-au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:>
+au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:> conceallevel=2
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
@@ -213,6 +217,10 @@ nmap <leader>gd :Gdiff<cr>
 nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
+
+" Gruvbox color {{{2
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " Limelight {{{2
 autocmd! User GoyoEnter Limelight
