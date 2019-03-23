@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 03/03/2019, 16:52:54 IST
+" Last Modified: 10/03/2019, 08:57:45 IST
 
 " Platform related {{{1
 "
@@ -174,10 +174,6 @@ au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 " Typescript {{{2
 au FileType typescript setlocal filetype=typescript.javascript omnifunc=tsuquyomi#complete
 
-" VimWiki {{{2
-au FileType vimwiki set foldlevel=2 foldlevelstart=2
-au FileType vimwiki map <F8> :!ctags -R .<CR>
-au FileType vimwiki let tlist_vimwiki_settings = 'wiki;h:Headers'
 
 " XML {{{2
 au FileType xml setlocal et sw=2 sts=2 ts=2 ai
@@ -247,6 +243,17 @@ let g:table_mode_tableize_map = '<Leader>tb'
 let g:tagbar_singleclick = 1
 let g:tagbar_autofocus = 1
 nmap <Leader>tt :TagbarToggle<CR>
+
+" Markdown for tagbar.vim
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:headings',
+        \ 'l:links',
+        \ 'i:images'
+    \ ],
+    \ "sort" : 0
+\ }
 
 " Timestamp {{{2
 let g:timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
