@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 10/03/2019, 08:57:45 IST
+" Last Modified: 24/03/2019, 15:44:44 IST
 
 " Platform related {{{1
 "
@@ -189,6 +189,7 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 " Ale - language checks {{{2
 let g:ale_linters = {
 \   'cpp': ['clangtidy'],
+\   'cs': ['OmniSharp'],
 \   'javascript': ['eslint'],
 \   'markdown': ['proselint', 'vale'],
 \}
