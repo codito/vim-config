@@ -4,3 +4,4 @@ passwords.vim
 templates/*
 tmp/*
 spell/*.*
+bundle/omnisharp-vim
