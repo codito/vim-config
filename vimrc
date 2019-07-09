@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 24/03/2019, 15:44:44 IST
+" Last Modified: 02/06/2019, 06:46:35 IST
 
 " Platform related {{{1
 "
@@ -172,7 +172,7 @@ au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn 
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
 " Typescript {{{2
-au FileType typescript setlocal filetype=typescript.javascript omnifunc=tsuquyomi#complete
+au FileType typescript setlocal et sw=2 sts=2 ts=2 ai filetype=typescript.javascript omnifunc=tsuquyomi#complete
 
 
 " XML {{{2
