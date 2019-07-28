@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 02/06/2019, 06:46:35 IST
+" Last Modified: 27/07/2019, 19:52:23 IST
 
 " Platform related {{{1
 "
@@ -263,6 +263,8 @@ let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 
 " Ultisnips {{{2
 let g:ultisnips_python_style = "google"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+
 
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
