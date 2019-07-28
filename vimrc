@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 27/07/2019, 19:52:23 IST
+" Last Modified: 28/07/2019, 06:49:58 IST
 
 " Platform related {{{1
 "
@@ -165,7 +165,7 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
-au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:> conceallevel=2
+au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:> conceallevel=2 nofoldenable
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
