@@ -1,14 +1,12 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 28/07/2019, 06:49:58 IST
+" Last Modified: 24/08/2019, 09:10:33 IST
 
-" Platform related {{{1
+" Platform {{{1
 "
-" Unleash the pathogen!
-call pathogen#infect()
-
 " Local settings file, default to linux
 let s:localFile = "~/.local.vim" 
+let s:pluginDir = "~/.vim/bundle"
 
 " Know the platform we're running on
 function! GetPlatform()
@@ -22,8 +20,56 @@ endfunction
 " Get ready for life w/o walls
 if GetPlatform() == "win"
     let s:localFile = "~/local.vim"
+    let s:pluginDir = "~/vimfiles/bundle"
     let g:skip_loading_mswin = 1    " don't need the shortcuts
     behave mswin
+endif
+
+" Plugins {{{1
+"
+silent! if plug#begin(s:pluginDir)
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/calendar-vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'Rip-Rip/clang_complete'
+Plug 'vim-scripts/timestamp.vim'
+Plug 'vim-scripts/json.vim'
+Plug 'vim-scripts/jinja'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+Plug 'PProvost/vim-ps1'
+Plug 'leafgarland/typescript-vim'
+Plug 'myhere/vim-nodejs-complete'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'davidhalter/jedi-vim'
+Plug 'maralla/completor.vim'
+Plug 'ternjs/tern_for_vim'
+Plug 'tpope/vim-dispatch'
+Plug 'w0rp/ale'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'konfekt/fastfold'
+Plug 'reedes/vim-pencil'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'tpope/vim-unimpaired'
+
+" Colors {{{2
+"
+Plug 'altercation/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
+Plug 'romainl/apprentice'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
 endif
 
 " Pure vim {{{1
