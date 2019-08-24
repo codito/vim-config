@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 24/08/2019, 09:10:33 IST
+" Last Modified: 24/08/2019, 09:52:04 IST
 
 " Platform {{{1
 "
@@ -35,21 +35,15 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/calendar-vim'
-Plug 'plasticboy/vim-markdown'
 Plug 'Rip-Rip/clang_complete'
 Plug 'vim-scripts/timestamp.vim'
-Plug 'vim-scripts/json.vim'
-Plug 'vim-scripts/jinja'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
-Plug 'PProvost/vim-ps1'
-Plug 'leafgarland/typescript-vim'
 Plug 'myhere/vim-nodejs-complete'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'davidhalter/jedi-vim'
 Plug 'maralla/completor.vim'
-Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'w0rp/ale'
 Plug 'hynek/vim-python-pep8-indent'
@@ -61,6 +55,7 @@ Plug 'reedes/vim-pencil'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'tpope/vim-unimpaired'
+Plug 'sheerun/vim-polyglot'
 
 " Colors {{{2
 "
