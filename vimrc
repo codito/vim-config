@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 24/08/2019, 09:52:04 IST
+" Last Modified: 01/09/2019, 18:08:33 IST
 
 " Platform {{{1
 "
@@ -173,6 +173,9 @@ au FileType html setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=4
 
 " Javascript {{{2
 au FileType javascript setlocal omnifunc=tern#Complete
+
+" Json {{{2
+au FileType json set foldmethod=manual
 
 " Mail {{{2
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
