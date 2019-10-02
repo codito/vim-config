@@ -1,11 +1,11 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 01/09/2019, 18:08:33 IST
+" Last Modified: 02/10/2019, 10:53:44 IST
 
 " Platform {{{1
 "
 " Local settings file, default to linux
-let s:localFile = "~/.local.vim" 
+let s:localFile = "~/.local.vim"
 let s:pluginDir = "~/.vim/bundle"
 
 " Know the platform we're running on
@@ -16,7 +16,7 @@ function! GetPlatform()
         return "nix"
     endif
 endfunction
- 
+
 " Get ready for life w/o walls
 if GetPlatform() == "win"
     let s:localFile = "~/local.vim"
@@ -56,6 +56,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 
 " Colors {{{2
 "
@@ -128,7 +129,7 @@ set completeopt=menuone,menu,longest,preview
 
 " Search {{{2
 set incsearch               " use incremental search
-set whichwrap=<,>,h,l,[,]]  " set wrapping at the end of line 
+set whichwrap=<,>,h,l,[,]]  " set wrapping at the end of line
 set wrapscan                " wrap the search
 
 " Tabs and Indentation {{{2
@@ -196,7 +197,7 @@ let php_folding=1           " enable folding for classes and functions
 " php pear coding guidelines
 " http://wiki.geeklog.net/wiki/index.php/Coding_Guidelines#Indenting_and_Line_Length
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
- 
+
 " Powershell {{{2
 au BufRead,BufNewFile *.ps1 set ft=ps1
 
@@ -204,7 +205,7 @@ au BufRead,BufNewFile *.ps1 set ft=ps1
 au FileType python setlocal et sw=4 sts=4 ts=4 ai foldmethod=indent foldlevel=99 colorcolumn=80 textwidth=80
 " Type :make and browse through syntax errors.
 " http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
-"au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\" 
+"au BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " Markdown {{{2
@@ -234,15 +235,26 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 let g:ale_linters = {
 \   'cpp': ['clangtidy'],
 \   'cs': ['OmniSharp'],
-\   'javascript': ['eslint'],
+\   'css': ['prettier'],
+\   'javascript': ['eslint', 'prettier'],
 \   'markdown': ['proselint', 'vale'],
 \}
 let g:ale_fixers = {
-\   'cpp': ['clang-format']
+\   'cpp': ['clang-format'],
+\   'javascript': ['eslint', 'prettier'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
 " Bind F8 to fixing problems with ALE
 nmap <F8> <Plug>(ale_fix)
+
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components
@@ -313,6 +325,63 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
 let g:clang_compilation_database = './build'
+
+" OmniSharp {{{2
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_highlight_types = 1
+let g:OmniSharp_selector_ui = 'ctrlp'
+let g:OmniSharp_timeout = 5
+augroup omnisharp_commands
+    autocmd!
+
+    " Show type information automatically when the cursor stops moving
+    "autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " Update the highlighting whenever leaving insert mode
+    autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
+
+    " Alternatively, use a mapping to refresh highlighting for the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Enable snippet completion
+let g:OmniSharp_want_snippet=1
 
 " Extensions and utils {{{1
 "
