@@ -35,7 +35,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/calendar-vim'
-Plug 'Rip-Rip/clang_complete'
+Plug 'Rip-Rip/clang_complete',  { 'for': 'cpp' }
 Plug 'vim-scripts/timestamp.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
