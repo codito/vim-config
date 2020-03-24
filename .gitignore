@@ -5,3 +5,4 @@ templates/*
 tmp/*
 spell/*.*
 bundle/
+autoload/plug.vim.old

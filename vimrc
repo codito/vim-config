@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 02/10/2019, 10:53:44 IST
+" Last Modified: 24/03/2020, 22:38:45 IST
 
 " Platform {{{1
 "
@@ -247,6 +247,8 @@ let g:ale_fixers = {
 
 " Bind F8 to fixing problems with ALE
 nmap <F8> <Plug>(ale_fix)
+nmap <silent> <leader>aj :ALENextWrap<cr>
+nmap <silent> <leader>ak :ALEPreviousWrap<cr>
 
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
