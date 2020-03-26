@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 24/03/2020, 22:38:45 IST
+" Last Modified: 25/03/2020, 21:26:26 IST
 
 " Platform {{{1
 "
@@ -57,6 +57,7 @@ Plug 'Quramy/tsuquyomi'
 Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+Plug 'ruanyl/coverage.vim', { 'for': 'js' }
 
 " Colors {{{2
 "
@@ -170,13 +171,13 @@ au FileType c,cpp setlocal softtabstop=2 shiftwidth=2 tabstop=2 colorcolumn=80 t
 au FileType cs set foldmethod=indent foldmarker={,} foldtext=substitute(getline(v:foldstart+1),'{.*','{...}',) foldlevel=3
 
 " HTML {{{2
-au FileType html setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=4
+au FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=4
 
 " Javascript {{{2
-au FileType javascript setlocal omnifunc=tern#Complete
+au FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=4
 
 " Json {{{2
-au FileType json set foldmethod=manual
+au FileType json setlocal foldmethod=manual shiftwidth=2 softtabstop=2 tabstop=4
 
 " Mail {{{2
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
