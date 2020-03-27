@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 27/03/2020, 18:04:33 IST
+" Last Modified: 27/03/2020, 21:00:42 IST
 
 " Platform {{{1
 "
@@ -39,8 +39,8 @@ Plug 'Rip-Rip/clang_complete',  { 'for': 'cpp' }
 Plug 'vim-scripts/timestamp.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
-Plug 'myhere/vim-nodejs-complete'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+Plug 'lotabout/skim.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'davidhalter/jedi-vim'
 Plug 'maralla/completor.vim'
@@ -118,7 +118,6 @@ set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
-set updatetime=300          " default 4s leads to noticeable delay
 set signcolumn=yes          " do not shift text when error message shows
 
 " Key mappings in general {{{2
@@ -128,7 +127,7 @@ nnoremap <silent><C-F4> :bdelete<CR>
 " Omnicomplete {{{2
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
+set completeopt=menuone,menu,longest,noselect,preview
 set shortmess+=c            " do not pass short messages to completion menu
 
 " Search {{{2
@@ -332,6 +331,8 @@ augroup coc_commands
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
+" Completor {{{2
+let g:completor_auto_trigger = 0
 
 " Coverage {{{2
 " Setup the coverage json to match jest convention
@@ -372,6 +373,39 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 
+" Skim {{{2
+" See https://github.com/lotabout/skim.vim
+" Customize fzf colors to match your color scheme
+let g:skim_colors =
+            \ { 'fg':    ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
+" Enable per-command history.
+" Use interactive ag and rg commands
+command! -bang -nargs=* Rg call fzf#vim#rg_interactive(<q-args>, fzf#vim#with_preview('right:50%:hidden', 'alt-h'))
+let $SKIM_DEFAULT_COMMAND = '(fd --type f || git ls-files -c -o --exclude-standard || rg -l "" || ag -l -g "" || find . -type f)'
+"let $SKIM_DEFAULT_OPTIONS = '--bind ctrl-f:toggle,ctrl-p:up,ctrl-n:down,up:previous-history,down:next-history'
+
+" replace Ctrl-p
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <silent> <leader>A :Windows<CR>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>o :BTags<CR>
+nnoremap <silent> <leader>O :Tags<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>/ :Rg<CR>
+
 " Table mode {{{2
 " Settings for vim-table-mode
 let g:table_mode_corner="|" " markdown compatible tables by default
@@ -402,7 +436,6 @@ let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 " Ultisnips {{{2
 let g:ultisnips_python_style = "google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
-
 
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
