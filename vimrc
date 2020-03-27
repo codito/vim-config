@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 25/03/2020, 21:26:26 IST
+" Last Modified: 27/03/2020, 18:04:33 IST
 
 " Platform {{{1
 "
@@ -44,6 +44,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'davidhalter/jedi-vim'
 Plug 'maralla/completor.vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-dispatch'
 Plug 'w0rp/ale'
 Plug 'hynek/vim-python-pep8-indent'
@@ -53,11 +54,10 @@ Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
 Plug 'reedes/vim-pencil'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
-Plug 'ruanyl/coverage.vim', { 'for': 'js' }
+Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 
 " Colors {{{2
 "
@@ -118,6 +118,8 @@ set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
+set updatetime=300          " default 4s leads to noticeable delay
+set signcolumn=yes          " do not shift text when error message shows
 
 " Key mappings in general {{{2
 nmap <silent><S-Tab> :tabnext<CR>
@@ -127,6 +129,7 @@ nnoremap <silent><C-F4> :bdelete<CR>
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
+set shortmess+=c            " do not pass short messages to completion menu
 
 " Search {{{2
 set incsearch               " use incremental search
@@ -258,6 +261,82 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
+" Coc completion {{{2
+" See https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
+" download following extensions by default.
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css']
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Code navigation
+nmap <leader>fd <Plug>(coc-definition)
+nmap <leader>ft <Plug>(coc-type-definition)
+nmap <leader>fi <Plug>(coc-implementation)
+nmap <leader>fr <Plug>(coc-references)
+
+" Code refactoring
+nmap <leader>ri <Plug>:call CocAction('runCommand', 'editor.action.organizeImport')
+nmap <leader>rn <Plug>(coc-rename)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Formatting selected code.
+xmap <leader>fo  <Plug>(coc-format-selected)
+nmap <leader>fo  <Plug>(coc-format-selected)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+augroup coc_commands
+    autocmd!
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup END
+
+
+" Coverage {{{2
+" Setup the coverage json to match jest convention
+let g:coverage_json_report_path = 'coverage/coverage-final.json'
+let g:coverage_show_covered = 1
 
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components
