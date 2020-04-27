@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 27/03/2020, 21:00:42 IST
+" Last Modified: 27/04/2020, 07:52:16 IST
 
 " Platform {{{1
 "
@@ -172,6 +172,9 @@ au FileType c,cpp setlocal softtabstop=2 shiftwidth=2 tabstop=2 colorcolumn=80 t
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen
 au FileType cs set foldmethod=indent foldmarker={,} foldtext=substitute(getline(v:foldstart+1),'{.*','{...}',) foldlevel=3
 
+" CSS {{{2
+au FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=4
+
 " HTML {{{2
 au FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=4
 
@@ -238,7 +241,7 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 let g:ale_linters = {
 \   'cpp': ['clangtidy'],
 \   'cs': ['OmniSharp'],
-\   'css': ['prettier'],
+\   'css': ['stylelint', 'prettier'],
 \   'javascript': ['eslint', 'prettier'],
 \   'markdown': ['proselint', 'vale'],
 \}
