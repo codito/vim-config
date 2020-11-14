@@ -5,4 +5,5 @@ templates/*
 tmp/*
 spell/*.*
 bundle/
+thesaurus/
 autoload/plug.vim.old

@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 27/04/2020, 07:52:16 IST
+" Last Modified: 14/11/2020, 07:49:33 IST
 
 " Platform {{{1
 "
@@ -42,7 +42,6 @@ Plug 'ap/vim-css-color'
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'davidhalter/jedi-vim'
 Plug 'maralla/completor.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-dispatch'
@@ -53,6 +52,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
 Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-lexical'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
@@ -102,9 +102,11 @@ set t_ut=                   " disable BCE, makes vim colors play nice in tmux
 if exists('+termguicolors')
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    let &t_Cs = "\e[6m"     " show underlines for undercurl in terminals
+    let &t_Ce = "\e[24m"
     set termguicolors
 endif
-set background=dark
+set background=light
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
 set nocp                    " don't be vi compatible
@@ -248,6 +250,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'cpp': ['clang-format'],
 \   'javascript': ['eslint', 'prettier'],
+\   'markdown': ['prettier'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
@@ -267,7 +270,7 @@ let g:ale_fix_on_save = 1
 " Coc completion {{{2
 " See https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 " download following extensions by default.
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-python']
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -357,9 +360,18 @@ nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
 
+" Goyo {{{2
+let g:goyo_width=100
+
 " Gruvbox color {{{2
 let g:gruvbox_italic=1
 colorscheme gruvbox
+
+" Lexical {{{2
+augroup lexical
+    autocmd!
+    autocmd FileType markdown call lexical#init()
+augroup END
 
 " Limelight {{{2
 autocmd! User GoyoEnter Limelight
@@ -375,6 +387,16 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
+
+" Pencil {{{2
+augroup pencil
+    autocmd!
+    autocmd FileType markdown call pencil#init()
+    let g:pencil#textwidth = 100
+    let g:pencil#wrapModeDefault = 'soft'
+    let g:pencil#conceallevel = 3
+    let g:pencil#concealcursor = 'c'
+augroup END
 
 " Skim {{{2
 " See https://github.com/lotabout/skim.vim
