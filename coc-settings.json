@@ -1,3 +1,8 @@
 {
-  "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.setLinter": "flake8",
+  "python.venvFolders": [".venv"]
 }
