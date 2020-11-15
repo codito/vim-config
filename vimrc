@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 14/11/2020, 07:49:33 IST
+" Last Modified: 15/11/2020, 19:42:38 IST
 
 " Platform {{{1
 "
@@ -361,7 +361,7 @@ nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
 
 " Goyo {{{2
-let g:goyo_width=100
+let g:goyo_width=&textwidth
 
 " Gruvbox color {{{2
 let g:gruvbox_italic=1
@@ -392,7 +392,7 @@ let g:netrw_browse_split=3  " all edits in new tab
 augroup pencil
     autocmd!
     autocmd FileType markdown call pencil#init()
-    let g:pencil#textwidth = 100
+    let g:pencil#textwidth = &textwidth
     let g:pencil#wrapModeDefault = 'soft'
     let g:pencil#conceallevel = 3
     let g:pencil#concealcursor = 'c'
@@ -535,8 +535,9 @@ nnoremap <silent><C-Left> :<C-u>cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']
 nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
 inoremap <silent><C-Left> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
+
 " Expand current date time stamp {{{2
-:iab <expr> dts strftime("%Y %b %d, %H:%M")
+:iab <expr> dts strftime(g:timestamp_rep)
 
 " Local machine dependent mods {{{1
 "
