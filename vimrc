@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 15/11/2020, 19:42:38 IST
+" Last Modified: 17/11/2020, 09:09:14 IST
 
 " Platform {{{1
 "
@@ -434,13 +434,13 @@ nnoremap <silent> <leader>/ :Rg<CR>
 " Table mode {{{2
 " Settings for vim-table-mode
 let g:table_mode_corner="|" " markdown compatible tables by default
-let g:table_mode_tableize_map = '<Leader>tb'
+let g:table_mode_tableize_map = '<leader>tb'
 
 " Tagbar {{{2
 " Settings for tagbar.vim
 let g:tagbar_singleclick = 1
 let g:tagbar_autofocus = 1
-nmap <Leader>tt :TagbarToggle<CR>
+nmap <leader>tt :TagbarToggle<CR>
 
 " Markdown for tagbar.vim
 let g:tagbar_type_markdown = {
@@ -481,20 +481,20 @@ augroup omnisharp_commands
     autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
 
     " Alternatively, use a mapping to refresh highlighting for the current buffer
-    autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>th :OmniSharpHighlightTypes<CR>
 
     " The following commands are contextual, based on the cursor position.
     autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>fu :OmniSharpFindUsages<CR>
 
     " Finds members in the current buffer
-    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>fm :OmniSharpFindMembers<CR>
 
-    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <leader>dc :OmniSharpDocumentation<CR>
     autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
     autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
 
@@ -504,21 +504,21 @@ augroup omnisharp_commands
 augroup END
 
 " Contextual code actions (uses fzf, CtrlP or unite.vim when available)
-nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+nnoremap <leader><Space> :OmniSharpGetCodeActions<CR>
 " Run code actions with text selected in visual mode to extract method
-xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+xnoremap <leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
 
 " Rename with dialog
-nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <leader>nm :OmniSharpRename<CR>
 nnoremap <F2> :OmniSharpRename<CR>
 " Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 
-nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+nnoremap <leader>cf :OmniSharpCodeFormat<CR>
 
 " Start the omnisharp server for the current solution
-nnoremap <Leader>ss :OmniSharpStartServer<CR>
-nnoremap <Leader>sp :OmniSharpStopServer<CR>
+nnoremap <leader>ss :OmniSharpStartServer<CR>
+nnoremap <leader>sp :OmniSharpStopServer<CR>
 
 " Enable snippet completion
 let g:OmniSharp_want_snippet=1
@@ -538,6 +538,7 @@ inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.'
 
 " Expand current date time stamp {{{2
 :iab <expr> dts strftime(g:timestamp_rep)
+inoremap <expr> <leader>ts strftime(g:timestamp_rep)
 
 " Local machine dependent mods {{{1
 "
