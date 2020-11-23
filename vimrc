@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 17/11/2020, 09:09:14 IST
+" Last Modified: 23/11/2020, 09:56:17 IST
 
 " Platform {{{1
 "
@@ -393,9 +393,11 @@ augroup pencil
     autocmd!
     autocmd FileType markdown call pencil#init()
     let g:pencil#textwidth = &textwidth
-    let g:pencil#wrapModeDefault = 'soft'
     let g:pencil#conceallevel = 3
     let g:pencil#concealcursor = 'c'
+
+    # Disable autoformat to allow markdown bullets to work without auto joins with previous line
+    let g:pencil#autoformat = 0
 augroup END
 
 " Skim {{{2
