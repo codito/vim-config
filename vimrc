@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/11/2020, 09:56:17 IST
+" Last Modified: 23/11/2020, 18:01:56 IST
 
 " Platform {{{1
 "
@@ -396,7 +396,7 @@ augroup pencil
     let g:pencil#conceallevel = 3
     let g:pencil#concealcursor = 'c'
 
-    # Disable autoformat to allow markdown bullets to work without auto joins with previous line
+    " Disable autoformat to allow markdown bullets to work without auto joins with previous line
     let g:pencil#autoformat = 0
 augroup END
 
