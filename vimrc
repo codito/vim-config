@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/11/2020, 18:01:56 IST
+" Last Modified: 30/11/2020, 19:36:19 IST
 
 " Platform {{{1
 "
@@ -29,6 +29,7 @@ endif
 "
 silent! if plug#begin(s:pluginDir)
 
+Plug 'ActivityWatch/aw-watcher-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'SirVer/ultisnips'
@@ -245,11 +246,15 @@ let g:ale_linters = {
 \   'cs': ['OmniSharp'],
 \   'css': ['stylelint', 'prettier'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
 \   'markdown': ['proselint', 'vale'],
 \}
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 let g:ale_fixers = {
 \   'cpp': ['clang-format'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
 \   'markdown': ['prettier'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
@@ -365,6 +370,7 @@ let g:goyo_width=&textwidth
 
 " Gruvbox color {{{2
 let g:gruvbox_italic=1
+let g:gruvbox_contrast_light='medium'
 colorscheme gruvbox
 
 " Lexical {{{2
