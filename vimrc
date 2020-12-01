@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 30/11/2020, 19:36:19 IST
+" Last Modified: 01/12/2020, 11:09:48 IST
 
 " Platform {{{1
 "
@@ -397,7 +397,7 @@ let g:netrw_browse_split=3  " all edits in new tab
 " Pencil {{{2
 augroup pencil
     autocmd!
-    autocmd FileType markdown call pencil#init()
+    autocmd FileType markdown call pencil#init({'wrap': 'hard'})
     let g:pencil#textwidth = &textwidth
     let g:pencil#conceallevel = 3
     let g:pencil#concealcursor = 'c'
