@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 01/12/2020, 11:09:48 IST
+" Last Modified: 01/12/2020, 11:49:15 IST
 
 " Platform {{{1
 "
@@ -462,7 +462,7 @@ let g:tagbar_type_markdown = {
 \ }
 
 " Timestamp {{{2
-let g:timestamp_regexp = '\v\C%(<Last %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
+let g:timestamp_regexp = '\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
 let g:timestamp_modelines = 50
 let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 

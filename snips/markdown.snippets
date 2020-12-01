@@ -1,4 +1,4 @@
-snippet f "frontmatter for markdown"
+snippet f "frontmatter for blog post"
 ---
 title: ${1: post title}
 date: `date '+%Y-%m-%d %H:%M:%S'`
@@ -6,4 +6,14 @@ author: arun
 category: Life, Technology, Philosophy, Story
 slug: ${2: post slug}
 ---
+endsnippet
+
+snippet fn "frontmatter for notes"
+---
+title: ${1: post title}
+created date: `date '+%d/%m/%Y, %T %Z'`
+last updated: 01/12/2020, 11:50:58 IST
+---
+
+# $1
 endsnippet
