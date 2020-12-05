@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 05/12/2020, 10:15:50 IST
+" Last Modified: 05/12/2020, 11:03:22 IST
 
 " Platform {{{1
 "
@@ -9,7 +9,7 @@ let s:localFile = "~/.local.vim"
 let s:pluginDir = "~/.vim/bundle"
 
 " Know the platform we're running on
-nction! GetPlatform()
+function! GetPlatform()
     if has("win32") || has("win64")
         return "win"
     else
