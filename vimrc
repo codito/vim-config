@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 01/12/2020, 11:49:15 IST
+" Last Modified: 05/12/2020, 10:15:50 IST
 
 " Platform {{{1
 "
@@ -9,7 +9,7 @@ let s:localFile = "~/.local.vim"
 let s:pluginDir = "~/.vim/bundle"
 
 " Know the platform we're running on
-function! GetPlatform()
+nction! GetPlatform()
     if has("win32") || has("win64")
         return "win"
     else
@@ -84,8 +84,9 @@ set backspace=indent,eol,start  " define backspace behavior
 set bufhidden=delete        " delete hidden buffers, changes will be lost!
 set switchbuf=split,usetab  " split/open new tab while switching buffers, for quickfix
 
-" Directories {{{2
+" Directories and files {{{2
 set noautochdir                 " don't switch directory to current file
+set isfname+=32                 " consider space as a valid filename char, useful for `gf`
 if GetPlatform() == "win"
     set backupdir=d:\backups
     set directory=d:\backups
