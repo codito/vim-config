@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 05/12/2020, 11:03:22 IST
+" Last Modified: 03/01/2021, 18:35:42 IST
 
 " Platform {{{1
 "
@@ -30,35 +30,36 @@ endif
 silent! if plug#begin(s:pluginDir)
 
 Plug 'ActivityWatch/aw-watcher-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/calendar-vim'
-Plug 'Rip-Rip/clang_complete',  { 'for': 'cpp' }
-Plug 'vim-scripts/timestamp.vim'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
-Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-Plug 'lotabout/skim.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'maralla/completor.vim'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'tpope/vim-dispatch'
-Plug 'w0rp/ale'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'honza/vim-snippets'
+Plug 'hynek/vim-python-pep8-indent'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-lexical'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-unimpaired'
-Plug 'sheerun/vim-polyglot'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+Plug 'lotabout/skim.vim'
+Plug 'majutsushi/tagbar'
+Plug 'maralla/completor.vim'
+Plug 'mattn/calendar-vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+Plug 'reedes/vim-lexical'
+Plug 'reedes/vim-pencil'
+Plug 'Rip-Rip/clang_complete',  { 'for': 'cpp' }
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'SirVer/ultisnips'
+Plug 'sheerun/vim-polyglot'
+Plug 'thaerkh/vim-workspace'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/timestamp.vim'
+Plug 'w0rp/ale'
 
 " Colors {{{2
 "
@@ -108,7 +109,7 @@ if exists('+termguicolors')
     let &t_Ce = "\e[24m"
     set termguicolors
 endif
-set background=light
+set background=dark
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
 set nocp                    " don't be vi compatible
@@ -220,14 +221,15 @@ au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\
 
 " Markdown {{{2
 " Don't insert linebreaks in documents, it screws up conversions
-au FileType markdown setlocal tw=80 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:> conceallevel=2 nofoldenable
+au FileType markdown setlocal tw=80 et sw=2 sts=2 ts=2 nolist wrapmargin=0 ai formatoptions=tcroqn comments=n:> conceallevel=2 nofoldenable
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
 au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
 
 " Typescript {{{2
-au FileType typescript setlocal et sw=2 sts=2 ts=2 ai filetype=typescript.javascript omnifunc=tsuquyomi#complete
+au FileType typescript setlocal et sw=2 sts=2 ts=2 ai
+au FileType typescriptreact setlocal et sw=2 sts=2 ts=2 ai
 
 
 " XML {{{2
@@ -276,7 +278,7 @@ let g:ale_fix_on_save = 1
 " Coc completion {{{2
 " See https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 " download following extensions by default.
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-python']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright']
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -474,6 +476,12 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 " Vim-clang {{{2
 " Setup using a compilation database from build directory
 let g:clang_compilation_database = './build'
+
+" Vim-workspace {{{2
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_autosave_untrailspaces = 0
+let g:workspace_persist_undo_history = 0
+let g:workspace_autosave = 0    " disable autosave, it generates too much disk io
 
 " OmniSharp {{{2
 let g:OmniSharp_server_stdio = 1
