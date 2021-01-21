@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 03/01/2021, 18:35:42 IST
+" Last Modified: 21/01/2021, 09:11:19 IST
 
 " Platform {{{1
 "
@@ -36,6 +36,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
@@ -118,7 +119,7 @@ set showcmd		    " show partial cmd in the last line
 set showmatch               " jump to the other end of a curly brace
 set showmode                " show the mode INSERT/REPLACE/...
 syntax enable               " enable syntax highlighting
-set textwidth=100           " break a line after 100 characters
+set textwidth=80            " break a line after 80 characters
 set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
@@ -225,7 +226,7 @@ au FileType markdown setlocal tw=80 et sw=2 sts=2 ts=2 nolist wrapmargin=0 ai fo
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
-au FileType txt set tw=100 autoindent expandtab formatoptions=taqn
+au FileType txt set tw=&textwidth autoindent expandtab formatoptions=taqn
 
 " Typescript {{{2
 au FileType typescript setlocal et sw=2 sts=2 ts=2 ai
@@ -249,16 +250,17 @@ let g:ale_linters = {
 \   'cs': ['OmniSharp'],
 \   'css': ['stylelint', 'prettier'],
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
 \   'markdown': ['proselint', 'vale'],
+\   'python': ['flake8'],
+\   'typescript': ['eslint', 'prettier'],
 \}
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 let g:ale_fixers = {
 \   'cpp': ['clang-format'],
 \   'javascript': ['eslint', 'prettier'],
+\   'markdown': ['prettier'],
 \   'typescript': ['eslint', 'prettier'],
 \   'typescriptreact': ['eslint', 'prettier'],
-\   'markdown': ['prettier'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
