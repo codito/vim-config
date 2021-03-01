@@ -1,14 +1,15 @@
 " GVim config
 " Created: Aug 2005
-" Last Modified: 09/09/2017, 22:07:36 IST
+" Last Modified: 02/02/2021, 07:59:14 IST
 "
 
 " Window Appearance {{{1
 "
 if GetPlatform() == "win"
-    set guifont=consolas:h9:cANSI
+    "set guifont=consolas:h9:cANSI
     au GUIEnter * simalt ~x " maximize window on start
 else
+    set guifont=JetBrains\ Mono\ 12
     "set guifont=Consolas\ 14
 endif
 

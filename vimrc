@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 21/01/2021, 09:11:19 IST
+" Last Modified: 01/03/2021, 18:43:31 IST
 
 " Platform {{{1
 "
@@ -40,9 +40,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'm
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
+Plug 'liuchengxu/vista.vim'
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
-Plug 'majutsushi/tagbar'
 Plug 'maralla/completor.vim'
 Plug 'mattn/calendar-vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -390,6 +390,7 @@ autocmd! User GoyoLeave Limelight!
 
 " Markdown {{{2
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
 
 " NERD Tree/Commenter {{{2
 let g:NERDShutUp = 1
@@ -398,6 +399,9 @@ nmap <silent><F7> :NERDTreeToggle<cr>
 
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
+if GetPlatform() != "win"
+    let g:netrw_browsex_viewer="xdg-open"
+endif
 
 " Pencil {{{2
 augroup pencil
@@ -449,23 +453,6 @@ nnoremap <silent> <leader>/ :Rg<CR>
 let g:table_mode_corner="|" " markdown compatible tables by default
 let g:table_mode_tableize_map = '<leader>tb'
 
-" Tagbar {{{2
-" Settings for tagbar.vim
-let g:tagbar_singleclick = 1
-let g:tagbar_autofocus = 1
-nmap <leader>tt :TagbarToggle<CR>
-
-" Markdown for tagbar.vim
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:headings',
-        \ 'l:links',
-        \ 'i:images'
-    \ ],
-    \ "sort" : 0
-\ }
-
 " Timestamp {{{2
 let g:timestamp_regexp = '\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
 let g:timestamp_modelines = 50
@@ -484,6 +471,10 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_untrailspaces = 0
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0    " disable autosave, it generates too much disk io
+
+" Vista {{{2
+" Settings for vista.vim
+nmap <leader>tt :Vista!!<CR>
 
 " OmniSharp {{{2
 let g:OmniSharp_server_stdio = 1
