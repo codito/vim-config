@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 01/03/2021, 18:43:31 IST
+" Last Modified: 09/04/2021, 10:35:44 IST
 
 " Platform {{{1
 "
@@ -49,7 +49,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
-Plug 'Rip-Rip/clang_complete',  { 'for': 'cpp' }
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -280,7 +279,7 @@ let g:ale_fix_on_save = 1
 " Coc completion {{{2
 " See https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
 " download following extensions by default.
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-clangd']
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
