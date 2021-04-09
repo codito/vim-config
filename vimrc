@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 09/04/2021, 10:35:44 IST
+" Last Modified: 09/04/2021, 11:52:10 IST
 
 " Platform {{{1
 "
@@ -461,9 +461,6 @@ let g:timestamp_rep = "%d/%m/%Y, %T %Z"
 let g:ultisnips_python_style = "google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
-" Vim-clang {{{2
-" Setup using a compilation database from build directory
-let g:clang_compilation_database = './build'
 
 " Vim-workspace {{{2
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
