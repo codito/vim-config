@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 09/04/2021, 11:52:10 IST
+" Last Modified: 20/04/2021, 19:34:09 IST
 
 " Platform {{{1
 "
@@ -29,7 +29,6 @@ endif
 "
 silent! if plug#begin(s:pluginDir)
 
-Plug 'ActivityWatch/aw-watcher-vim'
 Plug 'ap/vim-css-color'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
