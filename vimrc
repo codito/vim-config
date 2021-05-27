@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 20/04/2021, 19:34:09 IST
+" Last Modified: 27/05/2021, 13:38:12 IST
 
 " Platform {{{1
 "
@@ -36,12 +36,12 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
 Plug 'liuchengxu/vista.vim'
-Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-Plug 'lotabout/skim.vim'
 Plug 'maralla/completor.vim'
 Plug 'mattn/calendar-vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -368,6 +368,34 @@ nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
 
+" Fzf {{{2
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Ignore'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
+
+" replace Ctrl-p
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <silent> <leader>A :Windows<CR>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>o :BTags<CR>
+nnoremap <silent> <leader>O :Tags<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>/ :Rg<CR>
+
 " Goyo {{{2
 let g:goyo_width=&textwidth
 
@@ -414,38 +442,7 @@ augroup pencil
 augroup END
 
 " Skim {{{2
-" See https://github.com/lotabout/skim.vim
-" Customize fzf colors to match your color scheme
-let g:skim_colors =
-            \ { 'fg':    ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'Comment'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'info':    ['fg', 'PreProc'],
-            \ 'border':  ['fg', 'Ignore'],
-            \ 'prompt':  ['fg', 'Conditional'],
-            \ 'pointer': ['fg', 'Exception'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'header':  ['fg', 'Comment'] }
 " Enable per-command history.
-" Use interactive ag and rg commands
-command! -bang -nargs=* Rg call fzf#vim#rg_interactive(<q-args>, fzf#vim#with_preview('right:50%:hidden', 'alt-h'))
-let $SKIM_DEFAULT_COMMAND = '(fd --type f || git ls-files -c -o --exclude-standard || rg -l "" || ag -l -g "" || find . -type f)'
-"let $SKIM_DEFAULT_OPTIONS = '--bind ctrl-f:toggle,ctrl-p:up,ctrl-n:down,up:previous-history,down:next-history'
-
-" replace Ctrl-p
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
-nnoremap <silent> <leader>A :Windows<CR>
-nnoremap <silent> <leader>; :BLines<CR>
-nnoremap <silent> <leader>o :BTags<CR>
-nnoremap <silent> <leader>O :Tags<CR>
-nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :Rg<CR>
-
 " Table mode {{{2
 " Settings for vim-table-mode
 let g:table_mode_corner="|" " markdown compatible tables by default
