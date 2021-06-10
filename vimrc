@@ -1,12 +1,13 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 27/05/2021, 13:38:12 IST
+" Last Modified: 10/06/2021, 22:49:47 India Standard Time
 
 " Platform {{{1
 "
 " Local settings file, default to linux
 let s:localFile = "~/.local.vim"
 let s:pluginDir = "~/.vim/bundle"
+let s:sessionDir = $HOME . "/.vim/sessions"
 
 " Know the platform we're running on
 function! GetPlatform()
@@ -21,6 +22,7 @@ endfunction
 if GetPlatform() == "win"
     let s:localFile = "~/local.vim"
     let s:pluginDir = "~/vimfiles/bundle"
+    let s:sessionDir = $HOME . "/vimfiles/sessions"
     let g:skip_loading_mswin = 1    " don't need the shortcuts
     behave mswin
 endif
@@ -88,8 +90,8 @@ set switchbuf=split,usetab  " split/open new tab while switching buffers, for qu
 set noautochdir                 " don't switch directory to current file
 set isfname+=32                 " consider space as a valid filename char, useful for `gf`
 if GetPlatform() == "win"
-    set backupdir=d:\backups
-    set directory=d:\backups
+    set backupdir=~/vimfiles/tmp
+    set directory=~/vimfiles/tmp
 else
     set backupdir=~/.vim/tmp    " isolate the swap files to some corner
     set directory=~/.vim/tmp    " directories for swap files
@@ -459,7 +461,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
 
 " Vim-workspace {{{2
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_session_directory = s:sessionDir
 let g:workspace_autosave_untrailspaces = 0
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0    " disable autosave, it generates too much disk io
