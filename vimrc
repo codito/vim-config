@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 10/06/2021, 22:49:47 India Standard Time
+" Last Modified: 23/07/2021, 09:54:00 India Standard Time
 
 " Platform {{{1
 "
@@ -453,7 +453,7 @@ let g:table_mode_tableize_map = '<leader>tb'
 " Timestamp {{{2
 let g:timestamp_regexp = '\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
 let g:timestamp_modelines = 50
-let g:timestamp_rep = "%d/%m/%Y, %T %Z"
+let g:timestamp_rep = "%d/%m/%Y, %T %z"
 
 " Ultisnips {{{2
 let g:ultisnips_python_style = "google"
