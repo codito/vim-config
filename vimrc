@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 23/07/2021, 09:54:00 India Standard Time
+" Last Modified: 04/12/2021, 22:00:53 +0530
 
 " Platform {{{1
 "
@@ -360,12 +360,12 @@ let g:coverage_show_covered = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components|bin|obj|dll|exe|lib)$'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" Fu-git-ive-ness {{{2
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
+" Fugitive {{{2
+nmap <leader>gs :Git<cr>
+nmap <leader>gc :Git commit<cr>
 nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
+nmap <leader>gl :Gclog<cr>
+nmap <leader>gd :Gdiffsplit<cr>
 nmap <leader>g2 :diffget //2<cr>
 nmap <leader>g3 :diffget //3<cr>
 nmap <leader>g0 :Gwrite!<cr>
