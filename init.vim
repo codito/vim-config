@@ -1,6 +1,6 @@
 " NVIM config file
-" Created: Aug 2005
-" Last Modified: 11/12/2021, 20:04:29 +0530
+" Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
+" Last Modified: 12/12/2021, 22:05:37 +0530
 
 " Platform {{{1
 "
@@ -127,7 +127,7 @@ set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
-set signcolumn=yes          " do not shift text when error message shows
+set signcolumn=auto:1       " do not shift text when error message shows
 
 " Key mappings in general {{{2
 nmap <silent><S-Tab> :tabnext<CR>
@@ -161,7 +161,7 @@ filetype plugin on          " enable plugin support
 " GUI {{{2
 if has("gui") || exists("nvy") || exists("GuiLoaded")
     "set guifont=Cascadia\ Code:h12
-    set guifont=CaskaydiaCove\ NF:h12
+    set guifont=Cascadia\ Code\ PL:h12
 
     " enable Shift+Insert
     inoremap <silent>  <S-Insert>  <C-R>+
@@ -307,7 +307,7 @@ nnoremap <silent> <leader>/ :Rg<CR>
 let g:goyo_width=&textwidth
 
 " Gruvbox color {{{2
-let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_diagnostic_text_highlight = 1
 colorscheme gruvbox-material
 
