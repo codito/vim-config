@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 12/12/2021, 22:05:37 +0530
+" Last Modified: 13/12/2021, 00:27:43 +0530
 
 " Platform {{{1
 "
@@ -8,6 +8,7 @@
 let s:localFile = "~/.local.vim"
 let s:pluginDir = "~/.vim/bundle"
 let s:sessionDir = $HOME . "/.vim/sessions"
+let s:snippetsDir = $HOME . "/.vim/snips"
 
 " Know the platform we're running on
 function! GetPlatform()
@@ -23,6 +24,7 @@ if GetPlatform() == "win"
     let s:localFile = "~/local.vim"
     let s:pluginDir = "~/vimfiles/bundle"
     let s:sessionDir = $HOME . "/vimfiles/sessions"
+    let s:snippetsDir = $HOME . "/vimfiles/snips"
     let g:skip_loading_mswin = 1    " don't need the shortcuts
     behave mswin
 endif
@@ -34,7 +36,6 @@ silent! if plug#begin(s:pluginDir)
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'folke/trouble.nvim'
-Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -59,7 +60,6 @@ Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'SirVer/ultisnips'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -255,6 +255,13 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
+" Coq {{{2
+let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
+let g:coq_settings = {
+            \'auto_start': 'shut-up',
+            \'clients.snippets.user_path': s:snippetsDir,
+            \}
+
 " Coverage {{{2
 " Setup the coverage json to match jest convention
 let g:coverage_json_report_path = 'coverage/coverage-final.json'

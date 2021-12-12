@@ -1,0 +1,31 @@
+snippet blogfrontmatter
+alias f
+    ---
+    title: ${1: post title}
+    date: `!v strftime('%Y-%m-%d %H:%M:%S')`
+    author: arun
+    category: Life, Technology, Philosophy, Story
+    slug: ${2: post slug}
+    ---
+
+snippet reviewfrontmatter
+alias fr
+    ---
+    title: ${1: post title}
+    date: `!v strftime('%Y-%m-%d %H:%M:%S')`
+    author: arun
+    category: Paper, Book, Video
+    slug: ${2: post slug}
+    rating: 5
+    recommended: true
+    ---
+
+snippet notefrontmatter
+alias fn
+    ---
+    title: ${1: post title}
+    created date: `!v strftime('%d/%m/%Y, %T %z')`
+    last updated: 13/12/2021, 00:25:49 +0530
+    ---
+
+    # $1
