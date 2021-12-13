@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 13/12/2021, 22:55:41 +0530
+-- Last modified: 13/12/2021, 23:20:16 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -68,27 +68,37 @@ end)
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ls = require("null-ls")
 null_ls.config({
-    sources = {
-        null_ls.builtins.diagnostics.vale,          -- markdown
-        null_ls.builtins.diagnostics.stylelint,     -- css
-        null_ls.builtins.diagnostics.flake8,        -- python
+  sources = {
+    null_ls.builtins.diagnostics.vale,          -- markdown
+    null_ls.builtins.diagnostics.stylelint,     -- css
+    null_ls.builtins.diagnostics.flake8,        -- python
 
-        null_ls.builtins.formatting.clang_format.with({
-            filetypes = { "c", "cpp" }
-        }),
-        null_ls.builtins.formatting.eslint,
-        null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.clang_format.with({
+        filetypes = { "c", "cpp" }
+    }),
+    null_ls.builtins.formatting.eslint,
+    null_ls.builtins.formatting.prettier,
 
-        require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.completion.spell,
-    },
-    diagnostics_format = "#{m}",
-    debounce = 250,
-    default_timeout = 5000,
-    update_on_insert = false,
-    debug = false,
+    require("null-ls").builtins.formatting.stylua,
+    require("null-ls").builtins.completion.spell,
+  },
+  diagnostics_format = "#{m}",
+  debounce = 250,
+  default_timeout = 5000,
+  update_on_insert = false,
+  debug = false,
 })
 require("lspconfig")["null-ls"].setup(coq.lsp_ensure_capabilities({}))
+
+-- Nvim devicons {{{1
+require('nvim-web-devicons').setup({
+  default = true
+})
+
+-- Nvim tree {{{1
+require('nvim-tree').setup({
+  update_cwd = false
+})
 
 -- Tree sitter {{{1
 -- https://github.com/nvim-treesitter/nvim-treesitter

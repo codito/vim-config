@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 13/12/2021, 21:40:11 +0530
+" Last Modified: 13/12/2021, 23:27:47 +0530
 
 " Platform {{{1
 "
@@ -44,6 +44,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
@@ -60,7 +61,6 @@ Plug 'reedes/vim-pencil'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -172,7 +172,8 @@ filetype plugin on          " enable plugin support
 " GUI {{{2
 if has("gui") || exists("nvy") || exists("GuiLoaded")
     "set guifont=Cascadia\ Code:h12
-    set guifont=Cascadia\ Code\ PL:h12
+    "set guifont=Cascadia\ Code\ PL:h12
+    set guifont=Delugia:h12
 
     " enable Shift+Insert
     inoremap <silent>  <S-Insert>  <C-R>+
@@ -266,6 +267,8 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
+" Chad tree {{{1
+
 " Coq {{{2
 let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
 let g:coq_settings = {
@@ -343,17 +346,18 @@ autocmd! User GoyoLeave Limelight!
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
-" NERD Tree/Commenter {{{2
+" NERD Commenter {{{2
 let g:NERDShutUp = 1
-let NERDTreeChDirMode=0     " please don't chdir for me
-nmap <silent><F7> :NERDTreeToggle<cr>
-
 
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 if GetPlatform() != "win"
     let g:netrw_browsex_viewer="xdg-open"
 endif
+
+" nvim-tree {{{2
+nmap <silent><F7> :NvimTreeToggle<cr>
+
 " Pencil {{{2
 augroup pencil
     autocmd!
