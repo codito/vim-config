@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 13/12/2021, 00:27:43 +0530
+" Last Modified: 13/12/2021, 21:40:11 +0530
 
 " Platform {{{1
 "
@@ -34,6 +34,7 @@ endif
 silent! if plug#begin(s:pluginDir)
 
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'dstein64/vim-startuptime'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'folke/trouble.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
@@ -128,6 +129,16 @@ set noequalalways           " for :split don't split space equally
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
 set signcolumn=auto:1       " do not shift text when error message shows
+
+" Ruler and status {{{2
+set rulerformat=
+set rulerformat+=%25(%)                             " 25 chars wide
+set rulerformat+=%=
+set rulerformat+=%(%Ll,%{\ wordcount().words}\w%)   " Lines and words
+set rulerformat+=%=
+set rulerformat+=%(\ %l,%c%V%)                      " Cursor line and char
+set rulerformat+=%=
+set rulerformat+=%P                                 " Pager
 
 " Key mappings in general {{{2
 nmap <silent><S-Tab> :tabnext<CR>

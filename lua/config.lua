@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 11/12/2021, 19:57:47 +0530
+-- Last modified: 13/12/2021, 22:55:41 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -34,6 +34,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
+  -- If a client supports formatting, auto format on save.
+  if client.resolved_capabilities.document_formatting then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  end
 end
 
 local lsp_installer = require("nvim-lsp-installer")
@@ -65,9 +69,7 @@ end)
 local null_ls = require("null-ls")
 null_ls.config({
     sources = {
-        null_ls.builtins.diagnostics.proselint,     -- markdown
         null_ls.builtins.diagnostics.vale,          -- markdown
-        null_ls.builtins.diagnostics.write_good,    -- markdown
         null_ls.builtins.diagnostics.stylelint,     -- css
         null_ls.builtins.diagnostics.flake8,        -- python
 
@@ -86,6 +88,7 @@ null_ls.config({
     update_on_insert = false,
     debug = false,
 })
+require("lspconfig")["null-ls"].setup(coq.lsp_ensure_capabilities({}))
 
 -- Tree sitter {{{1
 -- https://github.com/nvim-treesitter/nvim-treesitter
