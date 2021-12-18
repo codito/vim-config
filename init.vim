@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 17/12/2021, 21:35:50 +0530
+" Last Modified: 18/12/2021, 20:07:47 +0530
 
 " Platform {{{1
 "
@@ -34,7 +34,6 @@ endif
 silent! if plug#begin(s:pluginDir)
 
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'dstein64/vim-startuptime'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'folke/trouble.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
@@ -51,6 +50,7 @@ Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -64,14 +64,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
+Plug 'tweekmonster/startuptime.vim'
 Plug 'vim-scripts/timestamp.vim'
 Plug 'williamboman/nvim-lsp-installer'
 
 " Colors {{{2
 "
 Plug 'sainnhe/gruvbox-material'
-Plug 'savq/melange'
 
 call plug#end()
 endif
@@ -267,7 +266,7 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
-" Chad tree {{{1
+" Chad tree {{{2
 
 " Coq {{{2
 let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
@@ -395,9 +394,6 @@ nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
-" Ultisnips {{{2
-let g:ultisnips_python_style = "google"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
 " Vim-workspace {{{2
 let g:workspace_session_directory = s:sessionDir
