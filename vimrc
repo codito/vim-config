@@ -1,6 +1,6 @@
 " VIM config file
 " Created: Aug 2005
-" Last Modified: 04/12/2021, 22:00:53 +0530
+" Last Modified: 14/12/2021, 08:47:09 +0530
 
 " Platform {{{1
 "
@@ -33,6 +33,7 @@ silent! if plug#begin(s:pluginDir)
 
 Plug 'ap/vim-css-color'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'dstein64/vim-startuptime'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'

@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 13/12/2021, 23:27:47 +0530
+" Last Modified: 17/12/2021, 21:35:50 +0530
 
 " Platform {{{1
 "
@@ -330,6 +330,7 @@ let g:goyo_width=&textwidth
 " Gruvbox color {{{2
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_diagnostic_text_highlight = 1
+let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
 
 " Lexical {{{2
