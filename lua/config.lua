@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 18/12/2021, 20:02:19 +0530
+-- Last modified: 21/12/2021, 07:52:57 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -110,7 +110,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = { 'markdown' },
   },
   incremental_selection = {
     enable = true,
