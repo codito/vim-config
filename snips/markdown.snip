@@ -23,9 +23,11 @@ alias fr
 snippet notefrontmatter
 alias fn
     ---
-    title: ${1: post title}
-    created date: `!v strftime('%d/%m/%Y, %T %z')`
-    last updated: 13/12/2021, 00:25:49 +0530
+    title: ${1: note title}
+    created date: `!v strftime('%Y-%m-%d %H:%M:%S')`
+    last updated: 27/12/2021, 20:48:57 +0530
     ---
 
-    # $1
+    # ${1}
+
+    $0

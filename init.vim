@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 18/12/2021, 20:07:47 +0530
+" Last Modified: 27/12/2021, 19:46:31 +0530
 
 " Platform {{{1
 "
@@ -35,8 +35,8 @@ silent! if plug#begin(s:pluginDir)
 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -273,6 +273,7 @@ let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
 let g:coq_settings = {
             \'auto_start': 'shut-up',
             \'clients.snippets.user_path': s:snippetsDir,
+            \'clients.paths.resolution': ['file'],
             \}
 
 " Coverage {{{2
@@ -322,6 +323,9 @@ nnoremap <silent> <leader>o :BTags<CR>
 nnoremap <silent> <leader>O :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
+
+" Glow {{{2
+noremap <leader>p :Glow<CR>
 
 " Goyo {{{2
 let g:goyo_width=&textwidth
