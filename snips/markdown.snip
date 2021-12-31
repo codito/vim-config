@@ -4,8 +4,8 @@ alias f
     title: ${1: post title}
     date: `!v strftime('%Y-%m-%d %H:%M:%S')`
     author: arun
-    category: Life, Technology, Philosophy, Story
-    slug: ${2: post slug}
+    category: ${2|Life, Technology, Philosophy, Story|}
+    slug: ${3: post slug}
     ---
 
 snippet reviewfrontmatter
@@ -14,8 +14,8 @@ alias fr
     title: ${1: post title}
     date: `!v strftime('%Y-%m-%d %H:%M:%S')`
     author: arun
-    category: Paper, Book, Video
-    slug: ${2: post slug}
+    category: ${2|Paper, Book, Talk|}
+    slug: ${3: post slug}
     rating: 5
     recommended: true
     ---
@@ -23,11 +23,11 @@ alias fr
 snippet notefrontmatter
 alias fn
     ---
-    title: ${1: note title}
-    created date: `!v strftime('%Y-%m-%d %H:%M:%S')`
-    last updated: 27/12/2021, 20:48:57 +0530
+    title: ${TM_FILENAME_BASE/(.*)$/${1:/capitalize}/}
+    created date: TIMESTAMP
+    last updated: 31/12/2021, 22:20:21 +0530
     ---
 
-    # ${1}
+    # ${TM_FILENAME_BASE/(.*)$/${1:/capitalize}/}
 
     $0

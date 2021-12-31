@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 27/12/2021, 19:46:31 +0530
+" Last Modified: 31/12/2021, 21:21:52 +0530
 
 " Platform {{{1
 "
@@ -55,14 +55,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'Pocco81/DAPInstall.nvim'
+Plug 'pocco81/DAPInstall.nvim'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'thaerkh/vim-workspace'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'vim-scripts/timestamp.vim'
@@ -380,7 +379,7 @@ let g:table_mode_corner="|" " markdown compatible tables by default
 let g:table_mode_tableize_map = '<leader>tb'
 
 " Timestamp {{{2
-let g:timestamp_regexp = '\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$'
+let g:timestamp_regexp = '\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$|TIMESTAMP'
 let g:timestamp_modelines = 50
 let g:timestamp_rep = "%d/%m/%Y, %T %z"
 
