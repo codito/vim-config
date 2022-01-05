@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 31/12/2021, 21:21:52 +0530
+" Last Modified: 05/01/2022, 21:43:59 +0530
 
 " Platform {{{1
 "
@@ -273,6 +273,7 @@ let g:coq_settings = {
             \'auto_start': 'shut-up',
             \'clients.snippets.user_path': s:snippetsDir,
             \'clients.paths.resolution': ['file'],
+            \'display.pum.y_max_len': 6,
             \}
 
 " Coverage {{{2
