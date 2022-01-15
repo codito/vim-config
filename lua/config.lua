@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 21/12/2021, 07:52:57 +0530
+-- Last modified: 12/01/2022, 21:44:55 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -86,7 +86,7 @@ null_ls.setup(coq.lsp_ensure_capabilities({
   on_attach = function(client, buf_nr)
         -- If a client supports formatting, auto format on save.
         if client.resolved_capabilities.document_formatting then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
         end
     end
 }))
