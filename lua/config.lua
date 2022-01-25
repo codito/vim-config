@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 12/01/2022, 21:44:55 +0530
+-- Last modified: 25/01/2022, 21:54:56 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -74,8 +74,8 @@ null_ls.setup(coq.lsp_ensure_capabilities({
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.prettier,
 
-    require("null-ls").builtins.formatting.stylua,
-    require("null-ls").builtins.completion.spell,
+    --require("null-ls").builtins.formatting.stylua,
+    --require("null-ls").builtins.completion.spell,
   },
   diagnostics_format = "#{m}",
   debounce = 250,

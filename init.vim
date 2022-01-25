@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 06/01/2022, 09:31:47 +0530
+" Last Modified: 25/01/2022, 21:45:59 +0530
 
 " Platform {{{1
 "
@@ -48,12 +48,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': ':COQdeps'}
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
 Plug 'reedes/vim-lexical'
@@ -271,6 +271,7 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
 let g:coq_settings = {
             \'auto_start': 'shut-up',
+            \'clients.buffers.enabled': v:false,
             \'clients.snippets.user_path': s:snippetsDir,
             \'clients.paths.resolution': ['file'],
             \'display.pum.y_max_len': 6,
