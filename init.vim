@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 25/01/2022, 21:45:59 +0530
+" Last Modified: 20/02/2022, 21:42:52 +0530
 
 " Platform {{{1
 "
@@ -290,6 +290,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Fugitive {{{2
 nmap <leader>gs :Git<cr>
 nmap <leader>gc :Git commit<cr>
+nmap <leader>gp :Git push<cr>
 nmap <leader>ga :Gwrite<cr>
 nmap <leader>gl :Gclog<cr>
 nmap <leader>gd :Gdiffsplit<cr>
@@ -424,8 +425,15 @@ inoremap <silent><C-Left> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
 
 " Expand current date time stamp {{{2
+" Use for file timestamp updates or journal.
 :iab <expr> dts strftime(g:timestamp_rep)
 inoremap <expr> <leader>ts strftime(g:timestamp_rep)
+
+" Timestamp for blog posts.
+inoremap <expr> <leader>tb strftime("%Y-%m-%d %H:%M")
+
+" Journal entries.
+inoremap <expr> <leader>tj "[".strftime("%Y-%m-%d")."]"."(./journal/".strftime("%Y-%m-%d").".md)"
 
 " Load lua based plugin configuration {{{1
 lua require("config")
