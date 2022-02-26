@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 25/01/2022, 21:54:56 +0530
+-- Last modified: 26/02/2022, 16:51:39 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -187,6 +187,42 @@ require'nvim-treesitter.configs'.setup {
 -- https://github.com/folke/trouble.nvim
 require("trouble").setup {
 }
+
+-- Zk {{{1
+-- https://github.com/mickael-menu/zk-nvim
+require('lspconfig').zk.setup({
+      -- cmd = { "zk", "lsp", "--log", "e:/tmp/zk-lsp.log" },
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      on_attach = on_attach,
+    })
+
+require("zk").setup({
+  -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
+  -- it's recommended to use "telescope" or "fzf"
+  picker = "fzf",
+  lsp = {
+    auto_attach = {
+      enabled = false,
+      filetypes = { "markdown" },
+    },
+  },
+})
+
+-- Zk shortcuts
+-- Create a new note after asking for its title.
+local opts = { noremap=true, silent=false }
+vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
+
+-- Open notes.
+vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
+-- Open notes associated with the selected tags.
+vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
+
+-- Search for the notes matching a given query.
+vim.api.nvim_set_keymap("n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", opts)
+-- Search for the notes matching the current visual selection.
+vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
 
 -- vim: foldmethod=marker
 -- EOF

@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 20/02/2022, 21:42:52 +0530
+" Last Modified: 26/02/2022, 16:11:32 +0530
 
 " Platform {{{1
 "
@@ -48,6 +48,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
+Plug 'mickael-menu/zk-nvim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
@@ -56,11 +57,11 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-pencil'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/vim-pencil'
+Plug 'preservim/vim-lexical'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
-Plug 'scrooloose/nerdcommenter'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
