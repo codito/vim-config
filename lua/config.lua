@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 26/02/2022, 16:51:39 +0530
+-- Last modified: 01/03/2022, 18:27:46 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -36,7 +36,57 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_installer = require("nvim-lsp-installer")
-local coq = require "coq"
+--local coq = require "coq"
+local cmp = require "cmp"
+local luasnip = require "luasnip"
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+cmp.setup({
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    --{ name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    --{ name = 'snippy' }, -- For snippy users.
+    { name = 'buffer' },
+  }),
+  snippet = {
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end
+  },
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }
+})
+require("luasnip.loaders.from_vscode").load()
+require("luasnip.loaders.from_snipmate").load()
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
@@ -56,13 +106,23 @@ lsp_installer.on_server_ready(function(server)
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     -- Decorate with coq to allow lsp completion.
-    server:setup(coq.lsp_ensure_capabilities(opts))
+    --server:setup(coq.lsp_ensure_capabilities(opts))
+    server:setup({ capabilities = capabilities })
 end)
+
+require('lspconfig').zk.setup({
+    --cmd = { "zk", "lsp", "--log", "e:/tmp/zk-lsp.log" },
+    cmd = { "zk", "lsp" },
+    name = "zk",
+    on_attach = on_attach,
+    capabilities = capabilities
+})
 
 -- Null LS {{{1
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ls = require("null-ls")
-null_ls.setup(coq.lsp_ensure_capabilities({
+--null_ls.setup(coq.lsp_ensure_capabilities({
+null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.vale,          -- markdown
     null_ls.builtins.diagnostics.stylelint,     -- css
@@ -82,6 +142,7 @@ null_ls.setup(coq.lsp_ensure_capabilities({
   default_timeout = 5000,
   update_on_insert = false,
   debug = false,
+  capabilities = capabilities,
 
   on_attach = function(client, buf_nr)
         -- If a client supports formatting, auto format on save.
@@ -89,7 +150,7 @@ null_ls.setup(coq.lsp_ensure_capabilities({
             vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
         end
     end
-}))
+})
 
 -- Nvim devicons {{{1
 require('nvim-web-devicons').setup({
@@ -190,13 +251,6 @@ require("trouble").setup {
 
 -- Zk {{{1
 -- https://github.com/mickael-menu/zk-nvim
-require('lspconfig').zk.setup({
-      -- cmd = { "zk", "lsp", "--log", "e:/tmp/zk-lsp.log" },
-      cmd = { "zk", "lsp" },
-      name = "zk",
-      on_attach = on_attach,
-    })
-
 require("zk").setup({
   -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
   -- it's recommended to use "telescope" or "fzf"

@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 26/02/2022, 16:11:32 +0530
+" Last Modified: 01/03/2022, 18:27:06 +0530
 
 " Platform {{{1
 "
@@ -37,6 +37,11 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -45,12 +50,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'l3mon4d3/luasnip'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mickael-menu/zk-nvim'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -60,8 +64,10 @@ Plug 'pocco81/DAPInstall.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-lexical'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
@@ -267,16 +273,6 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 " Plugins {{{1
 "
 " Chad tree {{{2
-
-" Coq {{{2
-let s:nvimhome = fnamemodify(expand("$NVIM_HOME"), ":p:h")
-let g:coq_settings = {
-            \'auto_start': 'shut-up',
-            \'clients.buffers.enabled': v:false,
-            \'clients.snippets.user_path': s:snippetsDir,
-            \'clients.paths.resolution': ['file'],
-            \'display.pum.y_max_len': 6,
-            \}
 
 " Coverage {{{2
 " Setup the coverage json to match jest convention

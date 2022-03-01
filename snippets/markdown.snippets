@@ -1,18 +1,16 @@
-snippet blogfrontmatter
-alias f
+snippet f
     ---
     title: ${1: post title}
-    date: `!v strftime('%Y-%m-%d %H:%M:%S')`
+    date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}
     author: arun
     category: ${2|Life, Technology, Philosophy, Story|}
     slug: ${3: post slug}
     ---
 
-snippet reviewfrontmatter
-alias fr
+snippet fr
     ---
     title: ${1: post title}
-    date: `!v strftime('%Y-%m-%d %H:%M:%S')`
+    date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}
     author: arun
     category: ${2|Paper, Book, Talk|}
     slug: ${3: post slug}
@@ -20,12 +18,11 @@ alias fr
     recommended: true
     ---
 
-snippet notefrontmatter
-alias fn
+snippet fn
     ---
     title: ${TM_FILENAME_BASE/(.*)$/${1:/capitalize}/}
-    created date: TIMESTAMP
-    last updated: 31/12/2021, 22:20:21 +0530
+    created date: 01/03/2022, 18:00:27 +0530
+    last updated: 01/03/2022, 18:33:08 +0530
     ---
 
     # ${TM_FILENAME_BASE/(.*)$/${1:/capitalize}/}
