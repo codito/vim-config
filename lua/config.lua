@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/03/2022, 18:27:46 +0530
+-- Last modified: 26/03/2022, 15:59:56 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -83,8 +83,8 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }
 })
-require("luasnip.loaders.from_vscode").load()
-require("luasnip.loaders.from_snipmate").load()
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
