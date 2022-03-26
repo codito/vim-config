@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 26/03/2022, 15:53:00 +0530
+" Last Modified: 26/03/2022, 16:15:52 +0530
 
 " Platform {{{1
 "
@@ -51,6 +51,7 @@ Plug 'konfekt/fastfold'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'l3mon4d3/luasnip'
+Plug 'lewis6991/impatient.nvim'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
@@ -433,6 +434,7 @@ inoremap <expr> <leader>tb strftime("%Y-%m-%d %H:%M")
 inoremap <expr> <leader>tj "[".strftime("%Y-%m-%d")."]"."(./journal/".strftime("%Y-%m-%d").".md)"
 
 " Load lua based plugin configuration {{{1
+lua require("impatient")
 lua require("config")
 
 " Local machine dependent mods {{{1
