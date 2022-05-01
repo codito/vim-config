@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 26/03/2022, 15:59:56 +0530
+-- Last modified: 01/05/2022, 09:25:03 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -8,6 +8,12 @@
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Set client settings
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -35,8 +41,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local lsp_installer = require("nvim-lsp-installer")
---local coq = require "coq"
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 local has_words_before = function()
@@ -88,29 +92,20 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-    local opts = {
+-- Configure the installed lsp servers.
+-- lsp_installer setup must be called before lspconfig.
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.setup {}
+
+local lspconfig = require("lspconfig")
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+  lspconfig[server.name].setup({
         on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
-        }
-    }
+        capabilities = capabilities
+    })
+end
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    -- Decorate with coq to allow lsp completion.
-    --server:setup(coq.lsp_ensure_capabilities(opts))
-    server:setup({ capabilities = capabilities })
-end)
-
-require('lspconfig').zk.setup({
+lspconfig.zk.setup({
     --cmd = { "zk", "lsp", "--log", "e:/tmp/zk-lsp.log" },
     cmd = { "zk", "lsp" },
     name = "zk",
@@ -121,7 +116,6 @@ require('lspconfig').zk.setup({
 -- Null LS {{{1
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ls = require("null-ls")
---null_ls.setup(coq.lsp_ensure_capabilities({
 null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.vale,          -- markdown
@@ -131,6 +125,8 @@ null_ls.setup({
     null_ls.builtins.formatting.clang_format.with({
         filetypes = { "c", "cpp" }
     }),
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.code_actions.eslint,
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.prettier,
 
