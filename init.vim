@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 26/03/2022, 16:15:52 +0530
+" Last Modified: 16/07/2022, 17:04:32 +0530
 
 " Platform {{{1
 "
@@ -255,7 +255,7 @@ au FileType markdown setlocal tw=80 et sw=2 sts=2 ts=2 nolist wrapmargin=0 ai fo
 
 " Text {{{2
 "au BufRead,BufNewFile *.txt set filetype=txt
-au FileType txt set tw=&textwidth autoindent expandtab formatoptions=taqn
+au FileType txt set tw=80 autoindent expandtab formatoptions=taqn
 
 " Typescript {{{2
 au FileType typescript setlocal et sw=2 sts=2 ts=2 ai
