@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 06/08/2022, 17:59:01 +0530
+" Last Modified: 11/08/2022, 20:24:55 +0530
 
 " Platform {{{1
 "
@@ -315,7 +315,7 @@ let g:fzf_colors =
 \ 'header':  ['fg', 'Comment'] }
 
 " replace Ctrl-p
-nnoremap <silent> <C-p> :GFiles --cached --others --exclude-standard<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>a :Buffers<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>; :BLines<CR>
@@ -323,6 +323,10 @@ nnoremap <silent> <leader>o :BTags<CR>
 nnoremap <silent> <leader>O :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
+
+if executable("fd")
+    let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+endif
 
 " Glow {{{2
 noremap <leader>p :Glow<CR>
