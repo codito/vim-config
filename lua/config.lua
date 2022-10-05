@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 02/10/2022, 13:52:16 +0530
+-- Last modified: 05/10/2022, 13:37:44 +0530
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -11,8 +11,8 @@ local on_attach = function(client, bufnr)
 
   -- Set client settings
   if client.name == "tsserver" then
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -142,8 +142,15 @@ null_ls.setup({
 
   on_attach = function(client, buf_nr)
         -- If a client supports formatting, auto format on save.
-        if client.server_capabilities.document_formatting then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+        if client.server_capabilities.documentFormattingProvider then
+            vim.cmd(
+            [[
+                augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+                augroup END
+            ]]
+            )
         end
     end
 })
