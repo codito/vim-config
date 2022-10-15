@@ -1,6 +1,10 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/10/2022, 13:37:44 +0530
+-- Last modified: 15/10/2022, 13:22:27 +0530
+
+-- Leap {{{1
+-- https://github.com/ggandor/leap.nvim
+require('leap').add_default_mappings()
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -90,7 +94,7 @@ cmp.setup({
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Configure the installed lsp servers.
 -- lsp_installer setup must be called before lspconfig.
