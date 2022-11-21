@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 15/10/2022, 13:20:12 +0530
+" Last Modified: 19/11/2022, 18:07:53 +0530
 
 " Platform {{{1
 "
@@ -35,6 +35,7 @@ silent! if plug#begin(s:pluginDir)
 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'edluffy/hologram.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'ggandor/leap.nvim'
