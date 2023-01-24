@@ -1,16 +1,12 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 19/11/2022, 18:19:57 +0530
+-- Last modified: 07/01/2023, 01:31:00 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
 require('hologram').setup{
     auto_display = true -- WIP automatic markdown image display, may be prone to breaking
 }
-
--- Leap {{{1
--- https://github.com/ggandor/leap.nvim
-require('leap').add_default_mappings()
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys

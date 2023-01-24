@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 19/11/2022, 18:07:53 +0530
+" Last Modified: 07/01/2023, 01:30:36 +0530
 
 " Platform {{{1
 "
@@ -38,7 +38,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'edluffy/hologram.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
-Plug 'ggandor/leap.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
