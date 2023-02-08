@@ -1,12 +1,14 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 07/01/2023, 01:31:00 +0530
+-- Last modified: 08/02/2023, 08:42:33 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
-require('hologram').setup{
-    auto_display = true -- WIP automatic markdown image display, may be prone to breaking
-}
+if os.getenv("KITTY_WINDOW_ID") ~= nil then
+    require('hologram').setup{
+        auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+    }
+end
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
