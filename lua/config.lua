@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 08/02/2023, 08:42:33 +0530
+-- Last modified: 11/02/2023, 01:10:08 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -102,12 +102,13 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 -- Configure the installed lsp servers.
 -- lsp_installer setup must be called before lspconfig.
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.setup {}
+require("mason").setup()
+local lsp_installer = require("mason-lspconfig")
+lsp_installer.setup()
 
 local lspconfig = require("lspconfig")
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  lspconfig[server.name].setup({
+for _, server_name in ipairs(lsp_installer.get_installed_servers()) do
+  lspconfig[server_name].setup({
         on_attach = on_attach,
         capabilities = capabilities
     })
