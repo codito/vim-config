@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 11/02/2023, 00:33:24 +0530
+" Last Modified: 11/02/2023, 13:21:45 +0530
 
 " Platform {{{1
 "
@@ -56,7 +56,6 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
-Plug 'mickael-menu/zk-nvim'
 Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -178,7 +177,7 @@ set tags=tags,./tags,../,../..
 filetype plugin on          " enable plugin support
 
 " GUI {{{2
-if has("gui") || exists("nvy") || exists("GuiLoaded")
+if has("gui") || exists("nvy") || exists("GuiLoaded") || exists("g:neoray")
     "set guifont=Cascadia\ Code:h12
     "set guifont=Cascadia\ Code\ PL:h12
     set guifont=Delugia:h12

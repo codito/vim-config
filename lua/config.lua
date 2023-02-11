@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 11/02/2023, 01:10:08 +0530
+-- Last modified: 11/02/2023, 01:44:59 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -98,7 +98,7 @@ cmp.setup({
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Configure the installed lsp servers.
 -- lsp_installer setup must be called before lspconfig.
@@ -107,19 +107,13 @@ local lsp_installer = require("mason-lspconfig")
 lsp_installer.setup()
 
 local lspconfig = require("lspconfig")
-for _, server_name in ipairs(lsp_installer.get_installed_servers()) do
-  lspconfig[server_name].setup({
-        on_attach = on_attach,
-        capabilities = capabilities
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup({
+      on_attach = on_attach,
+      capabilities = capabilities
     })
-end
-
-lspconfig.zk.setup({
-    --cmd = { "zk", "lsp", "--log", "e:/tmp/zk-lsp.log" },
-    cmd = { "zk", "lsp" },
-    name = "zk",
-    on_attach = on_attach,
-    capabilities = capabilities
+  end,
 })
 
 -- Null LS {{{1
@@ -260,35 +254,6 @@ require'nvim-treesitter.configs'.setup {
 -- https://github.com/folke/trouble.nvim
 require("trouble").setup {
 }
-
--- Zk {{{1
--- https://github.com/mickael-menu/zk-nvim
-require("zk").setup({
-  -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
-  -- it's recommended to use "telescope" or "fzf"
-  picker = "fzf",
-  lsp = {
-    auto_attach = {
-      enabled = false,
-      filetypes = { "markdown" },
-    },
-  },
-})
-
--- Zk shortcuts
--- Create a new note after asking for its title.
-local opts = { noremap=true, silent=false }
-vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
-
--- Open notes.
-vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
--- Open notes associated with the selected tags.
-vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
-
--- Search for the notes matching a given query.
-vim.api.nvim_set_keymap("n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", opts)
--- Search for the notes matching the current visual selection.
-vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
 
 -- vim: foldmethod=marker
 -- EOF
