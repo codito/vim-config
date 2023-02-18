@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 11/02/2023, 01:44:59 +0530
+-- Last modified: 18/02/2023, 21:45:25 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -119,6 +119,7 @@ require('mason-lspconfig').setup_handlers({
 -- Null LS {{{1
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ls = require("null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.vale,          -- markdown
@@ -143,18 +144,22 @@ null_ls.setup({
   debug = false,
   capabilities = capabilities,
 
-  on_attach = function(client, buf_nr)
+  on_attach = function(client, bufnr)
         -- If a client supports formatting, auto format on save.
-        if client.server_capabilities.documentFormattingProvider then
-            vim.cmd(
-            [[
-                augroup LspFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-                augroup END
-            ]]
-            )
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
         end
+
+        -- null-ls messes with formatexpr for some reason, which messes up `gq`
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+        vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
     end
 })
 
