@@ -1,10 +1,10 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 18/02/2023, 21:45:25 +0530
+-- Last modified: 26/02/2023, 20:08:46 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
-if os.getenv("KITTY_WINDOW_ID") ~= nil then
+if os.getenv("KITTY_WINDOW_ID") ~= nil and vim.g.vscode == nil then
     require('hologram').setup{
         auto_display = true -- WIP automatic markdown image display, may be prone to breaking
     }
