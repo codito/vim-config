@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 11/02/2023, 13:21:45 +0530
+" Last Modified: 26/02/2023, 08:36:15 +0530
 
 " Platform {{{1
 "
@@ -180,7 +180,8 @@ filetype plugin on          " enable plugin support
 if has("gui") || exists("nvy") || exists("GuiLoaded") || exists("g:neoray")
     "set guifont=Cascadia\ Code:h12
     "set guifont=Cascadia\ Code\ PL:h12
-    set guifont=Delugia:h12
+    "set guifont=Delugia:h12
+    set guifont=Iosevka:h12
 
     " enable Shift+Insert
     inoremap <silent>  <S-Insert>  <C-R>+
