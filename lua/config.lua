@@ -1,10 +1,10 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 26/02/2023, 20:08:46 +0530
+-- Last modified: 17/05/2023, 07:41:37 +0530
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
-if os.getenv("KITTY_WINDOW_ID") ~= nil and vim.g.vscode == nil then
+if os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm" and vim.g.vscode == nil then
     require('hologram').setup{
         auto_display = true -- WIP automatic markdown image display, may be prone to breaking
     }
@@ -124,7 +124,6 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.vale,          -- markdown
     null_ls.builtins.diagnostics.stylelint,     -- css
-    null_ls.builtins.diagnostics.flake8,        -- python
 
     null_ls.builtins.formatting.clang_format.with({
         filetypes = { "c", "cpp" }
@@ -134,6 +133,7 @@ null_ls.setup({
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.prettier,
 
+    null_ls.builtins.formatting.black,        -- python
     --require("null-ls").builtins.formatting.stylua,
     --require("null-ls").builtins.completion.spell,
   },
