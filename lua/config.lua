@@ -1,6 +1,29 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 17/05/2023, 07:41:37 +0530
+-- Last modified: 28/05/2023, 20:34:25 +0530
+
+-- Aerial {{{1
+-- Symbols outliner for neovim
+require('aerial').setup({
+  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
+    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
+  end
+})
+-- You probably also want to set a keymap to toggle aerial
+vim.keymap.set('n', '<leader>tt', '<cmd>AerialToggle! right<CR>')
+
+-- Codeium {{{1
+vim.g.codeium_disable_bindings = 1
+vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+
+-- Comment {{{1
+require('Comment').setup()
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -40,13 +63,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>CodeActionMenu <CR>', opts)
+  -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
 end
 
 local cmp = require "cmp"
@@ -63,6 +87,7 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     --{ name = 'snippy' }, -- For snippy users.
     { name = 'buffer' },
+    { name = 'path' },
   }),
   snippet = {
     expand = function(args)
@@ -134,6 +159,7 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier,
 
     null_ls.builtins.formatting.black,        -- python
+    null_ls.builtins.formatting.isort,
     --require("null-ls").builtins.formatting.stylua,
     --require("null-ls").builtins.completion.spell,
   },

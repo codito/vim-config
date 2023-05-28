@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 17/05/2023, 07:47:42 +0530
+" Last Modified: 28/05/2023, 20:32:04 +0530
 
 " Platform {{{1
 "
@@ -53,28 +53,34 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'l3mon4d3/luasnip'
 Plug 'lewis6991/impatient.nvim'
-Plug 'liuchengxu/vista.vim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
+Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
-Plug 'preservim/nerdcommenter'
 Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-lexical'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'stevearc/aerial.nvim'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'vim-scripts/timestamp.vim'
+Plug 'weilbith/nvim-code-action-menu'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
+
+" Linux only plugins {{{2
+if GetPlatform() == "nix"
+    Plug 'exafunction/codeium.vim'
+endif
 
 " Colors {{{2
 "
@@ -356,9 +362,6 @@ autocmd! User GoyoLeave Limelight!
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
-" NERD Commenter {{{2
-let g:NERDShutUp = 1
-
 " Netrw plugin {{{2
 let g:netrw_browse_split=3  " all edits in new tab
 if GetPlatform() != "win"
@@ -410,10 +413,6 @@ let g:workspace_session_directory = s:sessionDir
 let g:workspace_autosave_untrailspaces = 0
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0    " disable autosave, it generates too much disk io
-
-" Vista {{{2
-" Settings for vista.vim
-nmap <leader>tt :Vista!!<CR>
 
 " Extensions and utils {{{1
 "
