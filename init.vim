@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 28/05/2023, 20:32:04 +0530
+" Last Modified: 19/07/2023, 21:47:36 +0530
 
 " Platform {{{1
 "
@@ -55,7 +55,6 @@ Plug 'l3mon4d3/luasnip'
 Plug 'lewis6991/impatient.nvim'
 Plug 'mattn/calendar-vim'
 Plug 'mfussenegger/nvim-dap'
-Plug 'nathom/filetype.nvim'     " fix filetype.vim startup performance hit
 Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'

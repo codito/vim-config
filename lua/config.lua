@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 28/05/2023, 20:34:25 +0530
+-- Last modified: 04/06/2023, 14:38:52 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -16,6 +16,9 @@ require('aerial').setup({
 vim.keymap.set('n', '<leader>tt', '<cmd>AerialToggle! right<CR>')
 
 -- Codeium {{{1
+vim.g.codeium_filetypes = {
+    markdown = false
+}
 vim.g.codeium_disable_bindings = 1
 vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
 vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
