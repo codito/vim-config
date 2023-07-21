@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 19/07/2023, 21:47:36 +0530
+" Last Modified: 21/07/2023, 23:14:08 +0530
 
 " Platform {{{1
 "
@@ -72,7 +72,6 @@ Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'vim-scripts/timestamp.vim'
-Plug 'weilbith/nvim-code-action-menu'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
