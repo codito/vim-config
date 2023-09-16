@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 21/07/2023, 23:14:08 +0530
+" Last Modified: 16/09/2023, 09:17:24 +0530
 
 " Platform {{{1
 "
@@ -33,6 +33,7 @@ endif
 "
 silent! if plug#begin(s:pluginDir)
 
+Plug 'andythigpen/nvim-coverage'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edluffy/hologram.nvim'
@@ -40,6 +41,7 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
@@ -65,7 +67,7 @@ Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-lexical'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'romgrk/nvim-treesitter-context'
-Plug 'ruanyl/coverage.vim', { 'for': 'javascript' }
+Plug 'ron89/thesaurus_query.vim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'thaerkh/vim-workspace'
@@ -279,12 +281,6 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 
 " Plugins {{{1
 "
-" Chad tree {{{2
-
-" Coverage {{{2
-" Setup the coverage json to match jest convention
-let g:coverage_json_report_path = 'coverage/coverage-final.json'
-let g:coverage_show_covered = 1
 
 " Ctrl-p {{{2
 " Ignore node_modules and bower_components

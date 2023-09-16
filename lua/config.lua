@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 21/07/2023, 23:14:16 +0530
+-- Last modified: 16/09/2023, 13:48:12 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -27,6 +27,11 @@ vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { 
 
 -- Comment {{{1
 require('Comment').setup()
+
+-- Coverage {{{1
+require("coverage").setup({
+    auto_reload = true
+})
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -89,6 +94,7 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     --{ name = 'snippy' }, -- For snippy users.
     { name = 'buffer' },
+    { name = 'emoji' },
     { name = 'path' },
   }),
   snippet = {
@@ -158,7 +164,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.code_actions.eslint,
     null_ls.builtins.formatting.eslint,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({ filetypes = { "astro", "javascript", "typescript", "css", "scss", "json", "yaml", "markdown" } }),
 
     null_ls.builtins.formatting.black,        -- python
     null_ls.builtins.formatting.isort,
@@ -282,6 +288,13 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+
+-- Thesaurus {{{1
+function GetSynonymForWordUnderCursor()
+    local word = vim.fn.expand("<cword>")
+    vim.cmd("Thesaurus " .. word)
+end
+vim.keymap.set("n", "<leader>ct", ":lua GetSynonymForWordUnderCursor()<CR><CR>", { noremap = true })
 
 -- Trouble {{{1
 -- https://github.com/folke/trouble.nvim
