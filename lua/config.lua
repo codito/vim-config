@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 16/09/2023, 16:09:33 +0530
+-- Last modified: 16/09/2023, 16:40:13 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -29,6 +29,34 @@ vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'
 -- Comment {{{1
 require('Comment').setup()
 
+-- Conform {{{1
+require("conform").setup({
+    formatters_by_ft = {
+        css = { "stylelint" },
+        -- lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "isort", "black" },
+        -- Use a sub-list to run only the first available formatter
+        astro = { "prettier" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        markdown = { "prettier" },
+    },
+    -- If this is set, Conform will run the formatter on save.
+    -- It will pass the table to conform.format().
+    -- This can also be a function that returns the table.
+    format_on_save = {
+      -- I recommend these options. See :help conform.format for details.
+      lsp_fallback = true,
+      timeout_ms = 500,
+    },
+})
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+    end,
+})
 
 -- Coverage {{{1
 require("coverage").setup({
@@ -143,61 +171,28 @@ local lsp_installer = require("mason-lspconfig")
 lsp_installer.setup()
 
 local lspconfig = require("lspconfig")
-require('mason-lspconfig').setup_handlers({
-  function(server_name)
-    lspconfig[server_name].setup({
-      on_attach = on_attach,
-      capabilities = capabilities
-    })
-  end,
-})
-
--- Null LS {{{1
--- https://github.com/jose-elias-alvarez/null-ls.nvim
-local null_ls = require("null-ls")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.vale,          -- markdown
-    null_ls.builtins.diagnostics.stylelint,     -- css
-
-    null_ls.builtins.formatting.clang_format.with({
-        filetypes = { "c", "cpp" }
-    }),
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.formatting.eslint,
-    null_ls.builtins.formatting.prettier.with({ filetypes = { "astro", "javascript", "typescript", "css", "scss", "json", "yaml", "markdown" } }),
-
-    null_ls.builtins.formatting.black,        -- python
-    null_ls.builtins.formatting.isort,
-    --require("null-ls").builtins.formatting.stylua,
-    --require("null-ls").builtins.completion.spell,
-  },
-  diagnostics_format = "#{m}",
-  debounce = 250,
-  default_timeout = 5000,
-  update_on_insert = false,
-  debug = false,
-  capabilities = capabilities,
-
-  on_attach = function(client, bufnr)
-        -- If a client supports formatting, auto format on save.
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        "astro",
+        "csharp_ls",
+        "cssls",
+        "html",
+        "jsonls",
+        "ltex",
+        "marksman",
+        "pyright",
+        "ruff_lsp",
+        "tsserver",
+        "vale_ls",
+    },
+    handlers = {
+        function(server_name)
+            lspconfig[server_name].setup({
+                on_attach = on_attach,
+                capabilities = capabilities
             })
-        end
-
-        -- null-ls messes with formatexpr for some reason, which messes up `gq`
-        -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-        vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
-    end
+        end,
+    }
 })
 
 -- Nvim devicons {{{1

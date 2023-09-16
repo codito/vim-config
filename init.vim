@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 16/09/2023, 16:08:02 +0530
+" Last Modified: 16/09/2023, 16:17:21 +0530
 
 " Platform {{{1
 "
@@ -39,17 +39,16 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'edluffy/hologram.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'folke/twilight.nvim'
+Plug 'folke/zen-mode.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'konfekt/fastfold'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -70,6 +69,7 @@ Plug 'romgrk/nvim-treesitter-context'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
+Plug 'stevearc/conform.nvim'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
@@ -333,9 +333,6 @@ endif
 " Glow {{{2
 noremap <leader>p :Glow<CR>
 
-" Goyo {{{2
-let g:goyo_width=&textwidth
-
 " Gruvbox color {{{2
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_diagnostic_text_highlight = 1
@@ -347,10 +344,6 @@ augroup lexical
     autocmd!
     autocmd FileType markdown call lexical#init()
 augroup END
-
-" Limelight {{{2
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
 
 " Markdown {{{2
 let g:vim_markdown_frontmatter = 1
