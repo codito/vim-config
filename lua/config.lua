@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 16/09/2023, 13:48:12 +0530
+-- Last modified: 16/09/2023, 16:09:33 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -23,15 +23,18 @@ vim.g.codeium_disable_bindings = 1
 vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
 vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
 vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+-- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+
 
 -- Comment {{{1
 require('Comment').setup()
+
 
 -- Coverage {{{1
 require("coverage").setup({
     auto_reload = true
 })
+
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
@@ -290,11 +293,32 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- Thesaurus {{{1
-function GetSynonymForWordUnderCursor()
-    local word = vim.fn.expand("<cword>")
-    vim.cmd("Thesaurus " .. word)
+vim.cmd [[
+func Thesaur(findstart, base)
+  if a:findstart
+    return searchpos('\<', 'bnW', line('.'))[1] - 1
+  endif
+  let res = []
+  let h = ''
+  for l in systemlist('aiksaurus ' .. shellescape(a:base))
+    if l[:3] == '=== '
+      let h = '(' .. substitute(l[4:], ' =*$', ')', '')
+    elseif l ==# 'Alphabetically similar known words are: '
+      let h = "\U0001f52e"
+    elseif l[0] =~ '\a' || (h ==# "\U0001f52e" && l[0] ==# "\t")
+      call extend(res, map(split(substitute(l, '^\t', '', ''), ', '), {_, val -> {'word': val, 'menu': h}}))
+    endif
+  endfor
+  return res
+endfunc
+]]
+vim.opt.thesaurusfunc = "Thesaur"
+
+function ShowSynonymsForWordUnderCursor()
+  local word = vim.fn.expand("<cword>")
+  vim.cmd("Thesaurus " .. word)
 end
-vim.keymap.set("n", "<leader>ct", ":lua GetSynonymForWordUnderCursor()<CR><CR>", { noremap = true })
+vim.keymap.set('n', '<leader>ct', ShowSynonymsForWordUnderCursor, { noremap = true })
 
 -- Trouble {{{1
 -- https://github.com/folke/trouble.nvim

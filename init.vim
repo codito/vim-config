@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 16/09/2023, 09:17:24 +0530
+" Last Modified: 16/09/2023, 16:08:02 +0530
 
 " Platform {{{1
 "
@@ -160,7 +160,7 @@ nnoremap <silent><C-F4> :bdelete<CR>
 " Omnicomplete {{{2
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,noselect,preview
+set completeopt=menuone,menu,longest,noinsert,noselect,preview
 set shortmess+=c            " do not pass short messages to completion menu
 
 " Search {{{2
