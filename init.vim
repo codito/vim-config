@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 16/09/2023, 16:17:21 +0530
+" Last Modified: 30/09/2023, 09:22:34 +0530
 
 " Platform {{{1
 "
@@ -34,6 +34,7 @@ endif
 silent! if plug#begin(s:pluginDir)
 
 Plug 'andythigpen/nvim-coverage'
+Plug 'brenoprata10/nvim-highlight-colors'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'edluffy/hologram.nvim'

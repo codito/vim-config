@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 20/09/2023, 22:36:46 +0530
+-- Last modified: 30/09/2023, 09:23:11 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -63,6 +63,9 @@ require("coverage").setup({
     auto_reload = true
 })
 
+
+-- Highlight colors {{{1
+require('nvim-highlight-colors').setup {}
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
