@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 30/09/2023, 09:23:11 +0530
+-- Last modified: 24/10/2023, 12:52:13 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -69,7 +69,7 @@ require('nvim-highlight-colors').setup {}
 
 -- Hologram {{{1
 -- https://github.com/edluffy/hologram.nvim
-if os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm" and vim.g.vscode == nil then
+if (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm") and vim.g.vscode == nil and not vim.g.neovide then
     require('hologram').setup{
         auto_display = true -- WIP automatic markdown image display, may be prone to breaking
     }

@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 30/09/2023, 09:22:34 +0530
+" Last Modified: 21/10/2023, 08:52:43 +0530
 
 " Platform {{{1
 "
@@ -184,7 +184,7 @@ set tags=tags,./tags,../,../..
 filetype plugin on          " enable plugin support
 
 " GUI {{{2
-if has("gui") || exists("nvy") || exists("GuiLoaded") || exists("g:neoray")
+if has("gui") || exists("nvy") || exists("GuiLoaded") || exists("g:neovide")
     "set guifont=Cascadia\ Code:h12
     "set guifont=Cascadia\ Code\ PL:h12
     "set guifont=Delugia:h12
