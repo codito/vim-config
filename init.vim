@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 06/11/2023, 21:46:29 +0530
+" Last Modified: 25/11/2023, 21:10:30 +0530
 
 " Platform {{{1
 "
@@ -71,17 +71,14 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/conform.nvim'
+Plug 'tabbyml/vim-tabby'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
+Plug 'uga-rosa/cmp-dictionary'
 Plug 'vim-scripts/timestamp.vim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-
-" Linux only plugins {{{2
-if GetPlatform() == "nix"
-    Plug 'exafunction/codeium.vim'
-endif
 
 " Colors {{{2
 "
@@ -142,7 +139,7 @@ set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
-set signcolumn=auto:1       " do not shift text when error message shows
+set signcolumn=no           " disabled/do not shift text when error message shows
 
 " Ruler and status {{{2
 set rulerformat=
