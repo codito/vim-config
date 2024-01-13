@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 07/01/2024, 18:15:09 +0530
+-- Last modified: 13/01/2024, 08:39:54 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -24,7 +24,7 @@ require("conform").setup({
         css = { "stylelint" },
         -- lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { "ruff_format" },
         -- Use a sub-list to run only the first available formatter
         astro = { "prettier" },
         javascript = { "prettier" },
@@ -56,13 +56,14 @@ require("coverage").setup({
 -- Highlight colors {{{1
 require('nvim-highlight-colors').setup {}
 
--- Hologram {{{1
--- https://github.com/edluffy/hologram.nvim
+-- Image {{{1
+-- https://github.com/3rd/image.nvim
 if (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm") and vim.g.vscode == nil and not vim.g.neovide then
-    require('hologram').setup{
-        auto_display = true -- WIP automatic markdown image display, may be prone to breaking
-    }
+    require("image").setup({})
 end
+
+-- Lazygit {{{1
+vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>')
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
@@ -201,6 +202,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+-- Neotest {{{1
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+    require("neotest-dotnet"),
+  },
+})
+
+vim.keymap.set('n', '<leader>tr', '<cmd>lua require("neotest").run.run()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ta', '<cmd>lua require("neotest").run.run({suite = true})<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tx', '<cmd>lua require("neotest").run.stop()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>td', '<cmd>lua require("neotest").run.attach()<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>td', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>to', ':lua require("neotest").output.open({enter = true})<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ts', ':lua require("neotest").summary.toggle()<CR>', { noremap = true, silent = true })
 
 -- Nvim devicons {{{1
 require('nvim-web-devicons').setup({

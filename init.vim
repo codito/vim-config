@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 25/11/2023, 21:10:30 +0530
+" Last Modified: 13/01/2024, 08:32:51 +0530
 
 " Platform {{{1
 "
@@ -33,11 +33,12 @@ endif
 "
 silent! if plug#begin(s:pluginDir)
 
+Plug '3rd/image.nvim', { 'for': 'markdown' } 
 Plug 'andythigpen/nvim-coverage'
+Plug 'antoinemadec/FixCursorHold.nvim'      " for neotest
 Plug 'brenoprata10/nvim-highlight-colors'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'edluffy/hologram.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'folke/twilight.nvim'
@@ -48,8 +49,10 @@ Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'issafalcon/neotest-dotnet'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'konfekt/fastfold'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -60,20 +63,21 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-python'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
-Plug 'preservim/vim-pencil'
-Plug 'preservim/vim-lexical'
+Plug 'preservim/vim-pencil', { 'for': 'markdown' }
+Plug 'preservim/vim-lexical', { 'for': 'markdown' }
 Plug 'rafamadriz/friendly-snippets'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/conform.nvim'
-Plug 'tabbyml/vim-tabby'
+Plug 'tabbyml/vim-tabby', { 'on': 'Tabby' }
 Plug 'thaerkh/vim-workspace'
-Plug 'tpope/vim-fugitive'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'uga-rosa/cmp-dictionary'
 Plug 'vim-scripts/timestamp.vim'
@@ -424,6 +428,13 @@ inoremap <expr> <leader>tb strftime("%Y-%m-%d %H:%M")
 inoremap <expr> <leader>tj "[".strftime("%Y-%m-%d")."]"."(./journal/".strftime("%Y-%m-%d").".md)"
 
 " Load lua based plugin configuration {{{1
+" Setup local luarock packages
+" Required for image.nvim for now
+lua << EOF
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
+EOF
+
 lua require("impatient")
 lua require("config")
 
