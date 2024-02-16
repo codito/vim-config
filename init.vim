@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 13/01/2024, 08:32:51 +0530
+" Last Modified: 16/02/2024, 19:40:33 +0530
 
 " Platform {{{1
 "
@@ -31,9 +31,15 @@ endif
 
 " Plugins {{{1
 "
+function! PlugIf(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+let s:platform = GetPlatform()
+
 silent! if plug#begin(s:pluginDir)
 
-Plug '3rd/image.nvim', { 'for': 'markdown' } 
+Plug '3rd/image.nvim', PlugIf(GetPlatform() == 'nix', { 'for': 'markdown' })
 Plug 'andythigpen/nvim-coverage'
 Plug 'antoinemadec/FixCursorHold.nvim'      " for neotest
 Plug 'brenoprata10/nvim-highlight-colors'

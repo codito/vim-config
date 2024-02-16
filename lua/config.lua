@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 13/01/2024, 08:39:54 +0530
+-- Last modified: 16/02/2024, 19:40:21 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -58,7 +58,7 @@ require('nvim-highlight-colors').setup {}
 
 -- Image {{{1
 -- https://github.com/3rd/image.nvim
-if (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm") and vim.g.vscode == nil and not vim.g.neovide then
+if vim.fn.GetPlatform() == "nix" and (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm") and vim.g.vscode == nil and not vim.g.neovide then
     require("image").setup({})
 end
 
