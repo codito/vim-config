@@ -26,7 +26,12 @@ if GetPlatform() == "win"
     let s:sessionDir = $HOME . "/vimfiles/sessions"
     let s:snippetsDir = $HOME . "/vimfiles/snips"
     let g:skip_loading_mswin = 1    " don't need the shortcuts
-    behave mswin
+
+    # `behave mswin` replace for nvim >=0.10
+    set selection=exclusive
+    set selectmode=mouse,key
+    set mousemodel=popup
+    set keymodel=startsel,stopsel
 endif
 
 " Plugins {{{1
