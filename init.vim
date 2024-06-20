@@ -76,6 +76,7 @@ Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
