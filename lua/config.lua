@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 16/02/2024, 19:40:21 +0530
+-- Last modified: 23/03/2024, 10:26:38 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -229,7 +229,14 @@ require('nvim-web-devicons').setup({
 
 -- Nvim tree {{{1
 require('nvim-tree').setup({
-  update_cwd = false
+  update_cwd = false,
+  filesystem_watchers = {
+    enable = false,
+    debounce_delay = 50,
+    ignore_dirs = {
+      "node_modules"
+    },
+  },
 })
 
 -- TabbyML {{{1

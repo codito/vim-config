@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 16/02/2024, 19:40:33 +0530
+" Last Modified: 02/06/2024, 19:19:39 +0530
 
 " Platform {{{1
 "
@@ -75,6 +75,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-neotest/neotest-python'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -98,6 +99,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 " Colors {{{2
 "
+Plug 'kepano/flexoki-neovim'
 Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
@@ -141,7 +143,7 @@ if exists('+termguicolors')
     let &t_Ce = "\e[24m"
     set termguicolors
 endif
-set background=dark
+set background=light
 set foldmethod=syntax       " default fold by syntax
 set number		    " enable line number
 set nocp                    " don't be vi compatible
@@ -352,6 +354,7 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_diagnostic_text_highlight = 1
 let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
+" colorscheme flexoki-light
 
 " Lexical {{{2
 augroup lexical
