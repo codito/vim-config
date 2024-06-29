@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 02/06/2024, 19:19:39 +0530
+" Last Modified: 29/06/2024, 15:47:17 +0530
 
 " Platform {{{1
 "
@@ -75,10 +75,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-python', { 'for': 'python' }
 Plug 'nvim-neotest/nvim-nio'
-Plug 'nvim-neotest/neotest-python'
-Plug 'nvim-neotest/nvim-nio'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'pocco81/DAPInstall.nvim'
 Plug 'preservim/vim-pencil', { 'for': 'markdown' }
@@ -86,6 +85,7 @@ Plug 'preservim/vim-lexical', { 'for': 'markdown' }
 Plug 'rafamadriz/friendly-snippets'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ron89/thesaurus_query.vim'
+Plug 'rouge8/neotest-rust', { 'for': 'rust' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/conform.nvim'
@@ -404,12 +404,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 " Trouble {{{2
 " See lua/config.lua for configuration
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 
 " Vim-workspace {{{2

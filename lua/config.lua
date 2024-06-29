@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 23/03/2024, 10:26:38 +0530
+-- Last modified: 29/06/2024, 15:51:42 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -210,6 +210,7 @@ require("neotest").setup({
       dap = { justMyCode = false },
     }),
     require("neotest-dotnet"),
+    require("neotest-rust")
   },
 })
 
@@ -357,6 +358,11 @@ vim.keymap.set('n', '<leader>ct', ShowSynonymsForWordUnderCursor, { noremap = tr
 -- https://github.com/folke/trouble.nvim
 require("trouble").setup {
 }
+vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>')
+vim.keymap.set('n', '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
+vim.keymap.set('n', '<leader>xq', '<cmd>Trouble qflist toggle<cr>')
+vim.keymap.set('n', '<leader>xl', '<cmd>Trouble loclist toggle<cr>')
+vim.keymap.set('n', 'gR', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>')
 
 -- vim: foldmethod=marker
 -- EOF
