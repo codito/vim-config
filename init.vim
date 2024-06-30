@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 29/06/2024, 15:47:17 +0530
+" Last Modified: 29/06/2024, 15:57:41 +0530
 
 " Platform {{{1
 "
@@ -401,10 +401,6 @@ let g:timestamp_rep = "%d/%m/%Y, %T %z"
 " See lua/config.lua for configuration
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
-" Trouble {{{2
-" See lua/config.lua for configuration
-
 
 " Vim-workspace {{{2
 let g:workspace_session_directory = s:sessionDir
