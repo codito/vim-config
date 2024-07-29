@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 29/06/2024, 15:51:42 +0530
+-- Last modified: 29/07/2024, 22:53:57 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -52,6 +52,50 @@ require("coverage").setup({
     auto_reload = true
 })
 
+
+-- Gen.nvim {{{1
+-- For reference, see https://github.com/JoseConseco/nvim_config/blob/master/lua/nv_gen-nvim/init.lua
+local gemma_stop = {"<end_of_turn>"}
+local gemma_wrap = function(s)
+    return "<bos><start_of_turn>user\n" .. s .. "<end_of_turn>\n<start_of_turn>model\n"
+end
+local codegeex_stop = {"<|user|>", "<|im_end|>"}
+local codegeex_sys_prompt = "You are an intelligent programming assistant named CodeGeeX. You will answer any questions users have about programming, coding, and computers, and provide code that is formatted correctly."
+local codegeex_wrap = function(s)
+    return "<|system|>\n" .. codegeex_sys_prompt .. "\n<|user|>\n" .. s .. "\n<|assistant|>\n"
+end
+
+local model_wrap = gemma_wrap
+local stop_words = gemma_stop
+
+-- Update local prompts by wrapping them with the selected model
+local prompts = require("gen").prompts
+for prompt_key, prompt_val in pairs(prompts) do
+    prompt_val.prompt = model_wrap(prompt_val.prompt)
+end
+
+require('gen').setup({
+  display_mode = "split", -- The display mode. Can be "float" or "split".
+  show_prompt = false, -- Shows the Prompt submitted to Ollama.
+  show_model = false, -- Displays which model you are using at the beginning of your chat session.
+  no_auto_close = false, -- Never closes the window automatically.
+  -- init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+  command = [[curl --request POST \
+  --url http://localhost:8080/v1/chat/completions \
+  --header "Content-Type: application/json" \
+  --data $body]], -- llamacpp server
+  model_options = {
+    temperature = 0,
+    min_p = 0.2,
+    n_predict = 512,
+    stop = stop_words
+  },
+  -- list models works with ollama only
+  list_models = '<omitted lua function>', -- Retrieves a list of model names
+  debug = false -- Prints errors and the command which is run.
+})
+
+vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
 -- Highlight colors {{{1
 require('nvim-highlight-colors').setup {}

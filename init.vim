@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 29/06/2024, 15:57:41 +0530
+" Last Modified: 29/07/2024, 21:23:01 +0530
 
 " Platform {{{1
 "
@@ -48,6 +48,7 @@ Plug '3rd/image.nvim', PlugIf(GetPlatform() == 'nix', { 'for': 'markdown' })
 Plug 'andythigpen/nvim-coverage'
 Plug 'antoinemadec/FixCursorHold.nvim'      " for neotest
 Plug 'brenoprata10/nvim-highlight-colors'
+Plug 'david-kunz/gen.nvim'
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ellisonleao/glow.nvim'
