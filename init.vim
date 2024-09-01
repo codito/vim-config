@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 01/09/2024, 09:52:34 +0530
+" Last Modified: 01/09/2024, 19:59:27 +0530
 
 " Platform {{{1
 "
@@ -68,6 +68,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'l3mon4d3/luasnip'
 Plug 'lewis6991/impatient.nvim'
 Plug 'mattn/calendar-vim'
+Plug 'milanglacier/minuet-ai.nvim', PlugIf(GetPlatform() == 'nix', {})
 Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'

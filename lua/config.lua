@@ -1,6 +1,10 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/09/2024, 09:52:08 +0530
+-- Last modified: 01/09/2024, 20:11:14 +0530
+
+-- Include other configurations
+-- LLMs {{{1
+require('llm')
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -17,26 +21,6 @@ vim.keymap.set('n', '<leader>tt', '<cmd>AerialToggle! right<CR>')
 
 -- Comment {{{1
 require('Comment').setup()
-
--- CodeCompanion {{{1
-require("codecompanion").setup({
-  adapters = {
-    openai = function()
-      return require("codecompanion.adapters").extend("openai", {
-        url = "http://localhost:8080/v1/chat/completions"
-      })
-    end,
-  },
-})
-
-vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<LocalLeader>a", "<cmd>CodeCompanionToggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<LocalLeader>a", "<cmd>CodeCompanionToggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionAdd<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
 
 -- Conform {{{1
 require("conform").setup({
@@ -71,51 +55,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 require("coverage").setup({
     auto_reload = true
 })
-
-
--- Gen.nvim {{{1
--- For reference, see https://github.com/JoseConseco/nvim_config/blob/master/lua/nv_gen-nvim/init.lua
-local gemma_stop = {"<end_of_turn>"}
-local gemma_wrap = function(s)
-    return "<bos><start_of_turn>user\n" .. s .. "<end_of_turn>\n<start_of_turn>model\n"
-end
-local codegeex_stop = {"<|user|>", "<|im_end|>"}
-local codegeex_sys_prompt = "You are an intelligent programming assistant named CodeGeeX. You will answer any questions users have about programming, coding, and computers, and provide code that is formatted correctly."
-local codegeex_wrap = function(s)
-    return "<|system|>\n" .. codegeex_sys_prompt .. "\n<|user|>\n" .. s .. "\n<|assistant|>\n"
-end
-
-local model_wrap = gemma_wrap
-local stop_words = gemma_stop
-
--- Update local prompts by wrapping them with the selected model
--- local prompts = require("gen").prompts
--- for prompt_key, prompt_val in pairs(prompts) do
---     prompt_val.prompt = model_wrap(prompt_val.prompt)
--- end
-
--- require('gen').setup({
---   display_mode = "split", -- The display mode. Can be "float" or "split".
---   show_prompt = false, -- Shows the Prompt submitted to Ollama.
---   show_model = false, -- Displays which model you are using at the beginning of your chat session.
---   no_auto_close = false, -- Never closes the window automatically.
---   -- init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
---   command = [[curl --request POST \
---   --url http://localhost:8080/v1/chat/completions \
---   --header "Content-Type: application/json" \
---   --data $body]], -- llamacpp server
---   model_options = {
---     temperature = 0,
---     min_p = 0.2,
---     n_predict = 512,
---     stop = stop_words
---   },
---   -- list models works with ollama only
---   list_models = '<omitted lua function>', -- Retrieves a list of model names
---   debug = false -- Prints errors and the command which is run.
--- })
---
--- vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
 -- Highlight colors {{{1
 require('nvim-highlight-colors').setup {}
@@ -166,7 +105,7 @@ cmp.setup({
       require'luasnip'.lsp_expand(args.body)
     end
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -190,7 +129,8 @@ cmp.setup({
     end, { "i", "s" }),
 
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }
+    ['<A-y>'] = require('minuet').make_cmp_map(),
+  }),
 })
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
