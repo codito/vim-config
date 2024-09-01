@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 29/07/2024, 21:23:01 +0530
+" Last Modified: 01/09/2024, 09:52:34 +0530
 
 " Platform {{{1
 "
@@ -48,7 +48,6 @@ Plug '3rd/image.nvim', PlugIf(GetPlatform() == 'nix', { 'for': 'markdown' })
 Plug 'andythigpen/nvim-coverage'
 Plug 'antoinemadec/FixCursorHold.nvim'      " for neotest
 Plug 'brenoprata10/nvim-highlight-colors'
-Plug 'david-kunz/gen.nvim'
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ellisonleao/glow.nvim'
@@ -62,8 +61,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'issafalcon/neotest-dotnet'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'konfekt/fastfold'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -78,8 +75,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python', { 'for': 'python' }
 Plug 'nvim-neotest/nvim-nio'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'olimorris/codecompanion.nvim', PlugIf(GetPlatform() == 'nix')
 Plug 'pocco81/DAPInstall.nvim'
 Plug 'preservim/vim-pencil', { 'for': 'markdown' }
 Plug 'preservim/vim-lexical', { 'for': 'markdown' }
@@ -90,7 +89,7 @@ Plug 'rouge8/neotest-rust', { 'for': 'rust' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/conform.nvim'
-Plug 'tabbyml/vim-tabby', { 'on': 'Tabby' }
+Plug 'stevearc/dressing.nvim'
 Plug 'thaerkh/vim-workspace'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'uga-rosa/cmp-dictionary'
@@ -299,54 +298,6 @@ au FileType xml setlocal et sw=2 sts=2 ts=2 ai
 " Plugins {{{1
 "
 
-" Ctrl-p {{{2
-" Ignore node_modules and bower_components
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|bower_components|bin|obj|dll|exe|lib)$'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" Fugitive {{{2
-nmap <leader>gs :Git<cr>
-nmap <leader>gc :Git commit<cr>
-nmap <leader>gp :Git push<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Gclog<cr>
-nmap <leader>gd :Gdiffsplit<cr>
-nmap <leader>g2 :diffget //2<cr>
-nmap <leader>g3 :diffget //3<cr>
-nmap <leader>g0 :Gwrite!<cr>
-
-" Fzf {{{2
-" Customize fzf colors to match your color scheme
-" - fzf#wrap translates this to a set of `--color` options
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-\ 'bg':      ['bg', 'Normal'],
-\ 'hl':      ['fg', 'Comment'],
-\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-\ 'hl+':     ['fg', 'Statement'],
-\ 'info':    ['fg', 'PreProc'],
-\ 'border':  ['fg', 'Ignore'],
-\ 'prompt':  ['fg', 'Conditional'],
-\ 'pointer': ['fg', 'Exception'],
-\ 'marker':  ['fg', 'Keyword'],
-\ 'spinner': ['fg', 'Label'],
-\ 'header':  ['fg', 'Comment'] }
-
-" replace Ctrl-p
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
-nnoremap <silent> <leader>A :Windows<CR>
-nnoremap <silent> <leader>; :BLines<CR>
-nnoremap <silent> <leader>o :BTags<CR>
-nnoremap <silent> <leader>O :Tags<CR>
-nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :Rg<CR>
-
-if executable("fd")
-    let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-endif
-
 " Glow {{{2
 noremap <leader>p :Glow<CR>
 
@@ -450,5 +401,5 @@ if filereadable(expand(s:localFile))
     exe "source " . s:localFile
 endif
 
-" vim: foldmethod=marker fileformat=unix
+" vim: foldmethod=marker fileformat=unix foldmarker={{{,}}}
 " EOF

@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 29/07/2024, 22:53:57 +0530
+-- Last modified: 01/09/2024, 09:52:08 +0530
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -17,6 +17,26 @@ vim.keymap.set('n', '<leader>tt', '<cmd>AerialToggle! right<CR>')
 
 -- Comment {{{1
 require('Comment').setup()
+
+-- CodeCompanion {{{1
+require("codecompanion").setup({
+  adapters = {
+    openai = function()
+      return require("codecompanion.adapters").extend("openai", {
+        url = "http://localhost:8080/v1/chat/completions"
+      })
+    end,
+  },
+})
+
+vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<LocalLeader>a", "<cmd>CodeCompanionToggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<LocalLeader>a", "<cmd>CodeCompanionToggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionAdd<cr>", { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
 
 -- Conform {{{1
 require("conform").setup({
@@ -69,33 +89,33 @@ local model_wrap = gemma_wrap
 local stop_words = gemma_stop
 
 -- Update local prompts by wrapping them with the selected model
-local prompts = require("gen").prompts
-for prompt_key, prompt_val in pairs(prompts) do
-    prompt_val.prompt = model_wrap(prompt_val.prompt)
-end
+-- local prompts = require("gen").prompts
+-- for prompt_key, prompt_val in pairs(prompts) do
+--     prompt_val.prompt = model_wrap(prompt_val.prompt)
+-- end
 
-require('gen').setup({
-  display_mode = "split", -- The display mode. Can be "float" or "split".
-  show_prompt = false, -- Shows the Prompt submitted to Ollama.
-  show_model = false, -- Displays which model you are using at the beginning of your chat session.
-  no_auto_close = false, -- Never closes the window automatically.
-  -- init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
-  command = [[curl --request POST \
-  --url http://localhost:8080/v1/chat/completions \
-  --header "Content-Type: application/json" \
-  --data $body]], -- llamacpp server
-  model_options = {
-    temperature = 0,
-    min_p = 0.2,
-    n_predict = 512,
-    stop = stop_words
-  },
-  -- list models works with ollama only
-  list_models = '<omitted lua function>', -- Retrieves a list of model names
-  debug = false -- Prints errors and the command which is run.
-})
-
-vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
+-- require('gen').setup({
+--   display_mode = "split", -- The display mode. Can be "float" or "split".
+--   show_prompt = false, -- Shows the Prompt submitted to Ollama.
+--   show_model = false, -- Displays which model you are using at the beginning of your chat session.
+--   no_auto_close = false, -- Never closes the window automatically.
+--   -- init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+--   command = [[curl --request POST \
+--   --url http://localhost:8080/v1/chat/completions \
+--   --header "Content-Type: application/json" \
+--   --data $body]], -- llamacpp server
+--   model_options = {
+--     temperature = 0,
+--     min_p = 0.2,
+--     n_predict = 512,
+--     stop = stop_words
+--   },
+--   -- list models works with ollama only
+--   list_models = '<omitted lua function>', -- Retrieves a list of model names
+--   debug = false -- Prints errors and the command which is run.
+-- })
+--
+-- vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
 
 -- Highlight colors {{{1
 require('nvim-highlight-colors').setup {}
@@ -284,9 +304,11 @@ require('nvim-tree').setup({
   },
 })
 
--- TabbyML {{{1
-vim.g.tabby_keybinding_accept = '<C-g>'
-vim.g.tabby_keybinding_trigger_or_dismiss = '<C-\\>'
+
+-- Telescope {{{1
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
 
 -- Tree sitter {{{1
 -- https://github.com/nvim-treesitter/nvim-treesitter
@@ -408,5 +430,5 @@ vim.keymap.set('n', '<leader>xq', '<cmd>Trouble qflist toggle<cr>')
 vim.keymap.set('n', '<leader>xl', '<cmd>Trouble loclist toggle<cr>')
 vim.keymap.set('n', 'gR', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>')
 
--- vim: foldmethod=marker
+-- vim: foldmethod=marker foldmarker={{{,}}}
 -- EOF
