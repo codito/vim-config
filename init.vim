@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 02/09/2024, 21:09:24 +0530
+" Last Modified: 03/09/2024, 21:11:37 +0530
 
 " Platform {{{1
 "

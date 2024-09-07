@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/09/2024, 20:11:14 +0530
+-- Last modified: 07/09/2024, 08:45:35 +0530
 
 -- Include other configurations
 -- LLMs {{{1
@@ -73,7 +73,7 @@ vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>')
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Set client settings
-  if client.name == "tsserver" then
+  if client.name == "ts_ls" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
@@ -155,8 +155,7 @@ require('mason-lspconfig').setup({
         "marksman",
         "pyright",
         "ruff_lsp",
-        "tsserver",
-        "vale_ls",
+        "ts_ls",
     },
     handlers = {
         function(server_name)
@@ -249,6 +248,14 @@ require('nvim-tree').setup({
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
+
+require('telescope').setup({
+  extensions = {
+    file_browser = {
+      git_status = false
+    }
+  }
+})
 
 -- Tree sitter {{{1
 -- https://github.com/nvim-treesitter/nvim-treesitter

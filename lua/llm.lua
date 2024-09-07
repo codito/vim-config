@@ -1,13 +1,17 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 01/09/2024, 22:08:33 +0530
+-- Last modified: 03/09/2024, 21:14:26 +0530
 
 -- CodeCompanion {{{1
 require("codecompanion").setup({
     adapters = {
         openai = function()
             return require("codecompanion.adapters").extend("openai", {
-                url = "http://localhost:8080/v1/chat/completions"
+                url = "http://localhost:8080/v1/chat/completions",
+                schema = {
+                    temperature = { default = 0.0 },
+                    max_tokens = { default = 512 }
+                }
             })
         end,
     },
