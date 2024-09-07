@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 03/09/2024, 21:11:37 +0530
+" Last Modified: 08/09/2024, 00:32:08 +0530
 
 " Platform {{{1
 "
@@ -70,6 +70,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'mattn/calendar-vim'
 Plug 'milanglacier/minuet-ai.nvim',
 Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numtostr/comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -80,10 +81,10 @@ Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'olimorris/codecompanion.nvim',
-Plug 'pocco81/DAPInstall.nvim'
 Plug 'preservim/vim-pencil', { 'for': 'markdown' }
 Plug 'preservim/vim-lexical', { 'for': 'markdown' }
 Plug 'rafamadriz/friendly-snippets'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'rouge8/neotest-rust', { 'for': 'rust' }
@@ -91,7 +92,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/conform.nvim'
 Plug 'stevearc/dressing.nvim'
-Plug 'thaerkh/vim-workspace'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'uga-rosa/cmp-dictionary'
 Plug 'vim-scripts/timestamp.vim'
@@ -118,7 +118,7 @@ set autoread                " read open files again when changed outside Vim
 set autowrite               " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " define backspace behavior
 set bufhidden=delete        " delete hidden buffers, changes will be lost!
-set switchbuf=split,usetab  " split/open new tab while switching buffers, for quickfix
+" set switchbuf=split,usetab  " split/open new tab while switching buffers, for quickfix
 
 " Directories and files {{{2
 set noautochdir                 " don't switch directory to current file
@@ -158,7 +158,7 @@ set noequalalways           " for :split don't split space equally
 "set winheight=99999 winminheight=0  " rolodex look for vim
 set visualbell              " oh no beeps please!
 set cursorline              " highlight the line our cursor is in
-set signcolumn=no           " disabled/do not shift text when error message shows
+set signcolumn=number       " use the line number for signs (test, debug etc.)
 
 " Ruler and status {{{2
 set rulerformat=
@@ -215,11 +215,6 @@ endif
 " Generic {{{2
 " Filetype plugin
 filetype plugin indent on
-" Quickfix mode shortcuts
-nmap <silent><F9> :make<cr>
-nmap <silent><F10> :cl<cr>
-nmap <silent><F11> :cp<cr>
-nmap <silent><F12> :cn<cr>
 
 " C/C++ {{{2
 " Quickfix mode: command line msbuild error format
@@ -354,12 +349,6 @@ let g:timestamp_rep = "%d/%m/%Y, %T %z"
 " See lua/config.lua for configuration
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
-" Vim-workspace {{{2
-let g:workspace_session_directory = s:sessionDir
-let g:workspace_autosave_untrailspaces = 0
-let g:workspace_persist_undo_history = 0
-let g:workspace_autosave = 0    " disable autosave, it generates too much disk io
 
 " Extensions and utils {{{1
 "

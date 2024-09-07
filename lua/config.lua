@@ -1,9 +1,9 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 07/09/2024, 10:22:33 +0530
+-- Last modified: 07/09/2024, 23:45:51 +0530
 
 -- Include other configurations
--- LLMs {{{1
+require("diag")
 require("llm")
 
 -- Aerial {{{1
@@ -251,13 +251,18 @@ vim.keymap.set(
   '<cmd>lua require("neotest").run.stop()<CR>',
   { noremap = true, silent = true }
 )
+-- vim.keymap.set(
+--   "n",
+--   "<leader>td",
+--   '<cmd>lua require("neotest").run.attach()<CR>',
+--   { noremap = true, silent = true }
+-- )
 vim.keymap.set(
   "n",
   "<leader>td",
-  '<cmd>lua require("neotest").run.attach()<CR>',
+  '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',
   { noremap = true, silent = true }
 )
--- vim.keymap.set('n', '<leader>td', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', { noremap = true, silent = true })
 vim.keymap.set(
   "n",
   "<leader>to",
