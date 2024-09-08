@@ -1,10 +1,11 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 07/09/2024, 23:45:51 +0530
+-- Last modified: 08/09/2024, 21:48:18 +0530
 
 -- Include other configurations
-require("diag")
-require("llm")
+require("diag") -- Debugger, DAP setup
+require("test") -- Test run, coverage configurations
+require("llm") -- AI and LLM configurations
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -49,11 +50,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(args)
     require("conform").format({ bufnr = args.buf })
   end,
-})
-
--- Coverage {{{1
-require("coverage").setup({
-  auto_reload = true,
 })
 
 -- Highlight colors {{{1
@@ -215,66 +211,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, opts)
   end,
 })
-
--- Neotest {{{1
-require("neotest").setup({
-  adapters = {
-    require("neotest-python")({
-      dap = { justMyCode = false },
-    }),
-    require("neotest-dotnet"),
-    require("neotest-rust"),
-  },
-})
-
-vim.keymap.set(
-  "n",
-  "<leader>tr",
-  '<cmd>lua require("neotest").run.run()<CR>',
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "<leader>tf",
-  '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "<leader>ta",
-  '<cmd>lua require("neotest").run.run({suite = true})<CR>',
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "<leader>tx",
-  '<cmd>lua require("neotest").run.stop()<CR>',
-  { noremap = true, silent = true }
-)
--- vim.keymap.set(
---   "n",
---   "<leader>td",
---   '<cmd>lua require("neotest").run.attach()<CR>',
---   { noremap = true, silent = true }
--- )
-vim.keymap.set(
-  "n",
-  "<leader>td",
-  '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "<leader>to",
-  ':lua require("neotest").output.open({enter = true})<CR>',
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "<leader>ts",
-  ':lua require("neotest").summary.toggle()<CR>',
-  { noremap = true, silent = true }
-)
 
 -- Nvim devicons {{{1
 require("nvim-web-devicons").setup({

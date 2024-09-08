@@ -1,16 +1,43 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 07/09/2024, 10:23:11 +0530
+-- Last modified: 08/09/2024, 22:22:22 +0530
 
 -- CodeCompanion {{{1
 require("codecompanion").setup({
-  opt = {
-    -- log_level = "TRACE"
-  },
   adapters = {
+    groq = function()
+      return require("codecompanion.adapters").extend("openai", {
+        url = "https://api.groq.com/openai/v1/chat/completions",
+        env = {
+          api_key = "GROQ_API_KEY",
+        },
+        schema = {
+          model = {
+            default = "llama-3.1-70b-versatile",
+          },
+          temperature = { default = 0.0 },
+          max_tokens = { default = 512 },
+        },
+        handlers = {
+          form_messages = function(self, messages)
+            -- Messages are of the form
+            -- [{role: user, content: x, id: num, opts: {} }]
+            -- Remove the `id` and `opts` params since Groq API is strict
+            local formatted_messages = {}
+            for i, message in ipairs(messages) do
+              table.insert(formatted_messages, {
+                role = message.role,
+                content = message.content,
+              })
+            end
+            return { messages = formatted_messages }
+          end,
+        },
+      })
+    end,
     localai = function()
       return require("codecompanion.adapters").extend("openai", {
-        url = "http://localhost:8000/v1/chat/completions",
+        url = "http://localhost:8080/v1/chat/completions",
         schema = {
           temperature = { default = 0.0 },
           max_tokens = { default = 512 },
@@ -68,7 +95,7 @@ require("codecompanion").setup({
   },
   opts = {
     force_role = true,
-    log_level = "TRACE",
+    -- log_level = "TRACE",
   },
 })
 
