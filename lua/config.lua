@@ -1,8 +1,9 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 08/09/2024, 21:48:18 +0530
+-- Last modified: 14/09/2024, 08:31:51 +0530
 
 -- Include other configurations
+require("edit") -- Editor setup
 require("diag") -- Debugger, DAP setup
 require("test") -- Test run, coverage configurations
 require("llm") -- AI and LLM configurations
@@ -58,7 +59,8 @@ require("nvim-highlight-colors").setup({})
 -- Image {{{1
 -- https://github.com/3rd/image.nvim
 if
-  vim.fn.GetPlatform() == "nix"
+  not vim.fn.has("win32")
+  and not vim.fn.has("win64")
   and (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm")
   and vim.g.vscode == nil
   and not vim.g.neovide
@@ -244,6 +246,8 @@ require("telescope").setup({
 
 -- Tree sitter {{{1
 -- https://github.com/nvim-treesitter/nvim-treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
