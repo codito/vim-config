@@ -1,6 +1,6 @@
 " NVIM config file
 " Created: Aug 2005 (see vimrc). Ported to neovim on 11/12/2021.
-" Last Modified: 08/09/2024, 00:32:08 +0530
+" Last Modified: 14/09/2024, 06:53:10 +0530
 
 " Platform {{{1
 "
@@ -100,8 +100,8 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 " Colors {{{2
 "
+Plug 'f4z3r/gruvbox-material.nvim'
 Plug 'kepano/flexoki-neovim'
-Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
 endif
