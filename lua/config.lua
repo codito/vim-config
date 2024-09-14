@@ -30,7 +30,7 @@ require("conform").setup({
     css = { "stylelint" },
     lua = { "stylua" },
     -- Conform will run multiple formatters sequentially
-    python = { "ruff_format" },
+    python = { "ruff_format", "ruff_organize_imports" },
     -- Use a sub-list to run only the first available formatter
     astro = { "prettier" },
     javascript = { "prettier" },
@@ -155,15 +155,16 @@ local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup({
   ensure_installed = {
     "astro",
+    "basedpyright",
     "csharp_ls",
     "cssls",
     "html",
     "jsonls",
     "ltex",
     "marksman",
-    "pyright",
     "ruff_lsp",
     "ts_ls",
+    "yaml-language-server",
   },
   handlers = {
     function(server_name)
