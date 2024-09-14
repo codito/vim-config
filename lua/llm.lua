@@ -101,13 +101,13 @@ require("codecompanion").setup({
 
 vim.api.nvim_set_keymap(
   "n",
-  "<C-a>",
+  "<LocalLeader>ca",
   "<cmd>CodeCompanionActions<cr>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "v",
-  "<C-a>",
+  "<LocalLeader>ca",
   "<cmd>CodeCompanionActions<cr>",
   { noremap = true, silent = true }
 )
@@ -132,6 +132,7 @@ vim.api.nvim_set_keymap(
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab ccc CodeCompanionChat]])
 
 -- Minuet {{{1
 require("minuet").setup({
