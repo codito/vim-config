@@ -48,16 +48,11 @@ vim.opt.bufhidden = "delete" -- delete hidden buffers, changes will be lost!
 vim.opt.autochdir = false -- don't switch directory to current file
 vim.opt.isfname:append("32") -- consider space as a valid filename char, useful for `gf`
 
--- Diff
-vim.opt.diffopt:append("vertical") -- vertical diffs are natural
-
 -- Platform-specific settings
 if getPlatform() == "win" then
-  vim.opt.backupdir = "~/vimfiles/tmp"
-  vim.opt.directory = "~/vimfiles/tmp"
+  vim.opt.backupdir = vim.fn.expand("~/vimfiles/tmp")
 else
-  vim.opt.backupdir = "~/.vim/tmp" -- isolate the swap files to some corner
-  vim.opt.directory = "~/.vim/tmp" -- directories for swap files
+  vim.opt.backupdir = vim.fn.expand("~/.vim/tmp") -- isolate the swap files to some corner
 end
 
 -- Diff
@@ -172,12 +167,12 @@ require("config")
 
 -- Local machine dependent mods {{{1
 --
-local localFile = "~/.local.vim"
+local localFile = vim.fn.expand("~/.local.vim")
 if getPlatform() == "win" then
   localFile = vim.fn.expand("~/local.vim")
 end
 
-if vim.fn.filereadable(vim.fn.expand(localFile)) then
+if vim.fn.filereadable(localFile) then
   vim.cmd("source " .. localFile)
 end
 

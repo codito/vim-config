@@ -1,6 +1,7 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
 -- Last updated: 14/09/2024, 08:27:54 +0530
+local Terminal = require("toggleterm.terminal").Terminal
 
 -- Language and filetypes {{{1
 -- C/C++
@@ -220,8 +221,31 @@ vim.api.nvim_set_keymap(
 )
 
 -- Glow {{{1
-vim.api.nvim_set_keymap("n", "<leader>p", ":Glow<CR>", {})
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>p",
+  "<cmd>TermExec cmd='glow % | less'<CR>",
+  { noremap = true, silent = true }
+)
 
+-- Lazygit {{{1
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  hidden = true,
+})
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>gg",
+  "<cmd>lua _lazygit_toggle()<CR>",
+  { noremap = true, silent = true }
+)
 -- Lexical {{{1
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
@@ -233,6 +257,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Markdown {{{1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_strikethrough = 1
+
+-- Mini.diff {{{1
+require("mini.diff").setup()
 
 -- Netrw plugin {{{1
 vim.g.netrw_browse_split = 3 -- all edits in new tab
@@ -250,12 +277,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.call("pencil#init", { wrap = "hard" })
   end,
 })
-vim.g.pencil_textwidth = vim.opt.textwidth:get()
-vim.g.pencil_conceallevel = 3
-vim.g.pencil_concealcursor = "c"
-
--- Disable autoformat to allow markdown bullets to work without auto joins with previous line
-vim.g.pencil_autoformat = 0
+vim.g["pencil#textwidth"] = vim.opt.textwidth:get()
+vim.g["pencil#conceallevel"] = 3
+vim.g["pencil#concealcursor"] = "c"
+vim.g["pencil#autoformat"] = 0 -- Disable autoformat to allow markdown bullets to work without auto joins with previous line
 
 -- Table mode {{{1
 -- Settings for vim-table-mode

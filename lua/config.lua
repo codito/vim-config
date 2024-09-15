@@ -68,9 +68,6 @@ then
   require("image").setup({})
 end
 
--- Lazygit {{{1
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
-
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -164,7 +161,7 @@ require("mason-lspconfig").setup({
     "marksman",
     "ruff_lsp",
     "ts_ls",
-    "yaml-language-server",
+    "yamlls",
   },
   handlers = {
     function(server_name)
@@ -362,6 +359,13 @@ vim.keymap.set(
   ShowSynonymsForWordUnderCursor,
   { noremap = true }
 )
+
+-- Toggleterm {{{1
+require("toggleterm").setup({
+  direction = "float",
+  open_mapping = [[<c-\>]],
+  autochdir = true,
+})
 
 -- Trouble {{{1
 -- https://github.com/folke/trouble.nvim
