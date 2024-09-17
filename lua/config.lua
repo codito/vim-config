@@ -7,6 +7,7 @@ require("edit") -- Editor setup
 require("diag") -- Debugger, DAP setup
 require("test") -- Test run, coverage configurations
 require("llm") -- AI and LLM configurations
+require("ui") -- UI settings
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
