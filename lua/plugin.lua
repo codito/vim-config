@@ -83,6 +83,7 @@ require("lazy").setup({
     { "stevearc/dressing.nvim" },
     { "tweekmonster/startuptime.vim" },
     { "uga-rosa/cmp-dictionary" },
+    { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
 

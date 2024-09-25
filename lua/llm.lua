@@ -87,9 +87,7 @@ require("codecompanion").setup({
     },
     inline = {
       diff = {
-        hl_groups = {
-          added = "DiffAdd",
-        },
+        diff_method = "mini.diff",
       },
     },
   },

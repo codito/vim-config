@@ -219,6 +219,10 @@ vim.api.nvim_set_keymap(
   vim.fn.strftime("%Y-%m-%d %H:%M"),
   { expr = true }
 )
+vim.g.timestamp_regexp =
+  [[\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$|TIMESTAMP]]
+vim.g.timestamp_modelines = 50
+vim.g.timestamp_rep = "%d/%m/%Y, %T %z"
 
 -- Glow {{{1
 vim.api.nvim_set_keymap(
