@@ -36,6 +36,7 @@ require("conform").setup({
     astro = { "prettier" },
     javascript = { "prettier" },
     typescript = { "prettier" },
+    typescriptreact = { "prettier" },
     markdown = { "prettier" },
   },
   -- If this is set, Conform will run the formatter on save.
