@@ -3,6 +3,10 @@
 -- Last modified: 08/09/2024, 22:22:22 +0530
 
 -- CodeCompanion {{{1
+local default_adapter = "localai"
+if vim.fn.has("win32") or vim.fn.has("win64") then
+  default_adapter = "copilot"
+end
 require("codecompanion").setup({
   adapters = {
     groq = function()
@@ -74,10 +78,10 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "localai",
+      adapter = default_adapter,
     },
-    inline = { adapter = "localai" },
-    agent = { adapter = "localai" },
+    inline = { adapter = default_adapter },
+    agent = { adapter = default_adapter },
   },
   display = {
     chat = {
