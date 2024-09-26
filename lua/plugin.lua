@@ -86,6 +86,7 @@ require("lazy").setup({
     { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "zbirenbaum/copilot.lua" },
 
     -- Colors
     { "f4z3r/gruvbox-material.nvim" },
