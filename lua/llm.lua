@@ -132,6 +132,24 @@ vim.api.nvim_set_keymap(
 vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab ccc CodeCompanionChat]])
 
+-- Copilot {{{1
+require('copilot').setup({
+  suggestion = {
+    keymap = {
+      accept = "<M-l>",
+      accept_word = false,
+      accept_line = false,
+      next = "<M-]>",
+      prev = "<M-[>",
+      dismiss = false,
+    },
+    filetypes = {
+      yaml = true,
+      markdown = true,
+    }
+  }
+})
+
 -- Minuet {{{1
 require("minuet").setup({
   provider = "openai_compatible",
