@@ -1,6 +1,8 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 08/09/2024, 22:22:22 +0530
+-- Last modified: 29/09/2024, 21:08:37 +0530
+
+local utils = require("util")
 
 -- CodeCompanion {{{1
 local default_adapter = "localai"
@@ -137,22 +139,25 @@ vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab ccc CodeCompanionChat]])
 
 -- Copilot {{{1
-require('copilot').setup({
-  suggestion = {
-    keymap = {
-      accept = "<M-l>",
-      accept_word = false,
-      accept_line = false,
-      next = "<M-]>",
-      prev = "<M-[>",
-      dismiss = false,
+if utils.getPlatform() == "win" then
+  require("copilot").setup({
+    suggestion = {
+      auto_trigger = true,
+      keymap = {
+        accept = "<M-l>",
+        accept_word = false,
+        accept_line = false,
+        next = "<M-]>",
+        prev = "<M-[>",
+        dismiss = false,
+      },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+      },
     },
-    filetypes = {
-      yaml = true,
-      markdown = true,
-    }
-  }
-})
+  })
+end
 
 -- Minuet {{{1
 require("minuet").setup({

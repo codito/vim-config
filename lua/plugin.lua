@@ -1,6 +1,8 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 14/09/2024, 08:16:27 +0530
+-- Last updated: 29/09/2024, 21:08:00 +0530
+
+local utils = require("util")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -28,11 +30,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- 3rd party plugins
     {
       "3rd/image.nvim",
       cond = function()
-        return getPlatform() == "nix"
+        return utils.getPlatform() == "nix"
       end,
       ft = { "markdown" },
     },
@@ -86,10 +87,30 @@ require("lazy").setup({
     { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-    { "zbirenbaum/copilot.lua" },
+    {
+      "zbirenbaum/copilot.lua",
+      cond = function()
+        return utils.getPlatform() == "win"
+      end,
+    },
 
     -- Colors
     { "f4z3r/gruvbox-material.nvim" },
     { "kepano/flexoki-neovim" },
+  },
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })

@@ -1,6 +1,8 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 14/09/2024, 08:52:12 +0530
+-- Last Modified: 29/09/2024, 21:06:57 +0530
+
+local utils = require("util")
 
 -- Platform {{{1
 --
@@ -9,17 +11,8 @@ local pluginDir = "~/.vim/bundle"
 local sessionDir = vim.fn.expand("$HOME") .. "/.vim/sessions"
 local snippetsDir = vim.fn.expand("$HOME") .. "/.vim/snips"
 
--- Know the platform we're running on
-function getPlatform()
-  if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-    return "win"
-  end
-
-  return "nix"
-end
-
 -- Get ready for life w/o walls
-if getPlatform() == "win" then
+if utils.getPlatform() == "win" then
   pluginDir = vim.fn.expand("~/vimfiles/bundle")
   sessionDir = vim.fn.expand("$HOME/vimfiles/sessions")
   snippetsDir = vim.fn.expand("$HOME/vimfiles/snips")
@@ -49,7 +42,7 @@ vim.opt.autochdir = false -- don't switch directory to current file
 vim.opt.isfname:append("32") -- consider space as a valid filename char, useful for `gf`
 
 -- Platform-specific settings
-if getPlatform() == "win" then
+if utils.getPlatform() == "win" then
   vim.opt.backupdir = vim.fn.expand("~/vimfiles/tmp")
 else
   vim.opt.backupdir = vim.fn.expand("~/.vim/tmp") -- isolate the swap files to some corner
@@ -168,7 +161,7 @@ require("config")
 -- Local machine dependent mods {{{1
 --
 local localFile = vim.fn.expand("~/.local.vim")
-if getPlatform() == "win" then
+if utils.getPlatform() == "win" then
   localFile = vim.fn.expand("~/local.vim")
 end
 
