@@ -1,12 +1,12 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 29/09/2024, 21:08:37 +0530
+-- Last modified: 01/10/2024, 20:57:34 +0530
 
 local utils = require("util")
 
 -- CodeCompanion {{{1
 local default_adapter = "localai"
-if vim.fn.has("win32") or vim.fn.has("win64") then
+if utils.getPlatform() == "win" then
   default_adapter = "copilot"
 end
 require("codecompanion").setup({
@@ -49,7 +49,7 @@ require("codecompanion").setup({
           max_tokens = { default = 512 },
         },
         handlers = {
-          chat_output = function(data)
+          chat_output = function(self, data)
             local output = {}
 
             if data and data ~= "" then
@@ -118,19 +118,19 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   "<LocalLeader>co",
-  "<cmd>CodeCompanionToggle<cr>",
+  "<cmd>CodeCompanionChat Toggle<cr>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "v",
   "<LocalLeader>co",
-  "<cmd>CodeCompanionToggle<cr>",
+  "<cmd>CodeCompanionChat Toggle<cr>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "v",
   "ga",
-  "<cmd>CodeCompanionAdd<cr>",
+  "<cmd>CodeCompanionChat Add<cr>",
   { noremap = true, silent = true }
 )
 
