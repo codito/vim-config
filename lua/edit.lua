@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 14/09/2024, 08:27:54 +0530
+-- Last updated: 06/10/2024, 19:42:08 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Language and filetypes {{{1
@@ -127,8 +127,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.autoindent = true
     vim.opt_local.foldmethod = "indent"
     vim.opt_local.foldlevel = 99
-    vim.opt_local.colorcolumn = "80"
-    vim.opt_local.textwidth = 80
   end,
 })
 

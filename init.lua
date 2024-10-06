@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 29/09/2024, 21:06:57 +0530
+-- Last Modified: 06/10/2024, 19:45:29 +0530
 
 local utils = require("util")
 
@@ -64,7 +64,7 @@ vim.opt.showcmd = true -- show partial cmd in the last line
 vim.opt.showmatch = true -- jump to the other end of a curly brace
 vim.opt.showmode = true -- show the mode INSERT/REPLACE/...
 vim.cmd("syntax enable") -- enable syntax highlighting
-vim.opt.textwidth = 80 -- break a line after 80 characters
+vim.opt.textwidth = 100 -- break a line after 120 characters
 vim.opt.ea = false -- for :split don't split space equally
 vim.opt.visualbell = true -- oh no beeps please!
 vim.opt.cursorline = true -- highlight the line our cursor is in
