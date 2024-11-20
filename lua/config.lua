@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 14/09/2024, 08:31:51 +0530
+-- Last modified: 09/11/2024, 16:29:17 +0530
 
 -- Include other configurations
 require("edit") -- Editor setup
@@ -161,7 +161,7 @@ require("mason-lspconfig").setup({
     "jsonls",
     "ltex",
     "marksman",
-    "ruff_lsp",
+    "ruff",
     "ts_ls",
     "yamlls",
   },
