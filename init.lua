@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 14/10/2024, 20:44:25 +0530
+-- Last Modified: 23/11/2024, 06:17:35 +0530
 
 local utils = require("util")
 
@@ -50,35 +50,6 @@ end
 
 -- Diff
 vim.opt.diffopt:append("vertical") -- vertical diffs are natural
-
--- Editor appearance
-if vim.fn.exists("+termguicolors") == 1 then
-  vim.opt.termguicolors = true
-end
-vim.opt.background = "light"
-vim.opt.foldmethod = "syntax" -- default fold by syntax
-vim.opt.number = true -- enable line number
-vim.opt.cpo = "" -- don't be vi compatible
-vim.opt.ruler = true -- show the line,col info at bottom
-vim.opt.showcmd = true -- show partial cmd in the last line
-vim.opt.showmatch = true -- jump to the other end of a curly brace
-vim.opt.showmode = true -- show the mode INSERT/REPLACE/...
-vim.cmd("syntax enable") -- enable syntax highlighting
-vim.opt.textwidth = 88 -- width used for line breaks
-vim.opt.ea = false -- for :split don't split space equally
-vim.opt.visualbell = true -- oh no beeps please!
-vim.opt.cursorline = true -- highlight the line our cursor is in
-vim.opt.signcolumn = "number" -- use the line number for signs (test, debug etc.)
-
--- Ruler and status
-vim.opt.rulerformat = ""
-vim.opt.rulerformat:append("%25(%)") -- 25 chars wide
-vim.opt.rulerformat:append("%=")
--- vim.opt.rulerformat:append("%(%Ll,%{\ wordcount().words}\w%)")  -- Lines and words
--- vim.opt.rulerformat:append("%=")
--- vim.opt.rulerformat:append("%(\ %l,%c%V%)")  -- Cursor line and char
-vim.opt.rulerformat:append("%=")
-vim.opt.rulerformat:append("%P") -- Pager
 
 -- Key mappings in general
 vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabnext<CR>", { silent = true })

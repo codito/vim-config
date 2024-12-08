@@ -1,13 +1,13 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 09/11/2024, 16:29:17 +0530
+-- Last modified: 23/11/2024, 06:17:25 +0530
 
 -- Include other configurations
+require("ui") -- UI settings
 require("edit") -- Editor setup
 require("diag") -- Debugger, DAP setup
 require("test") -- Test run, coverage configurations
 require("llm") -- AI and LLM configurations
-require("ui") -- UI settings
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
