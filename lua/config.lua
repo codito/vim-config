@@ -231,6 +231,9 @@ require("nvim-tree").setup({
       "node_modules",
     },
   },
+  git = {
+    enable = false,
+  },
 })
 
 -- Telescope {{{1
