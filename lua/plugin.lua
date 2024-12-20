@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 16/10/2024, 16:30:25 +0530
+-- Last updated: 20/12/2024, 19:06:36 +0530
 
 local utils = require("util")
 
@@ -82,6 +82,12 @@ require("lazy").setup({
     { "stevearc/aerial.nvim" },
     { "stevearc/conform.nvim" },
     { "stevearc/dressing.nvim" },
+    {
+      "synaptiko/xit.nvim",
+      ft = { "xit" },
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = true,
+    },
     { "uga-rosa/cmp-dictionary" },
     { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
