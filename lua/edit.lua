@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 06/10/2024, 19:42:08 +0530
+-- Last updated: 12/01/2025, 07:47:50 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Language and filetypes {{{1
@@ -288,6 +288,25 @@ vim.g["pencil#autoformat"] = 0 -- Disable autoformat to allow markdown bullets t
 -- Settings for vim-table-mode
 vim.g.table_mode_corner = "|" -- markdown compatible tables by default
 vim.g.table_mode_tableize_map = "<leader>tb"
+
+-- Television {{{1
+local tv = Terminal:new({
+  cmd = "tv",
+  dir = "git_dir",
+  direction = "float",
+  hidden = true,
+})
+
+function _tv_toggle()
+  tv:toggle()
+end
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>tv",
+  "<cmd>lua _tv_toggle()<CR>",
+  { noremap = true, silent = true }
+)
 
 -- vim: foldmethod=marker foldmarker={{{,}}}
 -- EOF
