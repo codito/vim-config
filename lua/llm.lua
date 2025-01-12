@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 01/10/2024, 20:57:34 +0530
+-- Last modified: 10/01/2025, 20:29:17 +0530
 
 local utils = require("util")
 
@@ -19,7 +19,7 @@ require("codecompanion").setup({
         },
         schema = {
           model = {
-            default = "llama-3.1-70b-versatile",
+            default = "llama-3.3-70b-versatile",
           },
           temperature = { default = 0.0 },
           max_tokens = { default = 512 },

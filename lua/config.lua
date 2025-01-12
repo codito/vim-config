@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 23/11/2024, 06:17:25 +0530
+-- Last modified: 12/01/2025, 07:39:07 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -172,6 +172,18 @@ require("mason-lspconfig").setup({
         capabilities = capabilities,
       })
     end,
+  },
+})
+
+-- Disable spell check in ltex
+require("lspconfig").ltex.setup({
+  settings = {
+    ltex = {
+      disabledRules = {
+        ["en"] = { "MORFOLOGIK_RULE_EN" },
+        ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
+      },
+    },
   },
 })
 
