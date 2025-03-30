@@ -1,6 +1,6 @@
 -- Editor appearance
 -- Created: 23/11/2024, 06:18:18 +0530
--- Last updated: 23/11/2024, 06:18:46 +0530
+-- Last updated: 29/03/2025, 21:51:18 +0530
 
 if vim.fn.exists("+termguicolors") == 1 then
   vim.opt.termguicolors = true
@@ -14,7 +14,7 @@ vim.opt.showcmd = true -- show partial cmd in the last line
 vim.opt.showmatch = true -- jump to the other end of a curly brace
 vim.opt.showmode = true -- show the mode INSERT/REPLACE/...
 vim.cmd("syntax enable") -- enable syntax highlighting
-vim.opt.textwidth = 88 -- width used for line breaks
+vim.opt.textwidth = 80 -- width used for line breaks, 80 has best readability
 vim.opt.ea = false -- for :split don't split space equally
 vim.opt.visualbell = true -- oh no beeps please!
 vim.opt.cursorline = true -- highlight the line our cursor is in
