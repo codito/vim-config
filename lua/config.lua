@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 30/03/2025, 08:41:08 +0530
+-- Last modified: 30/03/2025, 21:48:55 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -94,7 +94,9 @@ local has_words_before = function()
 end
 cmp.setup({
   keymap = {
-    preset = "default",
+    preset = "enter",
+    ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+    ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
     ["<A-y>"] = require("minuet").make_blink_map(),
   },
   appearance = {
@@ -107,6 +109,9 @@ cmp.setup({
   completion = {
     documentation = { auto_show = false },
     trigger = { prefetch_on_insert = false },
+    list = {
+      selection = { preselect = true, auto_insert = true },
+    },
   },
 
   snippets = { preset = "luasnip" },
@@ -114,23 +119,8 @@ cmp.setup({
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "dictionary", "emoji" },
+    default = { "lsp", "path", "snippets", "buffer", "emoji" },
     providers = {
-      dictionary = {
-        module = "blink-cmp-dictionary",
-        name = "Dict",
-        min_keyword_length = 3, -- should be >= 2
-        max_items = 5,
-        opts = {
-          -- options for blink-cmp-dictionary
-          dictionary_files = {
-            vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
-          },
-          dictionary_directories = {
-            vim.fn.expand("~/.config/nvim/dictionary"),
-          },
-        },
-      },
       emoji = {
         name = "emoji",
         module = "blink.compat.source",

@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 12/01/2025, 07:47:50 +0530
+-- Last updated: 30/03/2025, 17:21:53 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Language and filetypes {{{1
@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.autoindent = true
     vim.opt_local.formatoptions = "tcroqn"
     vim.opt_local.comments = "n:>"
-    vim.opt_local.conceallevel = 2
+    vim.opt_local.conceallevel = 0
     vim.opt_local.foldenable = false
   end,
 })
@@ -280,7 +280,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 vim.g["pencil#textwidth"] = vim.opt.textwidth:get()
-vim.g["pencil#conceallevel"] = 3
+vim.g["pencil#conceallevel"] = 0
 vim.g["pencil#concealcursor"] = "c"
 vim.g["pencil#autoformat"] = 0 -- Disable autoformat to allow markdown bullets to work without auto joins with previous line
 

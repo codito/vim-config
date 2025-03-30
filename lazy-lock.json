@@ -1,7 +1,6 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "aerial.nvim": { "branch": "master", "commit": "9ebc13583cff447f5493a63e99dfca526b3c3088" },
-  "blink-cmp-dictionary": { "branch": "master", "commit": "3d49f934059fb59f657b547d90a526d00540634e" },
   "blink.cmp": { "branch": "main", "commit": "49f211fe5d729df53df4c042d7c3464cf47d199e" },
   "blink.compat": { "branch": "main", "commit": "2ed6d9a28b07fa6f3bface818470605f8896408c" },
   "cmp-emoji": { "branch": "main", "commit": "e8398e2adf512a03bb4e1728ca017ffeac670a9f" },
@@ -34,7 +33,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "0a1ac55d7d4ec2b2ed9616dfc5406791234d1d2b" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
   "nvim-tree.lua": { "branch": "master", "commit": "44d9b58f11d5a426c297aafd0be1c9d45617a849" },
-  "nvim-treesitter": { "branch": "master", "commit": "aece1062335a9e856636f5da12d8a06c7615ce8a" },
+  "nvim-treesitter": { "branch": "master", "commit": "86768fdd002c75833414010052a1e95a4760ee32" },
   "nvim-treesitter-context": { "branch": "master", "commit": "93b29a32d5f4be10e39226c6b796f28d68a8b483" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "9937e5e356e5b227ec56d83d0a9d0a0f6bc9cad4" },
   "nvim-web-devicons": { "branch": "master", "commit": "4c3a5848ee0b09ecdea73adcd2a689190aeb728c" },

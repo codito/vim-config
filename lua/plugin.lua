@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 30/03/2025, 08:19:35 +0530
+-- Last updated: 30/03/2025, 21:49:13 +0530
 
 local utils = require("util")
 
@@ -78,7 +78,6 @@ require("lazy").setup({
       "saghen/blink.cmp",
       version = "1.*",
       dependencies = {
-        { "kaiser-yang/blink-cmp-dictionary" },
         { "saghen/blink.compat" },
       },
     },

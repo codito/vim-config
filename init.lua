@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 23/11/2024, 06:17:35 +0530
+-- Last Modified: 30/03/2025, 17:00:41 +0530
 
 local utils = require("util")
 
@@ -55,15 +55,6 @@ vim.opt.diffopt:append("vertical") -- vertical diffs are natural
 vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabnext<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<C-F4>", ":bdelete<CR>", { silent = true })
 
--- Omnicomplete
--- vim.api.nvim_create_autocmd({ "CursorMovedI", "InsertLeave" }, {
---   pattern = "*",
---   callback = function()
---     if vim.fn.pumvisible() == 0 then
---       vim.fn.pclose()
---     end
---   end,
--- })
 vim.opt.completeopt = "menuone,menu,longest,noinsert,noselect,preview"
 vim.opt.shortmess:append("c") -- do not pass short messages to completion menu
 
