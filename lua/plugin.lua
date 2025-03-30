@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 21/12/2024, 06:25:39 +0530
+-- Last updated: 30/03/2025, 08:19:35 +0530
 
 local utils = require("util")
 
@@ -46,12 +46,7 @@ require("lazy").setup({
     { "folke/trouble.nvim" },
     { "folke/twilight.nvim" },
     { "folke/zen-mode.nvim" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-emoji" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "hrsh7th/nvim-cmp" },
     { "issafalcon/neotest-dotnet" },
     { "konfekt/fastfold" },
     { "kyazdani42/nvim-tree.lua" },
@@ -78,12 +73,18 @@ require("lazy").setup({
     { "romgrk/nvim-treesitter-context" },
     { "ron89/thesaurus_query.vim" },
     { "rouge8/neotest-rust", ft = "rust" },
-    { "saadparwaiz1/cmp_luasnip" },
     { "sadotsoy/vim-xit", ft = "xit" },
+    {
+      "saghen/blink.cmp",
+      version = "1.*",
+      dependencies = {
+        { "kaiser-yang/blink-cmp-dictionary" },
+        { "saghen/blink.compat" },
+      },
+    },
     { "stevearc/aerial.nvim" },
     { "stevearc/conform.nvim" },
     { "stevearc/dressing.nvim" },
-    { "uga-rosa/cmp-dictionary" },
     { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },

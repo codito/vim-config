@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 18/03/2025, 15:09:27 +0530
+-- Last modified: 30/03/2025, 08:41:08 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -81,7 +81,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local cmp = require("cmp")
+local cmp = require("blink.cmp")
 local luasnip = require("luasnip")
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -93,56 +93,67 @@ local has_words_before = function()
       == nil
 end
 cmp.setup({
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    --{ name = 'vsnip' }, -- For vsnip users.
-    { name = "luasnip" }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    --{ name = 'snippy' }, -- For snippy users.
-    { name = "buffer" },
-    {
-      name = "dictionary",
-      keyword_length = 2,
-    },
-    { name = "emoji" },
-    { name = "path" },
-  }),
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
+  keymap = {
+    preset = "default",
+    ["<A-y>"] = require("minuet").make_blink_map(),
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+  appearance = {
+    -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- Adjusts spacing to ensure icons are aligned
+    nerd_font_variant = "mono",
+  },
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+  -- (Default) Only show the documentation popup when manually triggered
+  completion = {
+    documentation = { auto_show = false },
+    trigger = { prefetch_on_insert = false },
+  },
 
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<A-y>"] = require("minuet").make_cmp_map(),
-  }),
+  snippets = { preset = "luasnip" },
+
+  -- Default list of enabled providers defined so that you can extend it
+  -- elsewhere in your config, without redefining it, due to `opts_extend`
+  sources = {
+    default = { "lsp", "path", "snippets", "buffer", "dictionary", "emoji" },
+    providers = {
+      dictionary = {
+        module = "blink-cmp-dictionary",
+        name = "Dict",
+        min_keyword_length = 3, -- should be >= 2
+        max_items = 5,
+        opts = {
+          -- options for blink-cmp-dictionary
+          dictionary_files = {
+            vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
+          },
+          dictionary_directories = {
+            vim.fn.expand("~/.config/nvim/dictionary"),
+          },
+        },
+      },
+      emoji = {
+        name = "emoji",
+        module = "blink.compat.source",
+      },
+      minuet = { -- manual complete only
+        name = "minuet",
+        module = "minuet.blink",
+        score_offset = 8, -- Gives minuet higher priority among suggestions
+      },
+    },
+  },
+
+  -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+  -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+  -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+  --
+  -- See the fuzzy documentation for more information
+  fuzzy = { implementation = "prefer_rust_with_warning" },
 })
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Configure the installed lsp servers.
 -- lsp_installer setup must be called before lspconfig.
