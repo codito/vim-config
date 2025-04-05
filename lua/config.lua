@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/04/2025, 17:19:07 +0530
+-- Last modified: 05/04/2025, 17:52:36 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -251,8 +251,16 @@ require("nvim-tree").setup({
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>xx", "<cmd>Telescope diagnostics<cr>")
-vim.keymap.set("n", "<leader>xd", "<cmd>Telescope diagnostics bufnr=0<cr>")
+vim.keymap.set("n", "<leader>kk", builtin.keymaps, {})
+vim.keymap.set("n", "<leader>zz", builtin.spell_suggest, {})
+
+vim.keymap.set("n", "<leader>xx", builtin.diagnostics, {})
+vim.keymap.set("n", "<leader>xd", function()
+  builtin.diagnostics({ bufnr = 0 })
+end, {})
+
+vim.keymap.set("n", "<leader>ll", builtin.lsp_workspace_symbols, {})
+vim.keymap.set("n", "<leader>ld", builtin.lsp_document_symbols, {})
 
 require("telescope").setup({
   extensions = {
