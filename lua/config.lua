@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 30/03/2025, 21:48:55 +0530
+-- Last modified: 05/04/2025, 17:19:07 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -251,6 +251,8 @@ require("nvim-tree").setup({
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>xx", "<cmd>Telescope diagnostics<cr>")
+vim.keymap.set("n", "<leader>xd", "<cmd>Telescope diagnostics bufnr=0<cr>")
 
 require("telescope").setup({
   extensions = {
@@ -384,23 +386,6 @@ require("toggleterm").setup({
   open_mapping = [[<c-\>]],
   autochdir = true,
 })
-
--- Trouble {{{1
--- https://github.com/folke/trouble.nvim
-require("trouble").setup({})
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
-vim.keymap.set(
-  "n",
-  "<leader>xd",
-  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>"
-)
-vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>")
-vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>")
-vim.keymap.set(
-  "n",
-  "gR",
-  "<cmd>Trouble lsp toggle focus=false win.position=right<cr>"
-)
 
 -- vim: foldmethod=marker foldmarker={{{,}}}
 -- EOF

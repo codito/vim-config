@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 10/01/2025, 20:29:17 +0530
+-- Last modified: 04/04/2025, 16:31:40 +0530
 
 local utils = require("util")
 
@@ -11,7 +11,10 @@ if utils.getPlatform() == "win" then
 end
 require("codecompanion").setup({
   adapters = {
-    groq = function()
+    opts = {
+      show_defaults = false,
+    },
+    llama = function()
       return require("codecompanion.adapters").extend("openai", {
         url = "https://api.groq.com/openai/v1/chat/completions",
         env = {
@@ -20,6 +23,36 @@ require("codecompanion").setup({
         schema = {
           model = {
             default = "llama-3.3-70b-versatile",
+          },
+          temperature = { default = 0.0 },
+          max_tokens = { default = 512 },
+        },
+        handlers = {
+          form_messages = function(self, messages)
+            -- Messages are of the form
+            -- [{role: user, content: x, id: num, opts: {} }]
+            -- Remove the `id` and `opts` params since Groq API is strict
+            local formatted_messages = {}
+            for i, message in ipairs(messages) do
+              table.insert(formatted_messages, {
+                role = message.role,
+                content = message.content,
+              })
+            end
+            return { messages = formatted_messages }
+          end,
+        },
+      })
+    end,
+    qwen = function()
+      return require("codecompanion.adapters").extend("openai", {
+        url = "https://api.groq.com/openai/v1/chat/completions",
+        env = {
+          api_key = "GROQ_API_KEY",
+        },
+        schema = {
+          model = {
+            default = "qwen-2.5-coder-32b",
           },
           temperature = { default = 0.0 },
           max_tokens = { default = 512 },

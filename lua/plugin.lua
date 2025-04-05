@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 30/03/2025, 21:49:13 +0530
+-- Last updated: 05/04/2025, 10:39:45 +0530
 
 local utils = require("util")
 
@@ -43,7 +43,6 @@ require("lazy").setup({
     { "brenoprata10/nvim-highlight-colors" },
     { "dhruvasagar/vim-table-mode", ft = { "markdown" } },
     { "echasnovski/mini.diff", version = false },
-    { "folke/trouble.nvim" },
     { "folke/twilight.nvim" },
     { "folke/zen-mode.nvim" },
     { "hrsh7th/cmp-emoji" },
