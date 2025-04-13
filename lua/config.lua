@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/04/2025, 17:52:36 +0530
+-- Last modified: 13/04/2025, 20:09:54 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -119,10 +119,14 @@ cmp.setup({
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "emoji" },
+    default = { "lsp", "path", "snippets", "buffer", "emoji", "latex_symbols" },
     providers = {
       emoji = {
         name = "emoji",
+        module = "blink.compat.source",
+      },
+      latex_symbols = {
+        name = "latex_symbols",
         module = "blink.compat.source",
       },
       minuet = { -- manual complete only

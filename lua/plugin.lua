@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 05/04/2025, 10:39:45 +0530
+-- Last updated: 13/04/2025, 20:09:11 +0530
 
 local utils = require("util")
 
@@ -48,6 +48,7 @@ require("lazy").setup({
     { "hrsh7th/cmp-emoji" },
     { "issafalcon/neotest-dotnet" },
     { "konfekt/fastfold" },
+    { "kdheepak/cmp-latex-symbols" },
     { "kyazdani42/nvim-tree.lua" },
     { "kyazdani42/nvim-web-devicons" },
     { "l3mon4d3/luasnip" },
