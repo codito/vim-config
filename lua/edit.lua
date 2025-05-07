@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 30/03/2025, 17:21:53 +0530
+-- Last updated: 07/05/2025, 08:06:50 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Language and filetypes {{{1
@@ -261,7 +261,11 @@ vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_strikethrough = 1
 
 -- Mini.diff {{{1
-require("mini.diff").setup()
+require("mini.diff").setup({
+  view = {
+    style = "number",
+  },
+})
 
 -- Netrw plugin {{{1
 vim.g.netrw_browse_split = 3 -- all edits in new tab

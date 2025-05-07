@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 13/04/2025, 20:09:54 +0530
+-- Last modified: 07/05/2025, 07:56:10 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- Highlight colors {{{1
-require("nvim-highlight-colors").setup({})
+-- require("nvim-highlight-colors").setup({})
 
 -- Image {{{1
 -- https://github.com/3rd/image.nvim
