@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/06/2025, 10:14:24 +0530
+-- Last modified: 06/06/2025, 21:25:56 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -8,6 +8,8 @@ require("edit") -- Editor setup
 require("diag") -- Debugger, DAP setup
 require("test") -- Test run, coverage configurations
 require("llm") -- AI and LLM configurations
+
+local utils = require("util")
 
 -- Aerial {{{1
 -- Symbols outliner for neovim
@@ -60,16 +62,11 @@ require("nvim-highlight-colors").setup({})
 
 -- Image {{{1
 -- https://github.com/3rd/image.nvim
-require("image").setup({})
 if
-  vim.fn.has("win32") == 0
-  and vim.fn.has("win64") == 0
-  and not vim.g.vscode
-  and not vim.g.neovide
-  and (
-    os.getenv("KITTY_WINDOW_ID") ~= nil
-    or os.getenv("TERM_PROGRAM") == "WezTerm"
-  )
+  utils.getPlatform() == "nix"
+  and (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm")
+  and (not vim.g.vscode or vim.g.vscode == false)
+  and (not vim.g.neovide or vim.g.neovide == false)
 then
   require("image").setup({
     integrations = {
@@ -77,7 +74,7 @@ then
         enabled = true,
         clear_in_insert_mode = false,
         download_remote_images = true,
-        only_render_image_at_cursor = true,
+        only_render_image_at_cursor = false,
         only_render_image_at_cursor_mode = "popup",
         floating_windows = false, -- if true, images will be rendered in floating markdown windows
         filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
@@ -121,6 +118,9 @@ cmp.setup({
     -- Adjusts spacing to ensure icons are aligned
     nerd_font_variant = "mono",
   },
+
+  -- Disable cmdline, stop completions in popups and cmd
+  cmdline = { enabled = false },
 
   -- (Default) Only show the documentation popup when manually triggered
   completion = {
