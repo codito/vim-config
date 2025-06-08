@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 06/06/2025, 21:25:56 +0530
+-- Last modified: 08/06/2025, 11:21:52 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -275,9 +275,11 @@ vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>kk", builtin.keymaps, {})
 vim.keymap.set("n", "<leader>zz", builtin.spell_suggest, {})
 
-vim.keymap.set("n", "<leader>xx", builtin.diagnostics, {})
+vim.keymap.set("n", "<leader>xx", function()
+  builtin.diagnostics({ sort_by = "severity" })
+end, {})
 vim.keymap.set("n", "<leader>xd", function()
-  builtin.diagnostics({ bufnr = 0 })
+  builtin.diagnostics({ bufnr = 0, sort_by = "severity" })
 end, {})
 
 vim.keymap.set("n", "<leader>ll", builtin.lsp_workspace_symbols, {})
