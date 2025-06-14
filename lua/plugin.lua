@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 07/05/2025, 07:53:02 +0530
+-- Last updated: 13/06/2025, 15:58:06 +0530
 
 local utils = require("util")
 
@@ -55,7 +55,11 @@ require("lazy").setup({
     { "l3mon4d3/luasnip" },
     { "lewis6991/impatient.nvim" },
     { "milanglacier/minuet-ai.nvim" },
-    { "mfussenegger/nvim-dap" },
+    {
+      "mfussenegger/nvim-dap",
+      lazy = true,
+      dependencies = { { "igorlfs/nvim-dap-view", opts = {} } },
+    },
     { "mfussenegger/nvim-dap-python" },
     { "neovim/nvim-lspconfig" },
     { "numtostr/comment.nvim" },
@@ -70,7 +74,6 @@ require("lazy").setup({
     { "preservim/vim-pencil", ft = "markdown" },
     { "preservim/vim-lexical", ft = "markdown" },
     { "rafamadriz/friendly-snippets" },
-    { "rcarriga/nvim-dap-ui" },
     { "romgrk/nvim-treesitter-context" },
     { "ron89/thesaurus_query.vim" },
     { "rouge8/neotest-rust", ft = "rust" },

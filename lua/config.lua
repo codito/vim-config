@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 08/06/2025, 11:21:52 +0530
+-- Last modified: 13/06/2025, 15:55:54 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -107,6 +107,10 @@ local has_words_before = function()
       == nil
 end
 cmp.setup({
+  enabled = function()
+    -- Disable blink.cmp for dap-repl. See https://github.com/Saghen/blink.cmp/issues/1495
+    return not vim.tbl_contains({ "dap-repl" }, vim.bo.filetype)
+  end,
   keymap = {
     preset = "enter",
     ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
@@ -179,7 +183,7 @@ require("mason-lspconfig").setup({
     "basedpyright",
     "csharp_ls",
     "cssls",
-    "harper_ls",
+    -- "harper_ls",
     "html",
     "jsonls",
     "marksman",
@@ -197,15 +201,15 @@ require("mason-lspconfig").setup({
   },
 })
 
-require("lspconfig").harper_ls.setup({
-  settings = {
-    ["harper-ls"] = {
-      linters = {
-        SpellCheck = false,
-      },
-    },
-  },
-})
+-- require("lspconfig").harper_ls.setup({
+--   settings = {
+--     ["harper-ls"] = {
+--       linters = {
+--         SpellCheck = false,
+--       },
+--     },
+--   },
+-- })
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

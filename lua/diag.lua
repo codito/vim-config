@@ -1,25 +1,23 @@
 -- Debug configuration
 -- Created: 08/09/2024
--- Last modified: 08/09/2024, 21:44:57 +0530
+-- Last modified: 13/06/2025, 15:57:40 +0530
 --
 -- References
 -- https://github.com/ryan-tin/neovim-config/blob/master/plugin/dap.lua
 -- https://github.com/rcarriga/dotfiles/blob/master/.config/nvim/lua/config/dap.lua
 
-local dap, dapui = require("dap"), require("dapui")
-
--- automatically open and close dap ui when debugging
-dap.listeners.before.attach.dapui_config = function()
-  dapui.open()
+local dap, dv = require("dap"), require("dap-view")
+dap.listeners.before.attach["dap-view-config"] = function()
+  dv.open()
 end
-dap.listeners.before.launch.dapui_config = function()
-  dapui.open()
+dap.listeners.before.launch["dap-view-config"] = function()
+  dv.open()
 end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
+dap.listeners.before.event_terminated["dap-view-config"] = function()
+  dv.close()
 end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
+dap.listeners.before.event_exited["dap-view-config"] = function()
+  dv.close()
 end
 
 -- Utilities {{{1
@@ -41,7 +39,7 @@ local get_python_path = function()
 end
 
 -- DAP UI {{{1
-require("dapui").setup()
+require("dap-view").setup()
 
 -- Decides when and how to jump when stopping at a breakpoint
 -- The order matters!
@@ -68,14 +66,14 @@ vim.keymap.set(
   '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>'
 )
 
-vim.keymap.set("n", "<F3>", '<cmd>lua require"dapui".float_element()<CR>')
-vim.keymap.set("n", "<F4>", '<cmd>lua require"dapui".eval()<CR>')
-vim.keymap.set(
-  "n",
-  "<F8>",
-  '<cmd>lua require"dapui".elements.watches.add()<CR>'
-)
-vim.keymap.set("n", "<F6>", '<cmd>lua require"dapui".toggle()<CR>')
+-- vim.keymap.set("n", "<F3>", '<cmd>lua require"dapui".float_element()<CR>')
+-- vim.keymap.set("n", "<F4>", '<cmd>lua require"dapui".eval()<CR>')
+-- vim.keymap.set(
+--   "n",
+--   "<F8>",
+--   '<cmd>lua require"dapui".elements.watches.add()<CR>'
+-- )
+-- vim.keymap.set("n", "<F6>", '<cmd>lua require"dapui".toggle()<CR>')
 
 -- DAP Adapters {{{1
 -- Python {{{2
