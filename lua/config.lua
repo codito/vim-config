@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 13/06/2025, 15:55:54 +0530
+-- Last modified: 19/06/2025, 22:09:37 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -188,6 +188,7 @@ require("mason-lspconfig").setup({
     "jsonls",
     "marksman",
     "ruff",
+    "rust_analyzer",
     "ts_ls",
     "yamlls",
   },
@@ -210,6 +211,16 @@ require("mason-lspconfig").setup({
 --     },
 --   },
 -- })
+
+require("lspconfig").rust_analyzer.setup({
+  settings = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+    },
+  },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
