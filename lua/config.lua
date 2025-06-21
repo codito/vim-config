@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 19/06/2025, 22:09:37 +0530
+-- Last modified: 21/06/2025, 16:47:35 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -178,12 +178,13 @@ lsp_installer.setup()
 
 local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup({
+  automatic_enable = false,
   ensure_installed = {
     "astro",
     "basedpyright",
     "csharp_ls",
     "cssls",
-    -- "harper_ls",
+    "harper_ls",
     "html",
     "jsonls",
     "marksman",
@@ -202,17 +203,17 @@ require("mason-lspconfig").setup({
   },
 })
 
--- require("lspconfig").harper_ls.setup({
---   settings = {
---     ["harper-ls"] = {
---       linters = {
---         SpellCheck = false,
---       },
---     },
---   },
--- })
+vim.lsp.config("harper_ls", {
+  settings = {
+    ["harper-ls"] = {
+      linters = {
+        SpellCheck = false,
+      },
+    },
+  },
+})
 
-require("lspconfig").rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust-analyzer"] = {
       check = {
