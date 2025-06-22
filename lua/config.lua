@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 21/06/2025, 16:47:35 +0530
+-- Last modified: 22/06/2025, 17:31:08 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -32,8 +32,11 @@ require("conform").setup({
   formatters_by_ft = {
     css = { "stylelint" },
     lua = { "stylua" },
+
     -- Conform will run multiple formatters sequentially
     python = { "ruff_format", "ruff_organize_imports" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+
     -- Use a sub-list to run only the first available formatter
     astro = { "prettier" },
     javascript = { "prettier" },
