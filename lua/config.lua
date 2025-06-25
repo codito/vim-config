@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 22/06/2025, 17:31:08 +0530
+-- Last modified: 25/06/2025, 19:05:17 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -112,7 +112,11 @@ end
 cmp.setup({
   enabled = function()
     -- Disable blink.cmp for dap-repl. See https://github.com/Saghen/blink.cmp/issues/1495
-    return not vim.tbl_contains({ "dap-repl" }, vim.bo.filetype)
+    -- And for input dialogs like file rename etc.
+    return not vim.tbl_contains(
+      { "dap-repl", "DressingInput" },
+      vim.bo.filetype
+    ) and vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
   end,
   keymap = {
     preset = "enter",
