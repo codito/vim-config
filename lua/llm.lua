@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 17/04/2025, 11:03:26 +0530
+-- Last modified: 17/07/2025, 06:46:06 +0530
 
 local utils = require("util")
 
@@ -14,7 +14,7 @@ require("codecompanion").setup({
     opts = {
       -- show_defaults = false,
     },
-    llama = function()
+    kimi = function()
       return require("codecompanion.adapters").extend("openai", {
         url = "https://api.groq.com/openai/v1/chat/completions",
         env = {
@@ -22,37 +22,7 @@ require("codecompanion").setup({
         },
         schema = {
           model = {
-            default = "meta-llama/llama-4-scout-17b-16e-instruct",
-          },
-          temperature = { default = 0.0 },
-          max_tokens = { default = 1024 },
-        },
-        handlers = {
-          form_messages = function(self, messages)
-            -- Messages are of the form
-            -- [{role: user, content: x, id: num, opts: {} }]
-            -- Remove the `id` and `opts` params since Groq API is strict
-            local formatted_messages = {}
-            for i, message in ipairs(messages) do
-              table.insert(formatted_messages, {
-                role = message.role,
-                content = message.content,
-              })
-            end
-            return { messages = formatted_messages }
-          end,
-        },
-      })
-    end,
-    mistral = function()
-      return require("codecompanion.adapters").extend("openai", {
-        url = "https://api.groq.com/openai/v1/chat/completions",
-        env = {
-          api_key = "GROQ_API_KEY",
-        },
-        schema = {
-          model = {
-            default = "mistral-saba-24b",
+            default = "moonshotai/kimi-k2-instruct",
           },
           temperature = { default = 0.0 },
           max_tokens = { default = 1024 },
