@@ -1,11 +1,11 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 17/07/2025, 06:46:06 +0530
+-- Last modified: 29/07/2025, 12:47:52 +0530
 
 local utils = require("util")
 
 -- CodeCompanion {{{1
-local default_adapter = "localai"
+local default_adapter = "kimi"
 if utils.getPlatform() == "win" then
   default_adapter = "copilot"
 end
@@ -129,6 +129,12 @@ require("codecompanion").setup({
         diff_method = "mini.diff",
       },
     },
+    action_palette = {
+      opts = {
+        show_default_actions = true, -- Show the default actions in the action palette?
+        show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+      },
+    },
   },
   opts = {
     force_role = true,
@@ -194,13 +200,13 @@ end
 
 -- Minuet {{{1
 require("minuet").setup({
-  provider = "openai_compatible",
+  provider = "codestral",
   context_window = 4000, -- chars, ~3 char = ~1 token
   request_timeout = 3, -- in seconds
   n_completions = 1,
   provider_options = {
     openai_compatible = {
-      model = "llama-3.1-70b-versatile",
+      model = "moonshotai/kimi-k2-instruct",
       system = default_system,
       few_shots = default_few_shots,
       end_point = "https://api.groq.com/openai/v1/chat/completions",
@@ -210,6 +216,35 @@ require("minuet").setup({
       optional = {
         stop = nil,
         max_tokens = 256,
+      },
+    },
+    gemini = {
+      model = "gemini-2.0-flash",
+      optional = {
+        generationConfig = {
+          maxOutputTokens = 256,
+          -- When using `gemini-2.5-flash`, it is recommended to entirely
+          -- disable thinking for faster completion retrieval.
+          thinkingConfig = {
+            thinkingBudget = 0,
+          },
+        },
+        safetySettings = {
+          {
+            -- HARM_CATEGORY_HATE_SPEECH,
+            -- HARM_CATEGORY_HARASSMENT
+            -- HARM_CATEGORY_SEXUALLY_EXPLICIT
+            category = "HARM_CATEGORY_DANGEROUS_CONTENT",
+            -- BLOCK_NONE
+            threshold = "BLOCK_ONLY_HIGH",
+          },
+        },
+      },
+    },
+    codestral = {
+      optional = {
+        max_tokens = 256,
+        stop = { "\n\n" }, -- ensure model output is trimmed
       },
     },
     -- openai_compatible = {
@@ -232,6 +267,23 @@ require("minuet").setup({
     --         max_tokens = 256,
     --     },
     -- }
+  },
+  virtualtext = {
+    auto_trigger_ft = { "python", "rust" },
+    keymap = {
+      -- accept whole completion
+      accept = "<M-l>",
+      -- accept one line
+      accept_line = "<M-a>",
+      -- accept n lines (prompts for number)
+      -- e.g. "A-z 2 CR" will accept 2 lines
+      accept_n_lines = "<M-z>",
+      -- Cycle to prev completion item, or manually invoke completion
+      prev = "<M-[>",
+      -- Cycle to next completion item, or manually invoke completion
+      next = "<M-]>",
+      dismiss = "<M-e>",
+    },
   },
 })
 

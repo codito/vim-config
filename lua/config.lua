@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 25/06/2025, 19:05:17 +0530
+-- Last modified: 29/07/2025, 11:43:32 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -147,7 +147,15 @@ cmp.setup({
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "emoji", "latex_symbols" },
+    default = {
+      "lsp",
+      "path",
+      "snippets",
+      "buffer",
+      "emoji",
+      "latex_symbols",
+      -- "minuet", -- manual completion only
+    },
     providers = {
       emoji = {
         name = "emoji",
