@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 25/04/2025, 14:46:45 +0530
+-- Last Modified: 01/08/2025, 17:48:42 +0530
 
 local utils = require("util")
 
@@ -109,14 +109,14 @@ vim.cmd("colorscheme catppuccin-latte")
 -- Load lua based plugin configuration {{{1
 -- Setup local luarock packages
 -- Required for image.nvim for now
-package.path = package.path
-  .. ";"
-  .. vim.fn.expand("$HOME")
-  .. "/.luarocks/share/lua/5.1/?/init.lua;"
-package.path = package.path
-  .. ";"
-  .. vim.fn.expand("$HOME")
-  .. "/.luarocks/share/lua/5.1/?.lua;"
+-- package.path = package.path
+--   .. ";"
+--   .. vim.fn.expand("$HOME")
+--   .. "/.luarocks/share/lua/5.1/?/init.lua;"
+-- package.path = package.path
+--   .. ";"
+--   .. vim.fn.expand("$HOME")
+--   .. "/.luarocks/share/lua/5.1/?.lua;"
 
 require("impatient")
 require("config")

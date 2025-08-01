@@ -1,6 +1,6 @@
 -- Editor appearance
 -- Created: 23/11/2024, 06:18:18 +0530
--- Last updated: 29/03/2025, 21:51:18 +0530
+-- Last updated: 01/08/2025, 12:08:59 +0530
 
 if vim.fn.exists("+termguicolors") == 1 then
   vim.opt.termguicolors = true
@@ -43,3 +43,15 @@ if vim.fn.has("win32") or vim.fn.has("win64") then
     vim.g.neovide_scroll_animation_length = 0.00
   end
 end
+
+-- Snacks configuration
+-- See https://github.com/folke/snacks.nvim/blob/main/README.md
+require("snacks").setup({
+  -- dim = { enabled = true },
+  image = { enabled = true },
+  -- zen = { enabled = true },
+})
+
+-- vim.keymap.set("n", "<leader>z", function()
+--   require("snacks").zen()
+-- end)

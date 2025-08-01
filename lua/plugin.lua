@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 13/06/2025, 15:58:06 +0530
+-- Last updated: 01/08/2025, 17:45:44 +0530
 
 local utils = require("util")
 
@@ -30,13 +30,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    {
-      "3rd/image.nvim",
-      cond = function()
-        return utils.getPlatform() == "nix"
-      end,
-      ft = { "markdown" },
-    },
     { "akinsho/toggleterm.nvim", version = "*", config = true },
     { "andythigpen/nvim-coverage" },
     { "antoinemadec/FixCursorHold.nvim" },
@@ -44,8 +37,11 @@ require("lazy").setup({
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "dhruvasagar/vim-table-mode", ft = { "markdown" } },
     { "echasnovski/mini.diff", version = false },
-    { "folke/twilight.nvim" },
-    { "folke/zen-mode.nvim" },
+    {
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+    },
     { "hrsh7th/cmp-emoji" },
     { "issafalcon/neotest-dotnet" },
     { "konfekt/fastfold" },

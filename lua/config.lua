@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 29/07/2025, 11:43:32 +0530
+-- Last modified: 01/08/2025, 17:48:20 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -62,30 +62,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Highlight colors {{{1
 require("nvim-highlight-colors").setup({})
-
--- Image {{{1
--- https://github.com/3rd/image.nvim
-if
-  utils.getPlatform() == "nix"
-  and (os.getenv("KITTY_WINDOW_ID") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm")
-  and (not vim.g.vscode or vim.g.vscode == false)
-  and (not vim.g.neovide or vim.g.neovide == false)
-then
-  require("image").setup({
-    integrations = {
-      markdown = {
-        enabled = true,
-        clear_in_insert_mode = false,
-        download_remote_images = true,
-        only_render_image_at_cursor = false,
-        only_render_image_at_cursor_mode = "popup",
-        floating_windows = false, -- if true, images will be rendered in floating markdown windows
-        filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-      },
-    },
-    tmux_show_only_in_active_window = true, -- needs visual-activity off
-  })
-end
 
 -- Lsp {{{1
 -- Use an on_attach function to only map the following keys
