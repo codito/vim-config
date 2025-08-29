@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 29/07/2025, 12:47:52 +0530
+-- Last modified: 29/08/2025, 10:40:15 +0530
 
 local utils = require("util")
 
@@ -11,105 +11,110 @@ if utils.getPlatform() == "win" then
 end
 require("codecompanion").setup({
   adapters = {
-    opts = {
-      -- show_defaults = false,
-    },
-    kimi = function()
-      return require("codecompanion.adapters").extend("openai", {
-        url = "https://api.groq.com/openai/v1/chat/completions",
-        env = {
-          api_key = "GROQ_API_KEY",
-        },
-        schema = {
-          model = {
-            default = "moonshotai/kimi-k2-instruct",
+    http = {
+      opts = {
+        -- show_defaults = false,
+      },
+      kimi = function()
+        return require("codecompanion.adapters").extend("openai", {
+          url = "https://api.groq.com/openai/v1/chat/completions",
+          env = {
+            api_key = "GROQ_API_KEY",
           },
-          temperature = { default = 0.0 },
-          max_tokens = { default = 1024 },
-        },
-        handlers = {
-          form_messages = function(self, messages)
-            -- Messages are of the form
-            -- [{role: user, content: x, id: num, opts: {} }]
-            -- Remove the `id` and `opts` params since Groq API is strict
-            local formatted_messages = {}
-            for i, message in ipairs(messages) do
-              table.insert(formatted_messages, {
-                role = message.role,
-                content = message.content,
-              })
-            end
-            return { messages = formatted_messages }
-          end,
-        },
-      })
-    end,
-    qwq = function()
-      return require("codecompanion.adapters").extend("openai", {
-        url = "https://api.groq.com/openai/v1/chat/completions",
-        env = {
-          api_key = "GROQ_API_KEY",
-        },
-        schema = {
-          model = {
-            default = "qwen-qwq-32b",
+          schema = {
+            model = {
+              default = "moonshotai/kimi-k2-instruct",
+            },
+            temperature = { default = 0.0 },
+            max_tokens = { default = 1024 },
           },
-          temperature = { default = 0.0 },
-          max_tokens = { default = 2048 },
-        },
-        handlers = {
-          form_messages = function(self, messages)
-            -- Messages are of the form
-            -- [{role: user, content: x, id: num, opts: {} }]
-            -- Remove the `id` and `opts` params since Groq API is strict
-            local formatted_messages = {}
-            for i, message in ipairs(messages) do
-              table.insert(formatted_messages, {
-                role = message.role,
-                content = message.content,
-              })
-            end
-            return { messages = formatted_messages }
-          end,
-        },
-      })
-    end,
-    localai = function()
-      return require("codecompanion.adapters").extend("openai", {
-        url = "http://localhost:8080/v1/chat/completions",
-        schema = {
-          temperature = { default = 0.0 },
-          max_tokens = { default = 512 },
-        },
-        handlers = {
-          chat_output = function(self, data)
-            local output = {}
+          handlers = {
+            form_messages = function(self, messages)
+              -- Messages are of the form
+              -- [{role: user, content: x, id: num, opts: {} }]
+              -- Remove the `id` and `opts` params since Groq API is strict
+              local formatted_messages = {}
+              for i, message in ipairs(messages) do
+                table.insert(formatted_messages, {
+                  role = message.role,
+                  content = message.content,
+                })
+              end
+              return { messages = formatted_messages }
+            end,
+          },
+        })
+      end,
+      qwen = function()
+        return require("codecompanion.adapters").extend("openai", {
+          url = "https://api.groq.com/openai/v1/chat/completions",
+          env = {
+            api_key = "GROQ_API_KEY",
+          },
+          schema = {
+            model = {
+              default = "qwen/qwen3-32b",
+            },
+            temperature = { default = 0.0 },
+            max_tokens = { default = 2048 },
+          },
+          handlers = {
+            form_messages = function(self, messages)
+              -- Messages are of the form
+              -- [{role: user, content: x, id: num, opts: {} }]
+              -- Remove the `id` and `opts` params since Groq API is strict
+              local formatted_messages = {}
+              for i, message in ipairs(messages) do
+                table.insert(formatted_messages, {
+                  role = message.role,
+                  content = message.content,
+                })
+              end
+              return { messages = formatted_messages }
+            end,
+          },
+        })
+      end,
+      localai = function()
+        return require("codecompanion.adapters").extend("openai", {
+          url = "http://localhost:8080/v1/chat/completions",
+          schema = {
+            temperature = { default = 0.0 },
+            max_tokens = { default = 512 },
+          },
+          handlers = {
+            chat_output = function(self, data)
+              local output = {}
 
-            if data and data ~= "" then
-              local data_mod = data:sub(7)
-              local ok, json =
-                pcall(vim.json.decode, data_mod, { luanil = { object = true } })
+              if data and data ~= "" then
+                local data_mod = data:sub(7)
+                local ok, json = pcall(
+                  vim.json.decode,
+                  data_mod,
+                  { luanil = { object = true } }
+                )
 
-              if ok then
-                if #json.choices > 0 then
-                  local delta = json.choices[1].delta
+                if ok then
+                  if #json.choices > 0 then
+                    local delta = json.choices[1].delta
 
-                  if delta.content then
-                    output.content = delta.content
-                    output.role = delta.role or "assistant" -- llama-server doesn't return role on streaming
+                    if delta.content then
+                      output.content = delta.content
+                      output.role = delta.role or "assistant" -- llama-server doesn't return role on streaming
 
-                    return {
-                      status = "success",
-                      output = output,
-                    }
+                      return {
+                        status = "success",
+                        output = output,
+                      }
+                    end
                   end
                 end
               end
-            end
-          end,
-        },
-      })
-    end,
+            end,
+          },
+        })
+      end,
+    },
   },
   strategies = {
     chat = {
