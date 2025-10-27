@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 01/08/2025, 17:48:42 +0530
+-- Last Modified: 08/10/2025, 19:25:04 +0530
 
 local utils = require("util")
 
@@ -104,7 +104,7 @@ require("plugin")
 -- vim.g.gruvbox_material_diagnostic_text_highlight = 1
 -- vim.g.gruvbox_material_better_performance = 1
 -- vim.cmd("colorscheme gruvbox-material")
-vim.cmd("colorscheme catppuccin-latte")
+vim.cmd("colorscheme catppuccin-frappe")
 
 -- Load lua based plugin configuration {{{1
 -- Setup local luarock packages

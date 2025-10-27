@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 29/08/2025, 10:40:15 +0530
+-- Last modified: 13/09/2025, 17:46:51 +0530
 
 local utils = require("util")
 
@@ -23,7 +23,7 @@ require("codecompanion").setup({
           },
           schema = {
             model = {
-              default = "moonshotai/kimi-k2-instruct",
+              default = "moonshotai/kimi-k2-instruct-0905",
             },
             temperature = { default = 0.0 },
             max_tokens = { default = 1024 },
