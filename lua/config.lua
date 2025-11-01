@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/08/2025, 17:48:20 +0530
+-- Last modified: 01/11/2025, 17:03:56 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -304,14 +304,24 @@ require("telescope").setup({
 -- https://github.com/nvim-treesitter/nvim-treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
   highlight = {
     enable = true,
+    -- disable = function(lang, bufnr)
+    --   if vim.bo.filetype == "help" then
+    --     return true
+    --   elseif vim.bo.filetype == "markdown" then
+    --     return true
+    --   else
+    --     return false
+    --   end
+    -- end,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = { "markdown" },
+    -- additional_vim_regex_highlighting = { "markdown" },
+    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     enable = true,

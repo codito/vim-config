@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 01/08/2025, 17:45:44 +0530
+-- Last updated: 01/11/2025, 16:57:27 +0530
 
 local utils = require("util")
 
@@ -63,9 +63,14 @@ require("lazy").setup({
     { "nvim-neotest/neotest" },
     { "nvim-neotest/neotest-python", ft = { "python" } },
     { "nvim-neotest/nvim-nio" },
-    { "nvim-telescope/telescope.nvim", version = "0.1.x" },
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
+    { "nvim-telescope/telescope.nvim", branch = "master" },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      lazy = false,
+      branch = "main",
+      build = ":TSUpdate",
+    },
+    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     { "olimorris/codecompanion.nvim" },
     { "preservim/vim-pencil", ft = "markdown" },
     { "preservim/vim-lexical", ft = "markdown" },
