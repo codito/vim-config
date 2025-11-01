@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/11/2025, 17:03:56 +0530
+-- Last modified: 01/11/2025, 18:56:00 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -39,9 +39,9 @@ require("conform").setup({
 
     -- Use a sub-list to run only the first available formatter
     astro = { "prettier" },
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
+    javascript = { "biome" },
+    typescript = { "biome" },
+    typescriptreact = { "biome" },
     markdown = { "prettier" },
   },
   -- If this is set, Conform will run the formatter on save.
