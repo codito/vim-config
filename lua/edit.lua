@@ -1,7 +1,11 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 07/05/2025, 08:06:50 +0530
+-- Last updated: 30/12/2025, 12:27:50 +0530
 local Terminal = require("toggleterm.terminal").Terminal
+
+-- Editor keybindings {{{1
+-- Make :W behave same as :w
+vim.api.nvim_create_user_command("W", "write", { bang = true })
 
 -- Language and filetypes {{{1
 -- C/C++

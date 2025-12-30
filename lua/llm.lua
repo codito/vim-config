@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 13/09/2025, 17:46:51 +0530
+-- Last modified: 07/12/2025, 17:08:15 +0530
 
 local utils = require("util")
 
@@ -145,6 +145,8 @@ require("codecompanion").setup({
     force_role = true,
     -- log_level = "TRACE",
   },
+  -- Ignore v18 warning for now
+  ignore_warnings = true,
 })
 
 vim.api.nvim_set_keymap(
