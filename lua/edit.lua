@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 30/12/2025, 12:27:50 +0530
+-- Last updated: 01/01/2026, 07:52:59 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -263,6 +263,20 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Markdown {{{1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_strikethrough = 1
+
+-- Math calculator - calcium {{{1
+vim.api.nvim_set_keymap(
+  "v",
+  "<leader>mm",
+  ":Calcium replace<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "v",
+  "<leader>ma",
+  ":Calcium append<CR>",
+  { noremap = true, silent = true }
+)
 
 -- Mini.diff {{{1
 require("mini.diff").setup({

@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 01/11/2025, 16:57:27 +0530
+-- Last updated: 01/01/2026, 07:48:14 +0530
 
 local utils = require("util")
 
@@ -57,6 +57,7 @@ require("lazy").setup({
       dependencies = { { "igorlfs/nvim-dap-view", opts = {} } },
     },
     { "mfussenegger/nvim-dap-python" },
+    { "necrom4/calcium.nvim", cmd = { "Calcium" } },
     { "neovim/nvim-lspconfig" },
     { "numtostr/comment.nvim" },
     { "nvim-lua/plenary.nvim" },
