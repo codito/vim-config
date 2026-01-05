@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 01/01/2026, 07:52:59 +0530
+-- Last updated: 01/01/2026, 15:20:21 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -8,6 +8,16 @@ local Terminal = require("toggleterm.terminal").Terminal
 vim.api.nvim_create_user_command("W", "write", { bang = true })
 
 -- Language and filetypes {{{1
+-- Astro
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "astro",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.tabstop = 4
+  end,
+})
+
 -- C/C++
 if vim.fn.has("win32") or vim.fn.has("win64") then
   vim.api.nvim_create_autocmd("FileType", {
