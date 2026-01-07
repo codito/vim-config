@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 07/12/2025, 17:08:15 +0530
+-- Last modified: 07/01/2026, 12:39:27 +0530
 
 local utils = require("util")
 
@@ -226,7 +226,7 @@ require("minuet").setup({
       },
     },
     gemini = {
-      model = "gemini-2.0-flash",
+      model = "gemini-2.5-flash",
       optional = {
         generationConfig = {
           maxOutputTokens = 256,
@@ -276,7 +276,15 @@ require("minuet").setup({
     -- }
   },
   virtualtext = {
-    auto_trigger_ft = { "python", "rust" },
+    auto_trigger_ft = {
+      "python",
+      "rust",
+      "javascript",
+      "typescript",
+      "typescriptreact",
+      "css",
+      "astro",
+    },
     keymap = {
       -- accept whole completion
       accept = "<M-l>",

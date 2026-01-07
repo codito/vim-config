@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/01/2026, 19:16:23 +0530
+-- Last modified: 07/01/2026, 10:02:05 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -38,10 +38,11 @@ require("conform").setup({
     rust = { "rustfmt", lsp_format = "fallback" },
 
     -- Use a sub-list to run only the first available formatter
-    astro = { "oxfmt" },
+    astro = { "prettier" },
     javascript = { "oxfmt" },
     typescript = { "oxfmt" },
     typescriptreact = { "oxfmt" },
+    markdown = { "rumdl", lsp_format = "fallback" },
   },
   -- If this is set, Conform will run the formatter on save.
   -- It will pass the table to conform.format().
