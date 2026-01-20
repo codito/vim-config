@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 04/01/2026, 06:46:32 +0530
+-- Last Modified: 20/01/2026, 18:27:56 +0530
 
 local utils = require("util")
 

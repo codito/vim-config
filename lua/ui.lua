@@ -1,6 +1,6 @@
 -- Editor appearance
 -- Created: 23/11/2024, 06:18:18 +0530
--- Last updated: 01/08/2025, 12:08:59 +0530
+-- Last updated: 20/01/2026, 18:27:37 +0530
 
 if vim.fn.exists("+termguicolors") == 1 then
   vim.opt.termguicolors = true

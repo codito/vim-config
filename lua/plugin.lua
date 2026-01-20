@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 01/01/2026, 07:48:14 +0530
+-- Last updated: 20/01/2026, 16:50:35 +0530
 
 local utils = require("util")
 
@@ -34,7 +34,12 @@ require("lazy").setup({
     { "andythigpen/nvim-coverage" },
     { "antoinemadec/FixCursorHold.nvim" },
     { "brenoprata10/nvim-highlight-colors" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      priority = 1000,
+      opts = { term_colors = true },
+    },
     { "dhruvasagar/vim-table-mode", ft = { "markdown" } },
     { "echasnovski/mini.diff", version = false },
     {
