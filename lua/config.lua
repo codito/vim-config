@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 01/02/2026, 16:07:25 +0530
+-- Last modified: 14/02/2026, 07:14:52 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -214,6 +214,8 @@ vim.lsp.config("rust_analyzer", {
     },
   },
 })
+
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

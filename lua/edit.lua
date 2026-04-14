@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 01/01/2026, 15:20:21 +0530
+-- Last updated: 13/04/2026, 11:01:10 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -288,12 +288,86 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
+-- Diffview {{{1
+-- Toggle diffview open/close
+vim.keymap.set(
+  "n",
+  "<leader>dv",
+  "<cmd>DiffviewToggle<cr>",
+  { desc = "Toggle Diffview" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dr",
+  "<cmd>DiffviewRefresh<cr>",
+  { desc = "Refresh Diffview" }
+)
+
+-- Diff working directory
+vim.keymap.set(
+  "n",
+  "<leader>do",
+  "<cmd>DiffviewOpen<cr>",
+  { desc = "Diffview open" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dc",
+  "<cmd>DiffviewClose<cr>",
+  { desc = "Diffview close" }
+)
+
+-- File history
+vim.keymap.set(
+  "n",
+  "<leader>dh",
+  "<cmd>DiffviewFileHistory %<cr>",
+  { desc = "File history (current file)" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dH",
+  "<cmd>DiffviewFileHistory<cr>",
+  { desc = "File history (repo)" }
+)
+
+-- Visual mode: history for selection
+vim.keymap.set(
+  "v",
+  "<leader>dh",
+  "<Esc><cmd>'<,'>DiffviewFileHistory --follow<CR>",
+  { desc = "Range history" }
+)
+
+-- Single line history
+vim.keymap.set(
+  "n",
+  "<leader>dl",
+  "<cmd>.DiffviewFileHistory --follow<CR>",
+  { desc = "Line history" }
+)
+
+-- Diff against main/master branch (useful before merging)
+vim.keymap.set("n", "<leader>dm", function()
+  -- Try main first, fall back to master
+  local result = vim.fn.systemlist({ "git", "rev-parse", "--verify", "main" })
+  local ok = vim.v.shell_error == 0 and result[1] ~= nil and result[1] ~= ""
+  local branch = ok and "main" or "master"
+  vim.cmd("DiffviewOpen " .. branch)
+end, { desc = "Diff against main/master" })
+
 -- Mini.diff {{{1
 require("mini.diff").setup({
   view = {
     style = "number",
   },
 })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>go",
+  "<cmd>lua MiniDiff.toggle_overlay()<CR>",
+  { noremap = true, silent = true }
+)
 
 -- Netrw plugin {{{1
 vim.g.netrw_browse_split = 3 -- all edits in new tab
