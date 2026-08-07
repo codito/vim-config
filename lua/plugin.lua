@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 11/04/2026, 20:41:57 +0530
+-- Last updated: 26/04/2026, 00:20:43 +0530
 
 local utils = require("util")
 
@@ -67,6 +67,7 @@ require("lazy").setup({
     { "kyazdani42/nvim-web-devicons" },
     { "l3mon4d3/luasnip" },
     { "lewis6991/impatient.nvim" },
+    { "marilari88/neotest-vitest" },
     { "milanglacier/minuet-ai.nvim" },
     {
       "mfussenegger/nvim-dap",

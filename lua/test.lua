@@ -1,6 +1,6 @@
 -- Debug configuration
 -- Created: 08/09/2024, 21:45:03 +0530
--- Last modified: 08/09/2024, 21:47:18 +0530
+-- Last modified: 26/04/2026, 00:21:02 +0530
 
 -- Coverage {{{1
 require("coverage").setup({
@@ -15,6 +15,7 @@ require("neotest").setup({
     }),
     require("neotest-dotnet"),
     require("neotest-rust"),
+    require("neotest-vitest"),
   },
 })
 
