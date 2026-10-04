@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 04/10/2026, 16:10:51 +0530
+-- Last modified: 04/10/2026, 17:32:04 +0530
 
 local utils = require("util")
 
@@ -90,8 +90,18 @@ require("codecompanion").setup({
     chat = {
       adapter = default_adapter,
     },
+    cli = {
+      agent = "opencode",
+      agents = {
+        opencode = {
+          cmd = "opencode",
+          args = { "-c" },
+          description = "OpenCode CLI",
+          provider = "terminal",
+        },
+      },
+    },
     inline = { adapter = default_adapter },
-    agent = { adapter = default_adapter },
   },
   display = {
     chat = {
