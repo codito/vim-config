@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 26/04/2026, 00:20:43 +0530
+-- Last updated: 04/10/2026, 16:38:51 +0530
 
 local utils = require("util")
 
@@ -58,6 +58,10 @@ require("lazy").setup({
       "folke/snacks.nvim",
       priority = 1000,
       lazy = false,
+    },
+    {
+      "hakonharnes/img-clip.nvim",
+      event = "VeryLazy",
     },
     { "hrsh7th/cmp-emoji" },
     { "issafalcon/neotest-dotnet" },

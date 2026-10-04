@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 13/04/2026, 11:01:10 +0530
+-- Last updated: 04/10/2026, 16:45:18 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -355,6 +355,22 @@ vim.keymap.set("n", "<leader>dm", function()
   local branch = ok and "main" or "master"
   vim.cmd("DiffviewOpen " .. branch)
 end, { desc = "Diff against main/master" })
+
+-- ImgClip {{{1
+require("img-clip").setup({
+  default = {
+    -- prompt options
+    prompt_for_file_name = true, ---@type boolean | fun(): boolean
+    show_dir_path_in_prompt = true, ---@type boolean | fun(): boolean
+  },
+})
+
+vim.keymap.set(
+  "n",
+  "<leader>ip",
+  "<cmd>PasteImage<cr>",
+  { desc = "Paste image from system clipboard" }
+)
 
 -- Mini.diff {{{1
 require("mini.diff").setup({
