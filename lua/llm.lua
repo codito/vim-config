@@ -1,11 +1,11 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 07/01/2026, 12:39:27 +0530
+-- Last modified: 04/10/2026, 16:10:51 +0530
 
 local utils = require("util")
 
 -- CodeCompanion {{{1
-local default_adapter = "kimi"
+local default_adapter = "qwen"
 if utils.getPlatform() == "win" then
   default_adapter = "copilot"
 end
@@ -15,36 +15,6 @@ require("codecompanion").setup({
       opts = {
         -- show_defaults = false,
       },
-      kimi = function()
-        return require("codecompanion.adapters").extend("openai", {
-          url = "https://api.groq.com/openai/v1/chat/completions",
-          env = {
-            api_key = "GROQ_API_KEY",
-          },
-          schema = {
-            model = {
-              default = "moonshotai/kimi-k2-instruct-0905",
-            },
-            temperature = { default = 0.0 },
-            max_tokens = { default = 1024 },
-          },
-          handlers = {
-            form_messages = function(self, messages)
-              -- Messages are of the form
-              -- [{role: user, content: x, id: num, opts: {} }]
-              -- Remove the `id` and `opts` params since Groq API is strict
-              local formatted_messages = {}
-              for i, message in ipairs(messages) do
-                table.insert(formatted_messages, {
-                  role = message.role,
-                  content = message.content,
-                })
-              end
-              return { messages = formatted_messages }
-            end,
-          },
-        })
-      end,
       qwen = function()
         return require("codecompanion.adapters").extend("openai", {
           url = "https://api.groq.com/openai/v1/chat/completions",
@@ -53,7 +23,7 @@ require("codecompanion").setup({
           },
           schema = {
             model = {
-              default = "qwen/qwen3-32b",
+              default = "qwen/qwen3.8-27b",
             },
             temperature = { default = 0.0 },
             max_tokens = { default = 2048 },
@@ -116,7 +86,7 @@ require("codecompanion").setup({
       end,
     },
   },
-  strategies = {
+  interactions = {
     chat = {
       adapter = default_adapter,
     },
@@ -127,11 +97,6 @@ require("codecompanion").setup({
     chat = {
       window = {
         layout = "vertical", -- float|vertical|horizontal|buffer
-      },
-    },
-    inline = {
-      diff = {
-        diff_method = "mini.diff",
       },
     },
     action_palette = {
@@ -145,8 +110,7 @@ require("codecompanion").setup({
     force_role = true,
     -- log_level = "TRACE",
   },
-  -- Ignore v18 warning for now
-  ignore_warnings = true,
+  ignore_warnings = false,
 })
 
 vim.api.nvim_set_keymap(
@@ -213,7 +177,7 @@ require("minuet").setup({
   n_completions = 1,
   provider_options = {
     openai_compatible = {
-      model = "moonshotai/kimi-k2-instruct",
+      model = "qwen/qwen3.8-27b",
       system = default_system,
       few_shots = default_few_shots,
       end_point = "https://api.groq.com/openai/v1/chat/completions",
@@ -226,7 +190,7 @@ require("minuet").setup({
       },
     },
     gemini = {
-      model = "gemini-2.5-flash",
+      model = "gemini-3.8-flash",
       optional = {
         generationConfig = {
           maxOutputTokens = 256,

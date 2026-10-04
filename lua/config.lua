@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 14/02/2026, 07:14:52 +0530
+-- Last modified: 02/09/2026, 21:49:53 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -173,12 +173,12 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "astro",
     "basedpyright",
-    "csharp_ls",
     "cssls",
     "harper_ls",
     "html",
     "jsonls",
     "marksman",
+    "roslyn_ls",
     "ruff",
     "rust_analyzer",
     "rumdl",
