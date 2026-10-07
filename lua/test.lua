@@ -1,6 +1,6 @@
 -- Debug configuration
 -- Created: 08/09/2024, 21:45:03 +0530
--- Last modified: 26/04/2026, 00:21:02 +0530
+-- Last modified: 07/10/2026, 19:55:58 +0530
 
 -- Coverage {{{1
 require("coverage").setup({
@@ -9,13 +9,15 @@ require("coverage").setup({
 
 -- Neotest {{{1
 require("neotest").setup({
+  -- Log file path: `:lua print(vim.fn.stdpath("log") .. "/neotest.log")`
+  -- log_level = vim.log.levels.DEBUG,
   adapters = {
     require("neotest-python")({
       dap = { justMyCode = false },
     }),
-    require("neotest-dotnet"),
     require("neotest-rust"),
     require("neotest-vitest"),
+    require("neotest-vstest"),
   },
 })
 

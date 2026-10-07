@@ -1,6 +1,6 @@
 -- Editor appearance
 -- Created: 23/11/2024, 06:18:18 +0530
--- Last updated: 20/01/2026, 18:27:37 +0530
+-- Last updated: 07/10/2026, 19:52:10 +0530
 
 if vim.fn.exists("+termguicolors") == 1 then
   vim.opt.termguicolors = true
@@ -48,6 +48,35 @@ end
 -- See https://github.com/folke/snacks.nvim/blob/main/README.md
 require("snacks").setup({
   -- dim = { enabled = true },
+  bigfile = {
+    enabled = true,
+    notify = true, -- Show notification when big file detected
+    size = 512 * 1024, -- 512KB
+    line_length = 5000, -- Average line length (useful for minified files)
+    -- Enable or disable features when big file detected
+    ---@param ctx {buf: number, ft:string}
+    setup = function(ctx)
+      vim.b[ctx.buf].minidiff_disable = true
+      pcall(function()
+        require("mini.diff").disable(ctx.buf)
+      end)
+      vim.schedule(function()
+        if not vim.api.nvim_buf_is_valid(ctx.buf) then
+          return
+        end
+        -- Undo snacks' deferred `syntax = <orig ft>`: no highlighting for big files.
+        pcall(function()
+          vim.bo[ctx.buf].syntax = ""
+        end)
+        vim.b[ctx.buf].completion = false
+      end)
+      vim.opt_local.foldmethod = "manual"
+      vim.opt_local.cursorline = false
+      vim.opt_local.swapfile = false
+      vim.opt_local.undolevels = -1
+    end,
+  },
+  quickfile = { enabled = true },
   image = { enabled = true },
   -- zen = { enabled = true },
 })

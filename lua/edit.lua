@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 04/10/2026, 16:45:18 +0530
+-- Last updated: 07/10/2026, 19:30:47 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -44,14 +44,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.foldmethod = "indent"
     vim.opt_local.foldmarker = "{,}"
-    vim.opt_local.foldtext = function()
-      return vim.fn.substitute(
-        vim.fn.getline(vim.fn.foldstart() + 1),
-        "{.*",
-        "{...}",
-        ""
-      )
-    end
     vim.opt_local.foldlevel = 3
   end,
 })

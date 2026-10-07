@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 02/09/2026, 21:49:53 +0530
+-- Last modified: 07/10/2026, 19:53:21 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -163,7 +163,12 @@ local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Configure the installed lsp servers.
 -- lsp_installer setup must be called before lspconfig.
-require("mason").setup()
+require("mason").setup({
+  registries = {
+    "github:Crashdummyy/mason-registry",
+    "github:mason-org/mason-registry",
+  },
+})
 local lsp_installer = require("mason-lspconfig")
 lsp_installer.setup()
 
@@ -178,7 +183,6 @@ require("mason-lspconfig").setup({
     "html",
     "jsonls",
     "marksman",
-    "roslyn_ls",
     "ruff",
     "rust_analyzer",
     "rumdl",
@@ -307,18 +311,20 @@ require("telescope").setup({
 -- https://github.com/nvim-treesitter/nvim-treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+local function ts_disable_for_bigfile(_, bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  if not vim.api.nvim_buf_is_valid(bufnr) then
+    return false
+  end
+  local ft = vim.bo[bufnr].filetype
+  if ft == "bigfile" or ft == "help" or ft == "markdown" then
+    return true
+  end
+end
 require("nvim-treesitter").setup({
   highlight = {
     enable = true,
-    -- disable = function(lang, bufnr)
-    --   if vim.bo.filetype == "help" then
-    --     return true
-    --   elseif vim.bo.filetype == "markdown" then
-    --     return true
-    --   else
-    --     return false
-    --   end
-    -- end,
+    disable = ts_disable_for_bigfile,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -337,6 +343,7 @@ require("nvim-treesitter").setup({
   },
   indent = {
     enable = true,
+    disable = ts_disable_for_bigfile,
   },
 
   -- Tree sitter context objects {{{2

@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 04/10/2026, 16:38:51 +0530
+-- Last updated: 07/10/2026, 06:15:10 +0530
 
 local utils = require("util")
 
@@ -64,7 +64,6 @@ require("lazy").setup({
       event = "VeryLazy",
     },
     { "hrsh7th/cmp-emoji" },
-    { "issafalcon/neotest-dotnet" },
     { "konfekt/fastfold" },
     { "kdheepak/cmp-latex-symbols" },
     { "kyazdani42/nvim-tree.lua" },
@@ -81,6 +80,7 @@ require("lazy").setup({
     { "mfussenegger/nvim-dap-python" },
     { "necrom4/calcium.nvim", cmd = { "Calcium" } },
     { "neovim/nvim-lspconfig" },
+    { "nsidorenco/neotest-vstest" },
     { "numtostr/comment.nvim" },
     { "nvim-lua/plenary.nvim" },
     { "nvim-neotest/neotest" },
@@ -102,6 +102,7 @@ require("lazy").setup({
     { "ron89/thesaurus_query.vim" },
     { "rouge8/neotest-rust", ft = "rust" },
     { "sadotsoy/vim-xit", ft = "xit" },
+    { "seblyng/roslyn.nvim" },
     {
       "saghen/blink.cmp",
       version = "1.*",
