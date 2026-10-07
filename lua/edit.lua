@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 07/10/2026, 19:30:47 +0530
+-- Last updated: 07/10/2026, 20:02:43 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -236,24 +236,6 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- Lazygit {{{1
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  dir = "git_dir",
-  direction = "float",
-  hidden = true,
-})
-
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gg",
-  "<cmd>lua _lazygit_toggle()<CR>",
-  { noremap = true, silent = true }
-)
 -- Lexical {{{1
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",

@@ -1,6 +1,6 @@
 -- Editor appearance
 -- Created: 23/11/2024, 06:18:18 +0530
--- Last updated: 07/10/2026, 19:52:10 +0530
+-- Last updated: 07/10/2026, 20:02:37 +0530
 
 if vim.fn.exists("+termguicolors") == 1 then
   vim.opt.termguicolors = true
@@ -78,8 +78,16 @@ require("snacks").setup({
   },
   quickfile = { enabled = true },
   image = { enabled = true },
+  lazygit = { enabled = true, configure = true },
   -- zen = { enabled = true },
 })
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>gg",
+  "<cmd>lua Snacks.lazygit.open()<CR>",
+  { noremap = true, silent = true }
+)
 
 -- vim.keymap.set("n", "<leader>z", function()
 --   require("snacks").zen()
