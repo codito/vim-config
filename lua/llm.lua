@@ -1,6 +1,6 @@
 -- LLM plugins
 -- Created: 01/09/2024, 10:26:27 +0530
--- Last modified: 04/10/2026, 17:32:04 +0530
+-- Last modified: 27/10/2026, 10:16:24 +0530
 
 local utils = require("util")
 
@@ -133,6 +133,12 @@ vim.api.nvim_set_keymap(
   "v",
   "<LocalLeader>ca",
   "<cmd>CodeCompanionActions<cr>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<LocalLeader>cO",
+  "<cmd>CodeCompanionChat adapter=opencode<cr>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
