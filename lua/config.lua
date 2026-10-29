@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 07/10/2026, 19:53:21 +0530
+-- Last modified: 29/10/2026, 09:38:22 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -30,7 +30,6 @@ require("Comment").setup()
 -- Conform {{{1
 require("conform").setup({
   formatters_by_ft = {
-    css = { "stylelint" },
     lua = { "stylua" },
 
     -- Conform will run multiple formatters sequentially
