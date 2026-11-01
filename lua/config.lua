@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 29/10/2026, 09:38:22 +0530
+-- Last modified: 01/11/2026, 09:02:36 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -31,13 +31,14 @@ require("Comment").setup()
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
+    css = { "oxfmt", "stylelint", lsp_format = "fallback" },
 
     -- Conform will run multiple formatters sequentially
     python = { "ruff_format", "ruff_organize_imports" },
     rust = { "rustfmt", lsp_format = "fallback" },
 
     -- Use a sub-list to run only the first available formatter
-    astro = { "prettier" },
+    astro = { "oxfmt" },
     javascript = { "oxfmt" },
     typescript = { "oxfmt" },
     typescriptreact = { "oxfmt" },
@@ -47,9 +48,8 @@ require("conform").setup({
   -- It will pass the table to conform.format().
   -- This can also be a function that returns the table.
   format_on_save = {
-    -- I recommend these options. See :help conform.format for details.
-    lsp_fallback = true,
-    timeout_ms = 500,
+    lsp_format = "fallback",
+    timeout_ms = 1500,
   },
 })
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -285,6 +285,7 @@ require("nvim-tree").setup({
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>bb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>kk", builtin.keymaps, {})
 vim.keymap.set("n", "<leader>zz", builtin.spell_suggest, {})
 

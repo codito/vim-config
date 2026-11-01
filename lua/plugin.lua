@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 07/10/2026, 06:15:10 +0530
+-- Last updated: 01/11/2026, 08:44:17 +0530
 
 local utils = require("util")
 
@@ -70,7 +70,6 @@ require("lazy").setup({
     { "kyazdani42/nvim-web-devicons" },
     { "l3mon4d3/luasnip" },
     { "lewis6991/impatient.nvim" },
-    { "marilari88/neotest-vitest" },
     { "milanglacier/minuet-ai.nvim" },
     {
       "mfussenegger/nvim-dap",
@@ -80,11 +79,17 @@ require("lazy").setup({
     { "mfussenegger/nvim-dap-python" },
     { "necrom4/calcium.nvim", cmd = { "Calcium" } },
     { "neovim/nvim-lspconfig" },
-    { "nsidorenco/neotest-vstest" },
     { "numtostr/comment.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "nvim-neotest/neotest" },
-    { "nvim-neotest/neotest-python", ft = { "python" } },
+    {
+      "nvim-neotest/neotest",
+      dependencies = {
+        { "marilari88/neotest-vitest", ft = { "typescript" } },
+        { "nsidorenco/neotest-vstest", ft = { "cs" } },
+        { "nvim-neotest/neotest-python", ft = { "python" } },
+        { "rouge8/neotest-rust", ft = "rust" },
+      },
+    },
     { "nvim-neotest/nvim-nio" },
     { "nvim-telescope/telescope.nvim", branch = "master" },
     {
@@ -100,9 +105,7 @@ require("lazy").setup({
     { "rafamadriz/friendly-snippets" },
     { "romgrk/nvim-treesitter-context" },
     { "ron89/thesaurus_query.vim" },
-    { "rouge8/neotest-rust", ft = "rust" },
-    { "sadotsoy/vim-xit", ft = "xit" },
-    { "seblyng/roslyn.nvim" },
+    { "seblyng/roslyn.nvim", ft = "cs", lazy = true },
     {
       "saghen/blink.cmp",
       version = "1.*",
