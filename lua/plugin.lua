@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 01/11/2026, 08:44:17 +0530
+-- Last updated: 13/11/2026, 16:44:25 +0530
 
 local utils = require("util")
 
@@ -99,7 +99,6 @@ require("lazy").setup({
       build = ":TSUpdate",
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
-    { "olimorris/codecompanion.nvim" },
     { "preservim/vim-pencil", ft = "markdown" },
     { "preservim/vim-lexical", ft = "markdown" },
     { "rafamadriz/friendly-snippets" },
@@ -119,12 +118,6 @@ require("lazy").setup({
     { "vim-scripts/timestamp.vim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-    {
-      "zbirenbaum/copilot.lua",
-      cond = function()
-        return utils.getPlatform() == "win"
-      end,
-    },
 
     -- Colors
     { "f4z3r/gruvbox-material.nvim" },
