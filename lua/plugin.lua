@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 15/11/2026, 08:22:44 +0530
+-- Last updated: 15/11/2026, 09:47:35 +0530
 
 local utils = require("util")
 
@@ -38,7 +38,26 @@ require("lazy").setup({
       "catppuccin/nvim",
       name = "catppuccin",
       priority = 1000,
-      opts = { term_colors = true },
+      opts = {
+        term_colors = true,
+        auto_integrations = false,
+        integrations = {
+          aerial = true,
+          blink_cmp = { style = "bordered" },
+          dap = true,
+          dap_ui = true,
+          diffview = true,
+          neotest = true,
+          nvimtree = true,
+          mason = true,
+          mini = { enabled = true },
+          render_markdown = true,
+          snacks = { enabled = true },
+          telescope = { enabled = true },
+          treesitter_context = true,
+          lsp_trouble = true,
+        },
+      },
     },
     { "dhruvasagar/vim-table-mode", ft = { "markdown" } },
     {
@@ -68,6 +87,10 @@ require("lazy").setup({
     { "kyazdani42/nvim-web-devicons" },
     { "l3mon4d3/luasnip" },
     { "lewis6991/impatient.nvim" },
+    {
+      "meanderingprogrammer/render-markdown.nvim",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
     { "milanglacier/minuet-ai.nvim" },
     {
       "mfussenegger/nvim-dap",
