@@ -12,6 +12,7 @@
   "diffview.nvim": { "branch": "main", "commit": "2a2d89a07f5d5d3cef7f542b99c3e28050ca205c" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "fastfold": { "branch": "master", "commit": "c1ddfa1a0e00316d1161ce11438ec980348b8cb9" },
+  "flash.nvim": { "branch": "main", "commit": "5f0f270fdc7c5b0c21d903ee85b9cb06f2ac636a" },
   "flexoki-neovim": { "branch": "main", "commit": "c3e2251e813d29d885a7cbbe9808a7af234d845d" },
   "friendly-snippets": { "branch": "main", "commit": "7a1c9f7897a4eb078b157a04c7af81e5869215b1" },
   "gruvbox-material.nvim": { "branch": "master", "commit": "26d6cc7bff7b083405b4902edc0a8a64f45df933" },

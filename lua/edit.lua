@@ -1,6 +1,6 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 07/10/2026, 20:02:43 +0530
+-- Last updated: 15/11/2026, 21:04:28 +0530
 local Terminal = require("toggleterm.terminal").Terminal
 
 -- Editor keybindings {{{1
@@ -227,6 +227,41 @@ vim.g.timestamp_regexp =
   [[\v\C%(<[lL]ast %([cC]hanged?|[Mm]odified|[Uu]pdated):\s+)@<=.*$|TIMESTAMP]]
 vim.g.timestamp_modelines = 50
 vim.g.timestamp_rep = "%d/%m/%Y, %T %z"
+
+-- Flash {{{1
+require("flash").setup({
+  modes = {
+    char = {
+      enabled = true,
+      jump_labels = true, -- Use f,F,t,T with labels
+    },
+  },
+})
+vim.keymap.set(
+  { "n", "x", "o" },
+  "s",
+  require("flash").jump,
+  { desc = "Flash" }
+)
+vim.keymap.set(
+  { "n", "x", "o" },
+  "S",
+  require("flash").treesitter,
+  { desc = "Flash Treesitter" }
+)
+vim.keymap.set("o", "r", require("flash").remote, { desc = "Remote Flash" })
+vim.keymap.set(
+  { "o", "x" },
+  "R",
+  require("flash").treesitter_search,
+  { desc = "Treesitter Search" }
+)
+vim.keymap.set(
+  "c",
+  "<C-s>",
+  require("flash").toggle,
+  { desc = "Toggle Flash Search" }
+)
 
 -- Glow {{{1
 vim.api.nvim_set_keymap(

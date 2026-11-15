@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 15/11/2026, 09:47:35 +0530
+-- Last updated: 15/11/2026, 20:33:17 +0530
 
 local utils = require("util")
 
@@ -72,7 +72,7 @@ require("lazy").setup({
         "DiffviewLog",
       },
     },
-    { "nvim-mini/mini.diff", version = false },
+    { "folke/flash.nvim", event = "VeryLazy" },
     {
       "folke/snacks.nvim",
       priority = 1000,
@@ -102,6 +102,7 @@ require("lazy").setup({
     { "neovim/nvim-lspconfig" },
     { "numtostr/comment.nvim" },
     { "nvim-lua/plenary.nvim" },
+    { "nvim-mini/mini.diff", version = false },
     {
       "nvim-neotest/neotest",
       dependencies = {
@@ -119,11 +120,11 @@ require("lazy").setup({
       branch = "main",
       build = ":TSUpdate",
     },
+    { "nvim-treesitter/nvim-treesitter-context" },
     { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     { "preservim/vim-pencil", ft = "markdown" },
     { "preservim/vim-lexical", ft = "markdown" },
     { "rafamadriz/friendly-snippets" },
-    { "romgrk/nvim-treesitter-context" },
     { "ron89/thesaurus_query.vim" },
     { "seblyng/roslyn.nvim", ft = "cs", lazy = true },
     {
