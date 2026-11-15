@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 05/11/2026, 10:43:22 +0530
+-- Last modified: 15/11/2026, 08:42:23 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
@@ -127,23 +127,73 @@ cmp.setup({
       "path",
       "snippets",
       "buffer",
-      "emoji",
-      "latex_symbols",
+      "latex",
       -- "minuet", -- manual completion only
+    },
+    per_filetype = {
+      gitcommit = { "emoji" },
+      text = { "dictionary" },
+      markdown = { inherit_defaults = true, "emoji", "thesaurus" },
     },
     providers = {
       emoji = {
-        name = "emoji",
-        module = "blink.compat.source",
+        name = "Emoji",
+        module = "blink-emoji",
+        score_offset = 15, -- Tune by preference
+        opts = {
+          insert = true, -- Insert emoji (default) or complete its name
+          ---@type string|table|fun():table
+          trigger = function()
+            return { ":" }
+          end,
+        },
       },
-      latex_symbols = {
-        name = "latex_symbols",
-        module = "blink.compat.source",
+      latex = {
+        name = "Latex",
+        module = "blink-cmp-latex",
+        opts = {
+          -- set to true to insert the latex command instead of the symbol
+          insert_command = false,
+        },
       },
       minuet = { -- manual complete only
         name = "minuet",
         module = "minuet.blink",
         score_offset = 8, -- Gives minuet higher priority among suggestions
+      },
+      thesaurus = {
+        name = "Thesaurus",
+        module = "blink-cmp-words.thesaurus",
+        opts = {
+          -- A score offset applied to returned items.
+          -- By default the highest score is 0 (item 1 has a score of -1, item 2 of -2 etc..).
+          score_offset = 0,
+
+          -- Default pointers define the lexical relations listed under each definition,
+          -- see Pointer Symbols below.
+          -- Default is as below ("antonyms", "similar to" and "also see").
+          definition_pointers = { "!", "&", "^" },
+
+          -- The pointers that are considered similar words when using the thesaurus,
+          -- see Pointer Symbols below.
+          -- Default is as below ("similar to", "also see" }
+          similarity_pointers = { "&", "^" },
+
+          -- The depth of similar words to recurse when collecting synonyms. 1 is similar words,
+          -- 2 is similar words of similar words, etc. Increasing this may slow results.
+          similarity_depth = 2,
+        },
+      },
+      dictionary = {
+        name = "Dictionary",
+        module = "blink-cmp-words.dictionary",
+        opts = {
+          -- The number of characters required to trigger completion.
+          -- Set this higher if completion is slow, 3 is default.
+          dictionary_search_threshold = 3,
+          score_offset = 0,
+          definition_pointers = { "!", "&", "^" },
+        },
       },
     },
   },
@@ -407,40 +457,6 @@ require("nvim-treesitter").setup({
     },
   },
 })
-
--- Thesaurus {{{1
-vim.cmd([[
-func Thesaur(findstart, base)
-if a:findstart
-return searchpos('\<', 'bnW', line('.'))[1] - 1
-endif
-let res = []
-let h = ''
-for l in systemlist('aiksaurus ' .. shellescape(a:base))
-if l[:3] == '=== '
-let h = '(' .. substitute(l[4:], ' =*$', ')', '')
-elseif l ==# 'Alphabetically similar known words are: '
-let h = "\U0001f52e"
-elseif l[0] =~ '\a' || (h ==# "\U0001f52e" && l[0] ==# "\t")
-call extend(res, map(split(substitute(l, '^\t', '', ''), ', '), {_, val -> {'word': val, 'menu': h}}))
-endif
-endfor
-return res
-endfunc
-]])
-vim.opt.thesaurusfunc = "Thesaur"
-
-function ShowSynonymsForWordUnderCursor()
-  local word = vim.fn.expand("<cword>")
-  vim.cmd("Thesaurus " .. word)
-end
-
-vim.keymap.set(
-  "n",
-  "<leader>ct",
-  ShowSynonymsForWordUnderCursor,
-  { noremap = true }
-)
 
 -- Toggleterm {{{1
 require("toggleterm").setup({

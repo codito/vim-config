@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 13/11/2026, 16:44:25 +0530
+-- Last updated: 15/11/2026, 08:22:44 +0530
 
 local utils = require("util")
 
@@ -63,9 +63,7 @@ require("lazy").setup({
       "hakonharnes/img-clip.nvim",
       event = "VeryLazy",
     },
-    { "hrsh7th/cmp-emoji" },
     { "konfekt/fastfold" },
-    { "kdheepak/cmp-latex-symbols" },
     { "kyazdani42/nvim-tree.lua" },
     { "kyazdani42/nvim-web-devicons" },
     { "l3mon4d3/luasnip" },
@@ -109,7 +107,9 @@ require("lazy").setup({
       "saghen/blink.cmp",
       version = "1.*",
       dependencies = {
-        { "saghen/blink.compat" },
+        "archie-judd/blink-cmp-words",
+        "erooke/blink-cmp-latex",
+        "moyiz/blink-emoji.nvim",
       },
     },
     { "stevearc/aerial.nvim" },
