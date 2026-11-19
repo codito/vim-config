@@ -1,6 +1,6 @@
 -- NVIM lua config
 -- Created: 11/12/2021, 11:44:11 +0530
--- Last modified: 15/11/2026, 08:42:23 +0530
+-- Last modified: 17/11/2026, 17:30:02 +0530
 
 -- Include other configurations
 require("ui") -- UI settings
