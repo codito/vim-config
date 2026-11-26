@@ -1,6 +1,6 @@
 -- Setup for lazy.nvim and plugin sources
 -- Created: 14/09/2024, 07:09:32 +0530
--- Last updated: 15/11/2026, 20:33:17 +0530
+-- Last updated: 26/11/2026, 06:25:18 +0530
 
 local utils = require("util")
 
@@ -30,7 +30,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { "akinsho/toggleterm.nvim", version = "*", config = true },
+    {
+      "akinsho/toggleterm.nvim",
+      version = "*",
+      config = true,
+      event = "VeryLazy",
+    },
     { "andythigpen/nvim-coverage" },
     { "antoinemadec/FixCursorHold.nvim" },
     { "brenoprata10/nvim-highlight-colors" },
@@ -125,7 +130,6 @@ require("lazy").setup({
     { "preservim/vim-pencil", ft = "markdown" },
     { "preservim/vim-lexical", ft = "markdown" },
     { "rafamadriz/friendly-snippets" },
-    { "ron89/thesaurus_query.vim" },
     { "seblyng/roslyn.nvim", ft = "cs", lazy = true },
     {
       "saghen/blink.cmp",

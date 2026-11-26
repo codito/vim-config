@@ -1,9 +1,23 @@
 -- Editor options
 -- Created: 14/09/2024, 07:12:27 +0530. Migrated from init.vim.
--- Last updated: 19/11/2026, 19:05:41 +0530
-local Terminal = require("toggleterm.terminal").Terminal
+-- Last updated: 26/11/2026, 05:59:11 +0530
 
--- Editor keybindings {{{1
+-- Editor {{{1
+-- Restore cursor position to last edit location
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function(ev)
+    local ft = vim.bo[ev.buf].filetype
+    if ft:match("commit") or ft:match("rebase") or vim.wo.diff then
+      return
+    end
+    local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+    if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(ev.buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+-- Editor key bindings {{{1
 -- Make :W behave same as :w
 vim.api.nvim_create_user_command("W", "write", { bang = true })
 
@@ -425,14 +439,15 @@ vim.g.table_mode_corner = "|" -- markdown compatible tables by default
 vim.g.table_mode_tableize_map = "<leader>tb"
 
 -- Television {{{1
-local tv = Terminal:new({
-  cmd = "tv",
-  dir = "git_dir",
-  direction = "float",
-  hidden = true,
-})
-
 function _tv_toggle()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local tv = Terminal:new({
+    cmd = "tv",
+    dir = "git_dir",
+    direction = "float",
+    hidden = true,
+  })
+
   tv:toggle()
 end
 

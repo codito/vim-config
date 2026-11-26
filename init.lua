@@ -1,6 +1,6 @@
 -- NVIM config file
 -- Created: Aug 2005. Ported to neovim on 11/12/2021. Ported to init.lua on 14/09/2024.
--- Last Modified: 15/11/2026, 09:30:13 +0530
+-- Last Modified: 26/11/2026, 05:47:49 +0530
 
 local utils = require("util")
 
@@ -80,7 +80,6 @@ vim.cmd("filetype plugin on") -- enable plugin support
 -- GUI
 if
   vim.fn.has("gui") == 1
-  or vim.fn.exists("nvy") == 1
   or vim.fn.exists("GuiLoaded") == 1
   or vim.fn.exists("g:neovide") == 1
 then
